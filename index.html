@@ -6,31 +6,37 @@
    ========================================= -->
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-  <meta property="og:title" content="Invitaciones LuzNet">
-  <meta property="og:description" content="Tarjeta de presentacion web.">
-  <meta property="og:image" content="https://i.ibb.co/tpMbXm7s/IMG-20260221-173626.jpg
-  ">
-  <meta property="og:url" content="https://luznet-digitalsolutions.github.io/MI-TARJETA-/
-  ">
-  
-  <title>MI TARJETA</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
+  <title>LuzNet - Invitaciones Digitales y Tarjetas de Presentacion</title>
+  <meta name="google-site-verification" content="V0THThwr-4ydj3sCADga2x_MJItVB2-wC9XrjaX0yZ0" />
+  
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
   <!-- Iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
-  <!-- Aquí enlazas tu CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Open Graph para WhatsApp/Facebook -->
+  <meta property="og:title" content="LuzNet Digital Solutions">
+  <meta property="og:description" content="Invitaciones digitales y tarjetas de presentación  exclusivas y personalizadas.">
+  <meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+  <meta property="og:url" content="https://luznet.com.mx">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+
+  
   <style>
       * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Baloo 2', sans-serif;
+  
 }
 
 body {
@@ -51,6 +57,10 @@ body {
   overflow: hidden;
   transition: .5s;
   margin: 15px 20px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  font-family: 'Shadows Into Light';
+  
 }
 
 /* Fondo de nubes */
@@ -60,7 +70,7 @@ body {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: url("https://i.ibb.co/JwG4W0jf/IMG-20260221-WA0001.jpg") no-repeat center center;
+  background: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg") no-repeat center center;
   background-size: cover;
 }
 
@@ -87,14 +97,11 @@ body {
   100% { transform: scale(1) translate(0,0); }
 }
 
-.card:hover {
-  box-shadow: 0 5px 10px rgba(0,0,0,1);
-  transform: translateY(-20px);
-}
+
 
 /* Encabezado */
 .card .head {
-  height: 250px;
+  height: 10px;
   width: 100%;
   position: relative;
   z-index: 1;
@@ -103,25 +110,55 @@ body {
   align-items: center;
 }
 
-/* Contenedor para la esfera 3D */
-#sphere-container {
-  width: 250px;
-  height: 250px;
+.logo-container {
+background:transparent;   /* 👈 elimina el fondo negro */
+  border: none;              /* opcional: quita cualquier marco */
+height: 150px;
+  width: 150px;       /* tamaño del círculo */
+       /* mismo valor para ancho y alto */
+  border-radius: 50%; /* recorte circular */
+  overflow: hidden;   /* oculta todo lo que sobresalga */
+  margin: 10px auto 0px auto;
   position: relative;
-  top: 20px; /* mueve la esfera hacia abajo */
 }
 
-#sphere-container canvas {
-  width: 100% !important;
-  height: 100% !important;
+.logo-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
   display: block;
+
+  /* 👇 Animación de zoom */
+  transform: scale(0.5);          /* inicia más pequeño */
+  animation: zoomIn 3s ease-out forwards; /* se expande una sola vez */
 }
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5); /* inicio pequeño */
+    opacity: 0.5;          /* opcional: un poco transparente */
+  }
+  to {
+    transform: scale(1);   /* tamaño normal */
+    opacity: 1;            /* opaco */
+  }
+}
+
+    .card .head .img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
 
 /* Texto */
 .card .description {
   height: 180px;
  /* padding: 40px 20px 20px 20px;*/
-  border-bottom: white solid 1px ;
+  border-bottom:  solid 1px ;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -135,17 +172,16 @@ h4{
    font-size:20px; 
 }
 
-p{
-   font-size:16px; 
-}
+
 
 
 a{
-   font-size:20px; 
+   font-size:25px; 
 }
 .card .description h2,h4,p,i{
   animation: animate 10s infinite linear;
 }
+
 
 @keyframes animate {
   0%,100%{ color:aqua; }
@@ -161,7 +197,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size:30px;
+  
   position: relative;
   z-index: 1;
 }
@@ -181,34 +217,6 @@ a{
 }
 
 /* Botón catálogo */
-
-.CATALOGO{
-  position: relative;
-/*  left:65px;*/
-  text-align:center;
-  color:white;
-  text-decoration:none;
- margin:5px;
-  width: 170px;
-  height:40px;
-  padding:5px;
-  font-size: 20px;
-  border-radius: 20px;
-  border: 1px white solid;
-  box-shadow:0px 0px 10px 1px white;
-  text-shadow: -2px 1px purple;
-  background: linear-gradient(-45deg,white, blue,black,blue,white );
-  background-size: 300%;
-  animation: bg-animation 20s infinite;
-  z-index: 1;
-}
-
-@keyframes bg-animation {
-  0% { background-position: left; }
-  50% { background-position: right; }
-  100% { background-position: left; }
-}
-
 
 /*efecto matrix h2*/
    #matrix-text {
@@ -259,7 +267,7 @@ a{
   }
   /*efecto zoom p */
    #zoom-text {
-  font-size: 1rem;
+  font-size: 1.2rem;
   opacity: 0;
   transform: scale(0);
   animation: zoomIn 5s forwards ease-out, animate 10s infinite linear;
@@ -274,7 +282,10 @@ a{
   
  /* Contenedor general de los botones */
 .CATALOGO {
+margin:5px;
+  padding:5px;
   font-size: 20px;
+  
   margin: 20px auto;       /* centra horizontalmente */
   text-align: center;
   width: fit-content;
@@ -282,9 +293,9 @@ a{
   opacity: 0;
   border-radius: 20px;
   border: 1px solid white;
-  box-shadow: 0px 0px 10px 1px white;
+
   text-shadow: -2px 1px purple;
-  background: linear-gradient(-45deg, white, blue, black, blue, white);
+  background: transparent;
   background-size: 300%;
   animation: bg-animation 20s infinite linear; /* gradiente animado */
 }
@@ -301,9 +312,7 @@ a{
   animation: zoomPulse 2s infinite ease-in-out; /* zoom constante */
 }
 
-.CATALOGO a:hover {
-  transform: scale(1.15);
-}
+
 
 /* Entrada desde la izquierda */
 .izquierda {
@@ -360,6 +369,13 @@ button:hover {
 </head>
 <body>
   <div class="card">
+  <div class="logo-container">
+  <!--img src="https://i.ibb.co/fY4MWL0Y/copilot-image-1771951288823.png
+  " alt="Logo LuzNet"-->
+  
+  <img src="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg
+  " alt="Logo LuzNet">
+</div>
     <div class="head">
       <!-- Esfera 3D -->
       <div id="sphere-container"></div>
@@ -375,28 +391,25 @@ button:hover {
       <h4 id="wave-text">DISEÑO WEB</h4>
       <!--h4>DISEÑO WEB</h4-->
       <!--p>Invitaciones digitales que celebran cada momento … porque tus eventos merecen otro nivel.</p-->
-      <p id="zoom-text">Invitaciones digitales que celebran cada momento ... porque tus eventos merecen otro nivel.</p>
-      
+      <p id="zoom-text">
+          Invitaciones digitales <br />
+           tarjetas de presentación <br /> exclusivas y personalizadas 
+      </p>
+      <h4 id="wave-text">CONTACTAME</h4>
     </div>
-    <!--div class="contact">
-      <a href="tel:3312381872"><i class="fa fa-phone"></i></a>
-      <a href="https://wa.me/qr/K3HPFDZLSFINP1"><i class="fa fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/Digital-World-100310082725612/"><i class="fa fa-facebook"></i></a>
+    <div class="contact">
+      <!--a href="tel:3312381872"><i class="fa fa-phone"></i></a-->
+      <a href="https://wa.me/523337161869?text=Hola,%20quiero%20más%20información."
+   onclick="playAndGo('audioWhats','https://wa.me/523337161869?text=Hola,%20quiero%20más%20información.',3500); return false;">
+   <i class="fa fa-whatsapp"></i> 
+</a>
+      <!--a href="https://www.facebook.com/Digital-World-100310082725612/"><i class="fa fa-facebook"></i></a>
       <a href="http://tiktok.com/@felipemartinez5483"><i class="fa fa-tiktok"></i></a>
       <a href="https://www.instagram.com/invites/contact/?i=1qfx13l6t6gy5&utm_content=g1iuoqt"><i class="fa fa-instagram"></i></a>
       <a href="https://youtube.com/c/FELIPEMARTINEZCOMPOSITOR"><i class="fa fa-youtube"></i></a>
-      <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a>
-    </div-->
-    
-    <!--div class="CATALOGO">
-      <a href="https://wa.me/523312281872?text=Hola,%20quiero%20más%20información."><i class="fa fa-whatsapp"> CONTACTAME</i></a>
-</div>
-    <div class="CATALOGO">
-      <a href="https://felipe021284.github.io/INVITACI-N-DIGITAL/?v=2
-      "><i class="fa fa-hand-o-right"> CATALOGO</i></a>
-    </div-->
-    <div class="CATALOGO izquierda">
-  <script>
+      <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a-->
+    </div>
+      <script>
 function playAndGo(audioId, url, delay) {
   const audio = document.getElementById(audioId);
   audio.play(); // reproduce el audio
@@ -404,22 +417,27 @@ function playAndGo(audioId, url, delay) {
   // espera el tiempo indicado antes de abrir el enlace
 }
 </script>
+<audio id="audioWhats" src="https://dl.dropbox.com/scl/fi/au60dp8p8pacd66hjkzwh/Luznet-1.mp3?rlkey=sra61i1nbnkbq6v7p3bmdt7lc&st=5qwfs0d7&dl=1
+"></audio>
+   
+    <!--div class="CATALOGO izquierda">
 
 
-<!-- Botón WhatsApp -->
+<!-- Botón WhatsApp >
 <button onclick="playAndGo('audioWhats','https://wa.me/523337161869?text=Hola,%20quiero%20más%20información.',3500)">
    <i class="fa fa-whatsapp"> CONTACTAME</i>
 </button>
-<audio id="audioWhats" src="https://dl.dropbox.com/scl/fi/au60dp8p8pacd66hjkzwh/Luznet-1.mp3?rlkey=sra61i1nbnkbq6v7p3bmdt7lc&st=5qwfs0d7&dl=1
-"></audio>
-</div>
+
+</div-->
 
 
 
 <div class="CATALOGO derecha">
 <!-- Botón Catálogo -->
 <button onclick="playAndGo('audioCatalogo','https://luznet-digitalsolutions.github.io/MI-CATALOGO-V2/',1300)">
-  <i class="fa fa-hand-o-right"> CATALOGO</i>
+  <i class="fa fa-hand-o-right"> 
+   CATALOGO 
+   </i>
 </button>
 <audio id="audioCatalogo" src="https://dl.dropbox.com/scl/fi/pyojk2qxhxrw5k5yzr3g6/Luznet-2.mp3?rlkey=trodms16zmu7ass4grkn8q1ng&st=agpspmra&dl=1
 "></audio>
@@ -432,44 +450,6 @@ function playAndGo(audioId, url, delay) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="script.js"></script>
   <script>
-      const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-camera.position.z = 2.5;
-
-const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
-const container = document.getElementById("sphere-container");
-renderer.setSize(container.clientWidth, container.clientHeight);
-container.appendChild(renderer.domElement);
-
-const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load('https://i.ibb.co/B2JWvpCm/IMG-20260221-173626.jpg');
-
-const geometry = new THREE.SphereGeometry(1, 64, 64);
-const material = new THREE.MeshStandardMaterial({
-  map: texture,
-  roughness: 0.2,
-  metalness: 0.7
-});
-const sphere = new THREE.Mesh(geometry, material);
-scene.add(sphere);
-
-const mainLight = new THREE.PointLight(0x00aaff, 15, 100);
-mainLight.position.set(5, 5, 5);
-scene.add(mainLight);
-
-const fillLight = new THREE.PointLight(0x0044ff, 15, 100);
-fillLight.position.set(-5, -5, 5);
-scene.add(fillLight);
-
-const ambientLight = new THREE.AmbientLight(0x222222, 0.8);
-scene.add(ambientLight);
-
-function animate() {
-  requestAnimationFrame(animate);
-  sphere.rotation.y -= 0.01; // giro inverso
-  renderer.render(scene, camera);
-}
-animate();
 
 
 //efecto matrix h2
