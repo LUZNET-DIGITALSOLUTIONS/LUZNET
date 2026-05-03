@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://luznet.com.mx/sitemap.xml
