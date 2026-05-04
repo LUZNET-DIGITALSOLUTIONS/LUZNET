@@ -435,11 +435,11 @@ function playAndGo(audioId, url, delay) {
 
 <div class="CATALOGO derecha">
 <!-- Botón Catálogo -->
-<button onclick="playAndGo('audioCatalogo','/catalogo/',1300)">
-  <i class="fa fa-hand-o-right"> 
-   CATALOGO 
-   </i>
+<button onclick="document.getElementById('audioCatalogo').play().catch(()=>{}); setTimeout(()=>{location.href='/catalogo/'},1300)">
+<i class="fa fa-hand-o-right"> 
+  CATALOGO
 </button>
+
 <audio id="audioCatalogo" src="https://dl.dropbox.com/scl/fi/pyojk2qxhxrw5k5yzr3g6/Luznet-2.mp3?rlkey=trodms16zmu7ass4grkn8q1ng&st=agpspmra&dl=1
 "></audio>
 
