@@ -1,220 +1,204 @@
+
 <!DOCTYPE html>
-<html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html lang="es">
 <head>
-  <title>MI TARJETA</title>
+ 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LuzNet Catalogo </title>
+  <meta name="description" content="Diseño web en Invitaciones digitales y tarjetas de presentación exclusivas y personalizadas.">
+  <meta name="google-site-verification" content="V0THThwr-4ydj3sCADga2x_MJItVB2-wC9XrjaX0yZ0" />
+  
+  <!-- Open Graph para WhatsApp/Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luznet.com.mx">
+  <meta property="og:title" content="LuzNet Digital Solutions">
+  <meta property="og:description" content="Diseño web en Invitaciones digitales y tarjetas de presentación exclusivas y personalizadas.">
+  <meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+  <meta property="og:locale" content="es_MX">
 
-  <!-- Fuentes -->
+
+  <!-- Fuente -->
+   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 
   <!-- Iconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <!-- Importar Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Shadows+Into+Light&family=Dancing+Script&family=Raleway&family=Oswald&family=Playfair+Display&family=Indie+Flower&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Baloo 2', sans-serif;
-    }
-
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background: black;
-      flex-wrap: wrap;
+      margin: 0;
+      background-color: black;
     }
 
-    /* Tarjeta */
-    .card {
-      position: relative;
-      width: 300px;
-      max-width: 90%; /* responsive */
-      
-      border-radius: 5px;
-      overflow: hidden;
-      transition: .5s;
-      margin: 15px 20px;
-    }
+    
+    .padre {
+  font-family: 'Shadows Into Light;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
+}
 
-    /* Primera capa de fondo */
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url("https://i.ibb.co/JwG4W0jf/IMG-20260221-WA0001.jpg") no-repeat center center;
-      background-size: cover;
-      animation: mover1 5s infinite linear;
-      z-index: -2;
-    }
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
 
-    /* Segunda capa de fondo */
-    .card::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url("https://i.ibb.co/JwG4W0jf/IMG-20260221-WA0001.jpg") no-repeat center center;
-      background-size: cover;
-      opacity: 0.5; /* más tenue */
-      animation: mover2 5s infinite linear;
-      z-index: -1;
-    }
 
-    @keyframes mover1 {
-      0%   { transform: scale(1) translate(0,0); }
-      50%  { transform: scale(1.1) translate(-20px, -10px); }
-      100% { transform: scale(1) translate(0,0); }
-    }
+   .hijo {
 
-    @keyframes mover2 {
-      0%   { transform: scale(1) translate(0,0); }
-      50%  { transform: scale(1.1) translate(20px, 15px); }
-      100% { transform: scale(1) translate(0,0); }
-    }
+ font-family: 'Shadows Into Light';
+  border-radius: 10px;
+border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  width: 90%;
+  max-width: 400px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  background-image: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg");
+  background-size: 110% 100%;
+  background-position: center;
+  box-sizing: border-box;
+  opacity: 1; /* ahora siempre visible */
+  margin: 20px auto;
+  text-align: center;
+}
 
-    .card:hover {
-      box-shadow: 0 5px 10px rgba(0,0,0,1);
-      transform: translateY(-20px);
-    }
 
-    /* Encabezado */
-    .card .head {
-      height: 125px;
-      width: 100%;
-      position: relative;
-    }
 
   
-
-.logo-container {
-  width: 220px;       /* tamaño del círculo */
-  height: 220px;      /* mismo valor para ancho y alto */
-  border-radius: 50%; /* recorte circular */
-  overflow: hidden;   /* oculta todo lo que sobresalga */
-  margin: 0 auto;
-  position: relative;
+   
+    /*animacion color*/
+h2{
+  animation: animate 10s infinite linear;
 }
 
-.logo-container img {
-  width: 220px;       /* tamaño del círculo */
-  height: 220px;
-  object-fit: cover;  /* ajusta la imagen dentro del círculo */
-  display: block;
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
 }
 
-    .card .head .img img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+ 
+  
 
-    /* Texto */
-    .card .description {
-      height: 180px;
-      padding: 40px 20px 20px 20px;
-      border-bottom: white solid 1px ;
-      text-align: center;
-      position: relative;
-      z-index: 1; /* encima del fondo */
-    }
+.zoom {
+  display: inline-block;
+  animation: zoomPulse 2s infinite ease-in-out;
+}
 
-    .card .description h2,h4,p,i{
-      animation: animate 10s infinite linear;
-    }
 
-    @keyframes animate {
-      0%,100%{ color:aqua; }
-      25%{ color: deeppink; }
-      50%{ color:deepskyblue; }
-      75%{ color: white; }
-    }
 
-    /* Redes sociales */
-    .card .contact {
-      width: 100%;
-      height: 75px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size:30px;
-      position: relative;
-      z-index: 1;
-    }
 
-    .card .contact a {
-      text-decoration: none;
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 100%;
-      transition: .5s;  
-    }
 
-    .card .contact a:hover {
-      background: linear-gradient(to top,blue,black);
-      box-shadow: 0 5px 5px rgba(0,0,0,1);
-      transform: translateY(-10px);
-    }
+/*enlaces*/
 
-    /* Botón catálogo */
-    .CATALOGO{
-      position: relative;
-      left:65px;
-      text-align:center;
-      color:white;
-      text-decoration:none;
-      margin:10px;
-      width: 170px;
-      height:40px;
-      padding:5px;
-      font-size: 20px;
-      border-radius: 20px;
-      border: 1px white solid;
-      box-shadow:0px 0px 10px 1px white;
-      text-shadow: -2px 1px purple;
-      background: linear-gradient(-45deg,white, blue,black,blue,white );
-      background-size: 300%;
-      animation: bg-animation 20s infinite;
-      z-index: 1;
-    }
+.hijo6 a {
+height: 30px;
+width: 100px;
+  display: inline-block;        /* necesario para transform */
+  text-decoration: none;        /* sin subrayado */
+  color: #FFD700;               /* dorado inicial */
+  font-size: 20px;
+  font-family: 'Shadows Into Light';
+  margin: 10px;
+  padding: 5px 5px;           /* espacio interno tipo botón */
+  border: 1px solid white;    /* borde dorado */
+  border-radius: 30px;          /* forma ovalada */
+  background-color: transparent;
+  box-shadow: 
+    0 0 8px solid white,
+    0 0 16px solid white; 
+  cursor: pointer;
 
-    @keyframes bg-animation {
-      0% { background-position: left; }
-      50% { background-position: right; }
-      100% { background-position: left; }
-    }
+  /* Animación pulsante infinita */
+  animation: zoomPulse 2s infinite ease-in-out;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.hijo6 a:hover {
+  transform: scale(1.4);        /* más grande al pasar el mouse */
+  color: white;                 /* cambia a blanco */
+  
+}
+
+/* Animación pulsante */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); color:deeppink; }
+  50%  { transform: scale(1.2); color: blue; }
+  100% { transform: scale(1); color:deeppink; }
+}
+
+
   </style>
 </head>
 <body>
-  <div class="card">
-  
-  <div class="logo-container">
-  <img src="https://i.ibb.co/fY34qXyZ/luznet.png
-  " alt="Logo LuzNet">
-</div>
+  <div class="padre">
     
-    <div class="description">
-      <h2>FELIPE MARTINEZ</h2>
-      <h4>DISEÑADOR WEB</h4>
-      <p>ESPECIALIZADO EN TARJETAS DIGITALES</p>
-    </div>
-    <div class="contact">
-      <a href="tel:3312381872"><i class="fa fa-phone"></i></a>
-      <a href="https://wa.me/qr/K3HPFDZLSFINP1"><i class="fa fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/Digital-World-100310082725612/"><i class="fa fa-facebook"></i></a>
-      <a href="http://tiktok.com/@felipemartinez5483"><i class="fa fa-tiktok"></i></a>
-      <a href="https://www.instagram.com/invites/contact/?i=1qfx13l6t6gy5&utm_content=g1iuoqt"><i class="fa fa-instagram"></i></a>
-      <a href="https://youtube.com/c/FELIPEMARTINEZCOMPOSITOR"><i class="fa fa-youtube"></i></a>
-      <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a>
-    </div>
-    <div class="CATALOGO">
-      <a href="https://felipe021284.github.io/CATALOGO-V1/"><i class="fa fa-hand-o-right"> CATALOGO</i></a>
-    </div>
+    
+    
+    
+
+ 
+ <div class="hijo hijo6">
+    <h2 class="zoom">PAQUETES  INVITACION BAUTIZO</h2>
+    
+    <a id="link1" href="https://luznet-digitalsolutions.github.io/TIPOS-DE-INVITACION-GENERICA-/
+    ">BASICA</a>
+    
+    <a id="link1" href="https://luznet-digitalsolutions.github.io/TIPOS-DE-INVITACION-GENERICA-/
+    ">PLATINO</a>
+    
+    <a id="link1" href="https://luznet-digitalsolutions.github.io/TIPOS-DE-INVITACION-GENERICA-/
+    ">PREMIUM</a>
+    
+    <a id="link1" href="https://luznet-digitalsolutions.github.io/TIPOS-DE-INVITACION-GENERICA-/
+    ">EXCLUSIVE</a>
+    
+    <a id="link1" href="https://luznet-digitalsolutions.github.io/TIPOS-DE-INVITACION-GENERICA-/
+    ">ELITE</a>
+    
+    
+    
+    
+</div>
+   
   </div>
+
+  
 </body>
 </html>
