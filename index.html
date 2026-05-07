@@ -9,8 +9,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
 
 <!-- SEO Principal -->
 <title>LuzNet Digital Solutions | Diseño Web en Tlaquepaque, Jalisco</title>
@@ -46,7 +45,6 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-
 
 
   
@@ -174,7 +172,7 @@ height: 150px;
 
 /* Texto */
 .card .description {
-  height: 180px;
+  height: 220px; /* Bájale de 240px-250px a 200px */
  /* padding: 40px 20px 20px 20px;*/
   border-bottom:  solid 1px ;
   border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
@@ -183,21 +181,27 @@ height: 150px;
   z-index: 1;
 }
 
-h2{
-   font-size:32px; 
+h1{
+   font-size:30px; 
 }
 
-h4{
+h2{
    font-size:20px; 
 }
 
+.card.description {
+  
+}
 
+.card.contact {
+  
+}
 
 
 a{
    font-size:25px; 
 }
-.card .description h2,h4,p,i{
+.card .description h1,h2,h3,p,i{
   animation: animate 10s infinite linear;
 }
 
@@ -212,7 +216,8 @@ a{
 /* Redes sociales */
 .card .contact {
   width: 100%;
-  height: 75px;
+  height: 50px; /* Era 75px, ahora 50px */
+  margin-top: 20px; /* Lo jala hacia arriba */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,11 +245,11 @@ a{
 /*efecto matrix h2*/
    #matrix-text {
    /* font-size:3em;*/
-    font-size:32px;
+    font-size:30px;
     
     white-space: pre;
   /*  font-family: 'Montserrat', sans-serif;*/
-    letter-spacing: 4px;
+    letter-spacing: 0px;
     color: #00ff00; /* verde Matrix */
   }
 
@@ -301,11 +306,11 @@ a{
   
  /* Contenedor general de los botones */
 .CATALOGO {
-margin:5px;
+
   padding:5px;
   font-size: 20px;
   
-  margin: 20px auto;       /* centra horizontalmente */
+  margin: 5px auto;       /* centra horizontalmente */
   text-align: center;
   width: fit-content;
   position: relative;
@@ -385,12 +390,33 @@ button:hover {
   color: #00BFFF;     /* azul ceremonial al pasar */
   
   </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "LuzNet Digital Solutions",
+  "image": "https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg",
+  "url": "https://luznet.com.mx",
+  "telephone": "+52-333-716-1869",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tlaquepaque",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  },
+  "description": "Diseño web, invitaciones digitales y tarjetas de presentación en Tlaquepaque",
+  "sameAs": [
+    "https://wa.me/523337161869"
+  ]
+}
+</script>
+
 </head>
 <body>
   <div class="card">
   <div class="logo-container">
-  <!--img src="https://i.ibb.co/fY4MWL0Y/copilot-image-1771951288823.png
-  " alt="Logo LuzNet"-->
+  
   
   <img src="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg
   " alt="Logo LuzNet">
@@ -403,15 +429,14 @@ button:hover {
     <div class="description">
     
       <!--h2>LUZNET</h2-->
-      <h2 id="matrix-text" data-text="LUZNET"></h2>
-      <h4 id="wave-text">DISEÑO WEB</h4>
-      <!--h4>DISEÑO WEB</h4-->
-      <!--p>Invitaciones digitales que celebran cada momento … porque tus eventos merecen otro nivel.</p-->
+      <h1 id="matrix-text" data-text="LUZNET&#10;Digital Solutions"></h1>
+      <h2 id="wave-text">DISEÑO WEB</h2>
+      
       <p id="zoom-text">
           Invitaciones digitales <br />
            tarjetas de presentación <br /> exclusivas y personalizadas 
       </p>
-      <h4 id="wave-text">CONTACTAME</h4>
+      <h3 >CONTACTAME</h3>
     </div>
     <div class="contact">
       <!--a href="tel:3312381872"><i class="fa fa-phone"></i></a-->
@@ -467,31 +492,33 @@ function playAndGo(audioId, url, delay) {
   <script src="script.js"></script>
   <script>
 
-
-//efecto matrix h2
 function prepararMatrixTexto() {
-    const p = document.getElementById('matrix-text');
-    if (!p) return;
+    const h1 = document.getElementById('matrix-text');
+    if (!h1) return;
 
-    const texto = p.getAttribute('data-text');
-    p.textContent = ''; // limpiar contenido
+    const texto = h1.getAttribute('data-text');
+    h1.textContent = '';
 
-    // Crear spans para cada letra con retraso aleatorio
-    for (let i = 0; i < texto.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = texto[i];
-      // Retraso aleatorio entre 0 y 1.5 segundos
-      const delay = (Math.random() * 1.5).toFixed(2);
-      span.style.animationDelay = `${delay}s`;
-      p.appendChild(span);
-    }
-  }
+    // Esto divide por Enter real O por &#10;
+    const lineas = texto.split(/\r?\n|&#10;/);
 
-  // Ejecutar al cargar
-  prepararMatrixTexto();
-  
-  
-  //efecto olas de mar
+    lineas.forEach((linea, index) => {
+        const divLinea = document.createElement('div');
+        divLinea.style.display = 'block'; // Forzar que sea bloque
+
+        for (let i = 0; i < linea.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = linea[i] === " "? "\u00A0" : linea[i];
+            const delay = (Math.random() * 1.5 + index * 0.3).toFixed(2);
+            span.style.animationDelay = `${delay}s`;
+            divLinea.appendChild(span);
+        }
+        h1.appendChild(divLinea);
+    });
+}
+
+prepararMatrixTexto();
+//efecto olas de mar
   function prepararWaveTexto() {
     const p = document.getElementById('wave-text');
     if (!p) return;
@@ -509,6 +536,8 @@ function prepararMatrixTexto() {
   }
 
   prepararWaveTexto();
+
+
   </script>
 </body>
 </html>
