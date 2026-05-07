@@ -102,6 +102,20 @@ body {
   z-index: -1;
 }
 
+/* Responsive: En PC la tarjeta crece */
+@media (min-width: 768px) {
+  .card { 
+    width: 400px; /* En PC: más ancha */
+    min-height: 600px; /* En PC: más alta */
+    margin: 20px; 
+  }
+  
+  .card .description {
+    min-height: 280px; /* Más espacio pa' texto en PC */
+  }
+}
+
+
 @keyframes mover1 {
   0%   { transform: scale(1) translate(0,0); }
   50%  { transform: scale(1.1) translate(-20px, -10px); }
@@ -382,7 +396,7 @@ audio {
 }
 button:hover {
   color: #00BFFF;     /* azul ceremonial al pasar */
-  
+  }
   </style>
   <script type="application/ld+json">
 {
