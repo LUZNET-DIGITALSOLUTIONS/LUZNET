@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
 
+  <meta property="og:title" content="Graduación Generación 2024-2026 | Prepa Tec">
+<meta property="og:description" content="Ceremonia de Graduación. Sábado 15 de Julio, 11:00 AM. Auditorio Principal">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:url" content="https://luznet.com.mx/catalogo/invitaciones/generica/basica/demo/basica/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<title>Graduación 2026 | Prepa Tec</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  
+  <style>
+      
+body {
+  margin: 0;
+  background-color: black;
+}
+
+.padre {
+  font-family: 'Shadows Into Light', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  align-items: center;       
+  width: 100%;
+  min-height: 100vh;         
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+.hijo {
+  font-family: 'Shadows Into Light';
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  height: 600px;             
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color:black;
+  background-image: url("https://i.ibb.co/Kcf7vx1p/image-1770932827305.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  box-sizing: border-box;
+  margin: 20px auto;         
+  color:#FFD700;
+  text-align: center;        
+  position: relative;
+  overflow: hidden;
+}
+
+.hijo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); 
+  z-index: 0;
+}
+.hijo * {
+  position: relative;
+  z-index: 1;
+}
+
+.hijo p {
+  margin: 0;
+}
+
+a {
+  color: #FFD700;
+  text-decoration: none;   /* quita el subrayado */
+  border: 1px solid #FFD700;
+  padding: 8px 16px;       /* espacio interno para que parezca botón */
+  border-radius: 8px;      /* esquinas redondeadas */
+  display: inline-block;   /* lo convierte en bloque manejable */
+  margin-top: 20px;        /* separación respecto a la imagen */
+}
+
+p,a{
+    font-size:20px;
+}
+
+/* Imagen */
+img{
+  width:75%;
+  height:30%;
+  border: 1px solid #FFD700;
+  border-radius: 8px;
+  
+}
+
+/* Slider */
+.slider {
+  width: 225px;
+  height: 190px;
+  overflow: hidden;
+  border: 1px solid #FFD700;
+  border-radius: 8px;
+  margin:10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slides img {
+  width: 223px;
+  height: 190px;
+  flex-shrink: 0;
+}
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,215,0,0.4); 
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #FFD700; 
+  transform: scale(1.2);
+}
+
+
+hr {
+  border: none;              /* elimina el estilo por defecto */
+  height: 1px;               /* grosor de la línea */
+  background: #FFD700;       /* color dorado */
+  margin: 20px auto;         /* espacio arriba y abajo */
+  width: 60%;                /* ancho de la línea */
+}
+  </style>
+
+  
+</head>
+<body>
+  <div class="padre">
+    <div class="hijo hijo1">
+      <h1>Nombre del evento</h1>
+      <p>En este apartado van <br /> palabras de agradecimiento</p>
+      <!--div class="daleplay">
+      <h1 >Dale Play</h1>
+      </div>
+      <div class="audio-player">
+    <audio id="song">
+      <source src="https://dl.dropbox.com/scl/fi/49eacpxgv0tmsts97l530/Bogota-MP3_160K.mp3?rlkey=gk0ibk5ld4qde03maaiuz8soy&st=v99fbfsg&dl=0
+      " type="audio/mp3">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <div class="controls">
+      <button id="playPause">▶</button>
+      <div class="progress" id="progress">
+        <div class="progress-filled" id="progressFilled"></div>
+      </div>
+      <button id="mute">🔇</button>
+    </div>
+  </div-->
+      
+     
+    </div>
+
+    <div class="hijo hijo2">
+    <h1>Informacion del evento</h1>
+      <p>En este apartado va información <br>
+        sobre lugar, fecha y hora del evento <br>
+        </p>
+      <!--div id="contador"></div-->
+    </div>
+
+<!--div class="hijo hijo6" id="hijo6">
+  <h1 data-text="Agenda de actividades"></h1>
+  <p data-text="En este apartado van los horarios
+De las distintas actividades del evento"></p>
+  <ul>
+    <li data-text=" 🕒 7:00 PM – Recepción"></li>
+    <li data-text="🍽️ 8:00 PM – Cena"></li>
+    <li data-text="🎶 9:30 PM – Baile"></li>
+    <li data-text="🥂 11:00 PM – Brindis"></li>
+  </ul>
+</div-->
+
+    <div class="hijo hijo3 subir">
+      <h1>Ubicacion del evento</h1>
+      <p>En este apartado van <br />
+      los detalles  de la ubicacion por
+       texto <br />
+       enlace al maps,<br />
+       una foto del exterior <br />
+        o del interior del lugar</p>
+       
+       <img src="https://i.ibb.co/Kc06V9bJ/images-7.jpg" alt="images (7)" border="0">
+       
+       <div class="gps">
+ 
+    <a href="https://maps.app.goo.gl/4um9YVqEmjJ7LZX8A" target="_blank">
+      <i class="fa fa-street-view" aria-hidden="true"></i> Ubicación
+    </a>
+  </div>
+    </div>
+    
+    <div class="hijo hijo4">
+    <script>
+    
+  </script>
+  
+    <div class="matrix-container">
+     <h1 >Sección de fotos</h1>
+  </div>
+    
+    <div class="slider">
+    
+  <div class="slides">
+  
+   
+    <img src="https://i.ibb.co/RkWbjdjz/hermoso-arreglo-rosas-23-2150737457.jpg
+    " alt="Foto 1">
+    <img src="https://i.ibb.co/39p3ZcQM/premium-photo-1661883809211-eb59f508b3d9.jpg
+    " alt="Foto 2">
+    <img src="https://i.ibb.co/qLsG4q5N/images-8.jpg
+    " alt="Foto 3">
+  </div>
+</div>
+
+<!-- Barra indicadora (fuera del slider) -->
+<div class="indicator">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+    
+    
+  
+  
+</div>
+      
+      </div>
+      <!--div class="hijo hijo5">
+  <h1 class="zoom">Qr pase de entrada</h1>
+  <img class="zoom" src="https://i.ibb.co/93pkFTj3/pase-1.png" alt="pase-1">
+  <p class="zoom">Por favor confirma tu asistencia <br /> antes de la fecha.</p>
+  <div class="gps zoom">
+    <a href="https://wa.me/523312281872?text=Hola,%20confirmo%20mi%20asistencia%20al%20evento." class="btn">Confirmar</a>
+  </div>
+</div-->
+      
+       <div class="hijo hijo7" id="hijo7">
+ <br />
+  <h1 >Gracias por asistir </h1>
+
+<p> Agradezco tu presencia <br />
+ en este evento tan solemne
+</p> <br />
+ <hr><br />
+ 
+<p >
+    ✨Invitaciones LuzNet✨ <br /> ✨agradece tu preferencia✨
+</p>
+
+
+  
+  <div class="footer-img">
+  <!--p>Invitaciones LuzNet agradece tu preferencia.</p-->
+  <img class="zoom-img" src="https://i.ibb.co/7tCWCQ6x/image-1771479727259.jpg" alt="Logo LuzNet">
+  </div>
+  
+</div>
+    
+  </div>
+
+  <script>
+ 
+
+  
+    
+    
+    //barra
+    
+    const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+const total = dots.length;
+
+function updateIndicator() {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+slides.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+slides.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff < -50 && index < total - 1) index++;
+  if (diff > 50 && index > 0) index--;
+
+  currentTranslate = -index * slides.clientWidth;
+  slides.style.transform = `translateX(${currentTranslate}px)`;
+  prevTranslate = currentTranslate;
+
+  updateIndicator();
+});
+
+// Inicializar
+updateIndicator();
+
+//frase matrix
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
