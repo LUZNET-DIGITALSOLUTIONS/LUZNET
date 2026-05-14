@@ -78,7 +78,7 @@
 
 
    .hijo {
-
+position: relative;
  font-family: 'Shadows Into Light';
   border-radius: 10px;
 border: 1px solid transparent;
@@ -136,7 +136,7 @@ border: 1px solid transparent;
     }
     
     /*animacion color*/
-h2{
+h1{
   animation: animate 10s infinite linear;
 }
 
@@ -305,45 +305,65 @@ width: 70px;
 }
 
 
+
+.breadcrumbs {
+  position: absolute;
+  font-family: 'Shadows Into Light';
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  color: white;
+  font-family: Arial, sans-serif;
+  z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
+.breadcrumbs a {
+font-family: 'Shadows Into Light';
+font-size: 20px;
+  color: #00ccff;
+  text-decoration: none;
+  animation: zoomPulse 2s infinite ease-in-out;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+  transform: scale(1.4);        /* más grande al pasar el mouse */
+  color: white;                 /* cambia a blanco */
+}
     
   </style>
-  <script type="application/ld+json">
+ <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Invitaciones Digitales LuzNet",
-  "image": [
-    "https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg"
-  ],
-  "description": "Invitaciones digitales animadas para bodas, XV años y bautizos. Personalizables con +30 fuentes y fondos. Incluye música, mapa, contador regresivo y confirmación por WhatsApp. Entrega en 24h.",
-  "sku": "INV-LUZNET-2026",
-  "brand": {
-    "@type": "Brand",
-    "name": "LuzNet"
-  },
-  "offers": {
-    "@type": "AggregateOffer",
-    "url": "https://luznet.com.mx/catalogo/invitaciones/",
-    "priceCurrency": "MXN",
-    "lowPrice": "300",
-    "highPrice": "1100",
-    "offerCount": "5",
-    "availability": "https://schema.org/InStock"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "127"
-  }
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Inicio",
+    "item": "https://luznet.com.mx/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Catálogo",
+    "item": "https://luznet.com.mx/catalogo/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Invitaciones",
+    "item": "https://luznet.com.mx/catalogo/invitaciones/"
+  }]
 }
 </script>
 </head>
 <body>
   <div class="padre">
     <div class="hijo hijo1">
+     <nav class="breadcrumbs">
+    <a href="/">Inicio</a> > <a href="/catalogo/">Catálogo</a> > <span>Invitaciones</span>
+  </nav>
       <div class="mensaje-inicio">
-        <h2 id="matrix-text" data-text="CATALOGO 
-DE INVITACIONES"></h2>
+        <h1 id="matrix-text" data-text="Invitaciones Digitales&#10 para Boda, XV Años&#10y Bautizo"></h1>
         
         <p>LuzNet <br /> especialistas en invitaciones digitales <br /> 
 Diseños animados para bodas, XV años <br />
@@ -450,18 +470,10 @@ Entrega en 24h por WhatsApp.
  <div class="hijo hijo6">
     <h2 class="zoom">PRODUCTOS</h2>
     
-    <a href="generica/
-    ">GENERICA</a>
-    
-    <a href="bautizo/
-    ">BAUTIZO</a>
-    
-    <a href="xv/
-    ">XV AÑOS</a>
-    
-    <a href="boda/
-    ">BODA</a>
-    
+    <a href="/catalogo/invitaciones/generica/">GENERICA</a>
+<a href="/catalogo/invitaciones/bautizo/">BAUTIZO</a>
+<a href="/catalogo/invitaciones/xv/">XV AÑOS</a>
+<a href="/catalogo/invitaciones/boda/">BODA</a>
     
     
     
