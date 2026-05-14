@@ -1,1 +1,479 @@
 
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html lang="es">
+<head>
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+
+  
+
+<!-- SEO Básico -->
+<title>Invitaciones Digitales para Boda Elegantes | Desde $300 | LuzNet Tlaquepaque</title>
+<meta name="description" content="Invitaciones digitales para boda con nuestra historia, galería de fotos, mapa a iglesia y salón, mesa de regalos y confirmación WhatsApp. Desde $300 MXN. Entrega 24h.">
+<link rel="canonical" href="https://luznet.com.mx/catalogo/invitaciones/boda/" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Invitación Digital para Boda | LuzNet">
+<meta property="og:description" content="Celebra tu boda con invitación digital: música romántica, nuestra historia, código de vestimenta, mapa y confirmación por WhatsApp. Desde $300 MXN.">
+<meta property="og:url" content="https://luznet.com.mx/catalogo/invitaciones/boda/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://i.ibb.co/boda/portada-boda.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Invitación Digital para Boda | LuzNet">
+<meta name="twitter:description" content="Diseños elegantes para boda con música, galería, mapas y WhatsApp. Desde $300 MXN.">
+<meta name="twitter:image" content="https://i.ibb.co/boda/portada-boda.jpg">
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+<!-- Iconos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+    }
+
+    
+    .padre {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
+}
+
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+
+   .hijo {
+position: relative;
+ font-family: 'Shadows Into Light';
+  border-radius: 10px;
+border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  width: 90%;
+  max-width: 400px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  background-image: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg");
+  background-size: 110% 100%;
+  background-position: center;
+  box-sizing: border-box;
+  opacity: 1; /* ahora siempre visible */
+  margin: 20px auto;
+  text-align: center;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+}
+
+.hijo6
+{
+    height: 550px;
+}
+
+    .mensaje-inicio h2 {
+      font-size: 35px;
+      
+    }
+
+    .mensaje-inicio p {
+      font-size: 20px;
+      line-height: 1.5;
+      color: white;
+    }
+
+    /* Estilo Matrix para h2 div 1 */
+    #matrix-text {
+     /*font-size: 2mpx;*/
+     /* letter-spacing: 4px;*/
+      color: #00ff00; /* verde Matrix */
+      white-space: pre;
+    }
+
+    #matrix-text span {
+      opacity: 0;
+      transform: translateY(-400px);
+      display: inline-block;
+      animation: caer 1.5s forwards;
+    }
+
+    @keyframes caer {
+      0%   { opacity: 0; transform: translateY(-400px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    /*animacion color*/
+h1{
+  animation: animate 10s infinite linear;
+}
+
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
+}
+
+ /*efecto olas de mar h2 div 2*/
+    #wave-text {
+   /* font-size:2em;*/
+    font-size:35px;
+ /*   font-family: 'Raleway', sans-serif;*/
+    display: inline-block;
+    color: #00ffff; /* aqua */
+    white-space: pre; /* mantiene los espacios */
+  }
+
+  #wave-text span {
+    display: inline-block;
+    animation: wave 2s infinite ease-in-out;
+  }
+
+  @keyframes wave {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-8px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(8px); }
+    100% { transform: translateY(0); }
+  }
+  /*efecto zoom p */
+   #zoom-text {
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0);
+  animation: zoomIn 5s forwards ease-out, animate 10s infinite linear;
+}
+
+
+
+
+
+
+
+.zoom {
+  display: inline-block;
+  animation: zoomPulse 2s infinite ease-in-out;
+}
+
+
+
+/*enlaces*/
+
+.hijo6 a {
+width: 80px;
+  display: inline-block;        /* necesario para transform */
+  text-decoration: none;        /* sin subrayado */
+  color: #FFD700;               /* dorado inicial */
+  font-size: 20px;
+  font-family: 'Shadows Into Light';
+  margin: 10px;
+  padding: 10px 10px;           /* espacio interno tipo botón */
+  border: 1px solid white;    /* borde dorado */
+  border-radius: 30px;          /* forma ovalada */
+  background-color: transparent;
+   
+  cursor: pointer;
+
+  /* Animación pulsante infinita */
+  animation: zoomPulse 2s infinite ease-in-out;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.hijo6 a:hover {
+  transform: scale(1.4);        /* más grande al pasar el mouse */
+  color: white;                 /* cambia a blanco */
+  
+}
+
+/* Animación pulsante */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); color:deeppink; }
+  50%  { transform: scale(1.2); color: blue; }
+  100% { transform: scale(1); color:deeppink; }
+}
+
+
+p {
+  color: white; 
+  font-size: 20px;
+  animation: zoomOnce 1.5s ease-out forwards;
+}
+
+/* Animación de zoom único */
+@keyframes zoomOnce {
+  0% {
+    transform: scale(0.5); /* empieza más pequeño */
+    opacity: 0;            /* invisible al inicio */
+  }
+  100% {
+    transform: scale(1);   /* tamaño normal */
+    opacity: 1;            /* visible al final */
+  }
+}
+    
+    .breadcrumbs {
+    
+  position: absolute;
+  font-family: 'Shadows Into Light';
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  color: white;
+  z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
+.breadcrumbs a {
+
+  font-family: 'Shadows Into Light';
+  animation: animate 10s infinite linear;
+  font-size: 20px;
+  color: #00ccff;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+  color: white;
+}
+  </style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Invitación Digital para Boda LuzNet",
+  "image": "https://i.ibb.co/boda/portada-boda.jpg",
+  "description": "Invitación digital para boda con música romántica, nuestra historia, galería de fotos, mapa a ceremonia y recepción, mesa de regalos, código de vestimenta y confirmación por WhatsApp.",
+  "sku": "INV-BODA-2026",
+  "brand": { "@type": "Brand", "name": "LuzNet" },
+  "offers": {
+    "@type": "AggregateOffer",
+    "url": "https://luznet.com.mx/catalogo/invitaciones/boda/",
+    "priceCurrency": "MXN",
+    "lowPrice": "300",
+    "highPrice": "1100",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "127"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Inicio",
+    "item": "https://luznet.com.mx/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Catálogo",
+    "item": "https://luznet.com.mx/catalogo/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Invitaciones",
+    "item": "https://luznet.com.mx/catalogo/invitaciones/"
+  },{
+    "@type": "ListItem",
+    "position": 4,
+    "name": "Boda",
+    "item": "https://luznet.com.mx/catalogo/invitaciones/boda/"
+  }]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "¿Qué incluye una invitación digital para boda?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Música romántica, nuestra historia, galería de fotos, mapa a ceremonia y recepción, mesa de regalos, código de vestimenta y confirmación por WhatsApp. Desde $300 MXN."
+    }
+  },{
+    "@type": "Question",
+    "name": "¿Cuánto cuesta una invitación digital de boda?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Desde $300 MXN el paquete Básico. Incluye sobre interactivo, música, historia de la pareja, mapas y confirmación. Entrega en 24 horas por WhatsApp."
+    }
+  },{
+    "@type": "Question",
+    "name": "¿Puedo incluir mesa de regalos y código de vestimenta?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sí. Todos los paquetes incluyen sección de mesa de regalos, código de vestimenta, mapas a iglesia y salón, y confirmación directa por WhatsApp."
+    }
+  }]
+}
+</script>
+</head>
+<body>
+  <div class="padre">
+    <div class="hijo hijo1">
+    <nav class="breadcrumbs">
+    <a href="/">Inicio</a> > <a href="/catalogo/">Catálogo</a> > <a href="/catalogo/invitaciones/">Invitaciones</a> > <span>Boda</span>
+  </nav>
+      <div class="mensaje-inicio">
+    <br />    <h1 id="matrix-text" data-text="Invitaciones Digitales&#10para Boda&#10con Música y Mapa"></h1>
+        
+  <p> LuzNet <br />
+Invitaciones Digitales para BODA<br />
+Celebra tu BODA como siempre lo soñaste.
+<br />
+Creamos tu invitación digital <br />
+ con diseños únicos: <br />
+música de tu elección,<br />
+agenda de actividades,<br />
+galería de fotos, <br />
+mapa al salón, <br />
+cuenta regresiva<br />
+y confirmación por WhatsApp. <br />
+Comparte la magia de tu fiesta <br />
+con todos tus invitados.<br />
+Desde $300 MXN. <br />
+Entrega express en 24 horas.</p>
+      </div>
+    </div>
+    
+
+
+ 
+ <div class="hijo hijo6">
+    <h2 class="zoom">PAQUETE BODA</h2>
+    
+    <a href="/catalogo/invitaciones/boda/basica/">BÁSICA</a>
+<a href="/catalogo/invitaciones/boda/platino/">PLATINO</a>
+<a href="/catalogo/invitaciones/boda/premium/">PREMIUM</a>
+<a href="/catalogo/invitaciones/boda/exclusive/">EXCLUSIVE</a>
+<a href="/catalogo/invitaciones/boda/elite/">ELITE</a>
+    
+    
+    
+    
+</div>
+   
+  </div>
+
+  <script>
+  
+  
+    // Observer para activar el efecto cada vez que el div1 entra en pantalla
+    document.addEventListener("DOMContentLoaded", () => {
+      const targetDiv = document.querySelector(".hijo1");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            prepararMatrixTexto();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(targetDiv);
+    });
+    
+    
+    
+  //efecto olas de mar div 2
+  function prepararWaveTexto() {
+    const p = document.getElementById('wave-text');
+    if (!p) return;
+
+    const texto = p.textContent;
+    p.textContent = ''; // limpiar contenido
+
+    // Crear spans para cada letra (incluyendo espacios)
+    for (let i = 0; i < texto.length; i++) {
+      const span = document.createElement('span');
+      span.textContent = texto[i] === " " ? "\u00A0" : texto[i]; // espacio visible
+      span.style.animationDelay = `${i * 0.2}s`; // efecto de ola progresivo
+      p.appendChild(span);
+    }
+  }
+
+  prepararWaveTexto();
+  
+  
+  
+  
+
+
+
+
+
+
+function prepararMatrixTexto() {
+    const h1 = document.getElementById('matrix-text');
+    if (!h1) return;
+
+    const texto = h1.getAttribute('data-text');
+    h1.textContent = '';
+
+    // Esto divide por Enter real O por &#10;
+    const lineas = texto.split(/\r?\n|&#10;/);
+
+    lineas.forEach((linea, index) => {
+        const divLinea = document.createElement('div');
+        divLinea.style.display = 'block'; // Forzar que sea bloque
+
+        for (let i = 0; i < linea.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = linea[i] === " "? "\u00A0" : linea[i];
+            const delay = (Math.random() * 1.5 + index * 0.3).toFixed(2);
+            span.style.animationDelay = `${delay}s`;
+            divLinea.appendChild(span);
+        }
+        h1.appendChild(divLinea);
+    });
+}
+
+
+          
+  </script>
+</body>
+</html>
