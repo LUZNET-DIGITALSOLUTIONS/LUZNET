@@ -1,1 +1,138 @@
 
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html>
+<head>
+<title>Graduación 2026 | Prepa Tec | Paquete Premium</title>
+<meta property="og:title" content="Graduación 2026 | Prepa Tec - Premium">
+<meta property="og:url" content="https://luznet.com.mx/catalogo/invitaciones/generica/premium/demo/premium/">
+<meta property="og:description" content="Demo Paquete Premium LuzNet. Sobre animado con música.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .envelope {
+      position: relative;
+      width: 340px;
+      height: 250px;
+      background: url("https://i.ibb.co/pjXkqg9S/copilot-image-1775115213745.png") no-repeat center center;
+      background-size: cover;
+      
+   border: 1px solid #FFD700; /* dorado puro */
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.7),   /* halo cercano */
+    0 0 24px rgba(255, 215, 0, 0.5),   /* brillo medio */
+    0 0 36px rgba(255, 215, 0, 0.3);   /* resplandor lejano */
+      overflow: hidden;
+      perspective: 1200px;
+    }
+
+    
+  
+
+  .seal img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+    .sobre {
+      position: absolute;
+      bottom: 0;
+      width:100%;
+      height: 100%;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .invitation {
+      opacity: 0;
+      transition: opacity 1s ease 0.5s;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      color: #6b2c3e;
+    }
+    .seal {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  z-index: 3;
+  animation: zoomSeal 2.5s ease-in-out infinite;
+}
+@keyframes zoomSeal {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+  </style>
+</head>
+<body>
+
+  <div class="envelope">
+    <div class="flap"></div>
+    <!-- Imagen del sello -->
+    <div class="seal" onclick="openEnvelope()">
+      <img src="https://i.ibb.co/N2KBNZ5P/1775109395492.png
+      " alt="Abrir invitacion">
+    </div>
+    <div class="sobre">
+      <div class="invitation"></div>
+    </div>
+  </div>
+<div id="sobreAbierto" style="display:none; text-align:center;">
+  <img src="https://i.ibb.co/HTz8mZtZ/image-1775115585585.jpg
+  " alt="Sobre abierto" style="max-width:100%; height:auto;">
+</div>
+  <!-- Audio que se reproducirá -->
+  <audio id="audioSeal" src="https://dl.dropbox.com/scl/fi/f62hfvox43hrsidg9hjha/te-invito-a-mi-fiesta.mp3?rlkey=3uek03kdcxmv6hlacqkvwaxo9&st=72lk0lkr&dl=1
+  "></audio>
+  
+  
+<script>
+    function openEnvelope() {
+  // Animación de apertura
+  document.querySelector('.flap').style.transform = 'rotateX(-180deg)';
+  document.querySelector('.invitation').style.opacity = '1';
+
+  // Reproducir audio
+  var audio = document.getElementById("audioSeal");
+  audio.play();
+
+  // Mostrar imagen del sobre abierto
+  setTimeout(function() {
+    document.querySelector('.envelope').style.display = "none";
+    document.getElementById("sobreAbierto").style.display = "block";
+  }, 1000); // espera 1 segundo
+
+  // Redirección a panel.html
+  setTimeout(function() {
+    window.location.href = "panel.html"; 
+  }, 2200); // espera 2.2 segundos
+}
+</script>
+  
+
+</body>
+</html>
