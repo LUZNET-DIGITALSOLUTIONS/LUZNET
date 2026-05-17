@@ -1,1 +1,1095 @@
 
+<!DOCTYPE html>
+
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph para WhatsApp, Facebook, etc -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Invitación | Graduación de Fabi Guzmán 2026">
+<meta property="og:url" content="https://luznet.com.mx/fabiguzman/">
+<meta property="og:description" content="Te invito a celebrar mi graduación de Prepa Tec este 13 de junio del 2026. ¡Ya falta poco! Contador regresivo y ubicación aquí.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Invitación | Graduación de Fabi Guzmán 2026">
+<meta name="twitter:description" content="Te invito a celebrar mi graduación de Prepa Tec este 13 de junio del 2026. ¡Ya falta poco!">
+<meta name="twitter:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+
+  <title>GRADUACION FABI GUZMAN</title>
+  
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  
+  <style>
+      body {
+  margin: 0;
+  background-color: black;
+}
+
+.padre {
+  font-family: 'Shadows Into Light', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
+}
+
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+.hijo {
+font-family: 'Shadows Into Light';
+  border-radius: 10px;
+  
+  width: 90%;
+  max-width: 400px;
+  height: 600px;             /* altura fija para centrar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color:black;
+ 
+  
+  background-image: url("https://i.ibb.co/DgTxnM4n/image-1778902810897.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  box-sizing: border-box;
+  opacity: 0; /* oculto hasta que se active */
+  transition: opacity 2s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto;         /* centrado horizontal en móvil */
+  animation: animationcolor 10s infinite;
+  text-align: center;        /* asegura que el texto se centre */
+  text-shadow: 3px 3px 6px rgba(192,192,192,0.9);
+
+}
+
+
+.hijo * {
+  position: relative;
+  z-index: 1;
+}
+
+.hijo p {
+  margin: 0; /* elimina márgenes por defecto */
+}
+
+/* Animaciones */
+@keyframes textoDerechaIzquierda {
+  0% { transform: translateX(100%) scale(0.8); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes textoIzquierdaDerecha {
+  0% { transform: translateX(-100%) scale(0.8); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+@keyframes zoomGiro {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* Clases activadas por Intersection Observer */
+.hijo.activo { opacity: 1; }
+.hijo1 h1 { opacity: 0; }
+.hijo1 p { opacity: 0; }
+.hijo1.activo h1 { animation: textoDerechaIzquierda 2s forwards; }
+.hijo1.activo p { animation: textoIzquierdaDerecha 2s forwards; }
+
+.hijo2 p { opacity: 0; }
+.hijo2.activo p { animation: zoomGiro 3s forwards; }
+
+.hijo3 h1 { opacity: 0; }
+.hijo3.activo h1 { animation: fadeIn 2s forwards; }
+
+/* Animaciones */
+@keyframes animationcolor {
+  0%,100% { color:#FFD700; }
+  25% { color:white; }
+  50% { color:#FFD700; }
+  75% { color:white; }
+}
+
+/* Reproductor */
+.audio-player {
+  border: 1px solid #FFD700;
+  border-radius: 40px;
+  padding: 15px;
+  width: 180px;
+  background-color: transparent;
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.7),
+    0 0 24px rgba(255, 215, 0, 0.5),
+    0 0 36px rgba(255, 215, 0, 0.3);
+  text-align: center;
+  animation: textoIzquierdaDerecha 2s;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 12px rgba(255, 215, 0, 0.7),
+      0 0 24px rgba(255, 215, 0, 0.5),
+      0 0 36px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 18px rgba(255, 215, 0, 1),
+      0 0 30px rgba(255, 215, 0, 0.7),
+      0 0 45px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  animation: animationcolor 10s infinite;
+}
+
+.controls button {
+  background: transparent;
+  border: 1px solid #FFD700;
+  color: #FFD700;
+  font-size: 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.7),
+    0 0 16px rgba(255, 215, 0, 0.5);
+  transition: transform 0.2s, color 0.3s;
+}
+
+.controls button:hover {
+  transform: scale(1.2);
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 1),
+    0 0 24px rgba(255, 215, 0, 0.7);
+}
+
+.progress {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-filled {
+  height: 100%;
+  width: 0%;
+  background: #FFD700;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #FFD700;
+  transition: width 0.2s;
+}    
+
+/* Animación de zoom infinito */
+@keyframes zoomInfinite {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    color: #FFD700; /* dorado */
+  }
+  50% {
+    transform: scale(1.3); /* se agranda */
+    opacity: 1;
+    color: white; /* alterna a blanco */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    color: #FFD700; /* regresa a dorado */
+  }
+}
+
+/* Clase aplicada al h1 "Dale Play" */
+.daleplay {
+  animation: pulse 1s infinite forwards;
+}
+img{
+    width:60%;
+    height:25%;
+    
+    
+    border: 1px #FFD700;
+      box-shadow: 0 0 1px #FFD700
+      , 0 0 1px #FFD700
+      , 0 0 45px #FFD700
+      ;
+  border-radius: 10px;
+}
+
+@keyframes girar {
+  0%   { transform: rotate(0deg) scale(0.8); opacity: 0; }
+  50%  { transform: rotate(180deg) scale(1.1); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+/* Imagen dentro del div 3 */
+.hijo3 img {
+  opacity: 0; /* estado inicial */
+  transform: rotate(0deg);
+}
+
+.hijo3.activo img {
+  animation: girar 5s ease-out forwards; /* duración ajustable */
+}
+
+.gps {
+  display: flex;              /* usa flex para centrar el texto */
+  justify-content: center;
+  align-items: center;
+  border: 1px #FFD700;
+      box-shadow: 0 0 1px #FFD700
+      , 0 0 1px #FFD700
+      , 0 0 45px #FFD700
+      ;
+  transition: transform 0.2s, color 0.3s;
+
+  width: 165px;
+  
+  margin-top: 30px;           /* separación respecto a la imagen */
+  
+     /* borde dorado LuzNet */
+  border-radius: 50px;         /* ovalado */
+  background-color: transparent;
+  
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 22px;
+  color: #decba5;
+  text-align: center;
+
+  /* Animaciones combinadas */
+  animation: zoomPulse 2s infinite ease-in-out,
+             colorPulse 4s infinite linear,
+             animationcolor 10s infinite; /* mismo efecto que h y p */
+}
+
+/* Animación de zoom pulsante */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Animación de cambio de color */
+@keyframes colorPulse {
+  0%, 100% { color: #decba5; }
+  50%      { color: white; }
+}
+
+/* Estilo del enlace */
+.gps a {
+  text-decoration: none;
+  color: inherit; /* hereda el color del contenedor */
+}
+
+
+/*efecto hijo 3*/
+.hijo3 {
+  opacity: 0; /* estado inicial */
+}
+
+.hijo3.activo {
+  animation: encendidoLento 5s ease forwards; /* duración lenta */
+}
+
+.hijo3.activo h1,
+.hijo3.activo p {
+  animation: encendidoLento 5s ease forwards, animationcolor 10s infinite;
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hijo3 p,
+.hijo3 h1 {
+  opacity: 0;
+  display: inline-block; /* necesario para animar cada letra */
+}
+
+.hijo3.activo p,
+.hijo3.activo h1, 
+.hijo3.activo a
+{
+  animation: matrixFall 5s ease forwards,
+  animationcolor 10s infinite
+}
+
+
+/* slider */
+.slider {
+
+
+width: 225px;
+    height: 190px;
+/*  width: 100%;
+  max-width: 400px;*/
+  overflow: hidden;
+  border: 1px solid #FFD700;
+  box-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.7),
+    0 0 16px rgba(255, 215, 0, 0.5);
+/*  transition: transform 0.2s, color 0.3s;*/
+  border-radius: 10px;
+  margin:10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slides img {
+
+
+width: 223px;
+    height: 190px;
+
+  flex-shrink: 0;
+}
+/*
+
+efecto girar cuando se active el hijo4 */
+.hijo4.activo .slider {
+  animation: girar 5s ease-out forwards;
+}
+
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,215,0,0.4); /* dorado suave */
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #FFD700; /* dorado fuerte */
+  transform: scale(1.2);
+}
+
+
+/*efecto matrix*/
+ .matrix-container {
+      font-size: 2rem;
+    }
+
+    @keyframes matrixFall {
+      0% {
+        transform: translateY(-100vh); /* empieza arriba */
+        opacity: 0;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0); /* se detiene en su lugar */
+        opacity: 1;
+      }
+    }
+
+    .matrix-container span {
+      opacity: 0;
+      display: inline-block;
+      animation: matrixFall 1s ease forwards;
+    }
+
+    .matrix-container .space {
+      display: inline-block;
+      width: 0.6em; /* ancho del espacio */
+    }
+    
+    /* Párrafo más grande */
+.hijo5 p.zoom {
+  font-size: 20px; /* ajusta según lo grande que lo quieras */
+}
+
+.btn{
+  font-size: 20px; 
+animation:  animationcolor 10s infinite;
+  /* ajusta según lo grande que lo quieras */
+}
+
+
+    
+  .zoom {
+  transform: scale(0.2);
+  opacity: 0;
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.zoom.visible {
+  animation: zoomIn 1.5s forwards ease-out;
+}
+
+.hijo6 span {
+  display: inline-block; /* sin opacity base para que no se apaguen */
+}
+
+@keyframes christmasLight {
+  0%   { opacity: 0.1; color:white; }
+  50%  { opacity: 1; color:white; text-shadow: 0 0 10px #FFD700; }
+  100% { opacity: 1; color: #FFD700; /*text-shadow: 0 0 15px #FFD700;*/ }
+}
+
+@keyframes colorShift {
+  0%   { color: white; text-shadow: 0 0 15px #FFD700; } /* dorado brillante */
+  50%  { color:white; text-shadow: 0 0 15px #FFFFFF; } /* blanco brillante */
+  100% { color: #FFD700; text-shadow: 0 0 15px #FFD700; } /* dorado brillante */
+}
+
+.hijo6 span.on {
+  animation: christmasLight 1s forwards;
+}
+
+.hijo6 span.colorCycle {
+  animation: colorShift 4s infinite ease-in-out;
+}
+
+hr {
+  border: none;              /* elimina el estilo por defecto */
+  height: 1px;               /* grosor de la línea */
+  background: #FFD700;       /* color dorado */
+  margin: 20px auto;         /* espacio arriba y abajo */
+  width: 60%;                /* ancho de la línea */
+}
+/* ====== Contenedor general del div 7 ====== */
+.hijo7 {
+  text-align: center;   /* centra todo el contenido */
+  padding: 20px;
+}
+
+/* ====== H1 con efecto Matrix + ciclo de color ====== */
+#matrix-h1 {
+  margin-bottom: 15px;
+}
+
+#matrix-h1 .space {
+  display: inline-block;
+  width: 0.6em;
+}
+
+@keyframes matrixFade {
+  from { opacity: 0; transform: translateY(-20px); color:#000; }
+  to   { opacity: 1; transform: translateY(0); color:#FFD700; }
+}
+
+#matrix-h1 span {
+  opacity: 0;
+  display: inline-block;
+  animation: matrixFade 0.5s forwards;
+}
+
+#matrix-h1 span.colorCycle {
+  animation: animationcolor 6s infinite ease-in-out;
+}
+
+/* ====== Párrafos con efecto olas ====== */
+.hijo7 p {
+  text-align: center;   /* centra el texto */
+/*  margin: 10px auto;*/
+  width: 100%;
+}
+
+
+/* ====== Animación olas de playa (ciclo dorado ↔ blanco) ====== */
+@keyframes animationcolor {
+  0%,100% { color:#FFD700
+  ; }
+  25% { color:white; }
+  50% { color:#FFD700; }
+  75% { color:white; }
+}
+
+/* ====== Imagen con zoom ====== */
+.zoom-img {
+  width: 50px;
+  height: auto;
+  transform: scale(0.2);
+  opacity: 0;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* centra la imagen */
+}
+
+@keyframes zoomInImg {
+  to { transform: scale(1); opacity: 1; }
+}
+
+.zoom-img.visible {
+  animation: zoomInImg 2s forwards ease-out;
+}
+
+
+
+
+/* H1: efecto olas infinito */
+#matrix-h1 span {
+  display: inline-block;
+  animation: animationcolor 6s infinite ease-in-out;
+}
+
+/* Párrafos: efecto olas que se ejecuta una sola vez */
+.hijo7 p span {
+  display: inline-block;
+  animation: animationcolor 6s ease-in-out forwards; /* sin infinite */
+}
+
+/*div8*/
+
+
+.hijo8 {
+  
+}
+
+/* Capa de píxeles encima */
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  z-index: 10;
+}
+
+.pixel {
+  background: black; /* dorado ceremonial */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  aspect-ratio: 1 / 1;
+}
+
+.pixel.hide {
+  opacity: 0;
+}
+
+.contador {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;   /* alineación inicial */
+  gap: 20px;
+  margin-top: 20px;
+  overflow: hidden;              /* oculta lo que se sale */
+  animation: trenecito 10s linear infinite; /* animación infinita */
+}
+
+@keyframes trenecito {
+  0% {
+    transform: translateX(100%);   /* arranca desde la derecha */
+  }
+  100% {
+    transform: translateX(-100%);  /* termina a la izquierda */
+  }
+}
+
+.contador .celda {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.15);
+  border: 2px solid gold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  color:white;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+.contador .celda span {
+  font-size: 30px;
+}
+
+.contador .celda label {
+  font-size: 15px;
+  color:white;
+}
+
+
+
+
+  </style>
+
+  
+</head>
+<body>
+  <div class="padre">
+    <div class="hijo hijo1">
+      <h1> 
+      MI GRADUUACION <br /> Geologa <br />
+    Fabiola guzman </h1>
+      <p>
+  Gracias a mi familia, amigos <br /> y maestros por su apoyo.<br />
+  Este logro es también suyo,<br /> porque sin ustedes <br />
+  no habría llegado <br /> hasta aquí.
+</p>
+      
+     
+    </div>
+
+    <div class="hijo hijo2">
+    <h1>Mi graduacion</h1>
+      <p>Los esperamos este 13 de junio del 2026 <br>
+        sobre lugar, fecha y hora del evento <br>
+        como también un contador regresivo</p>
+       <h1>Ya Falta Poco</h1>
+    <div id="contador" class="contador"></div>
+    </div>
+
+
+
+    <div class="hijo hijo3 subir">
+      <h1>Ubicacion del evento</h1>
+      <p>En este apartado van  los detalles  <br /> de la ubicacion por
+       texto, enlace al maps,<br />
+       una foto ya sea del exterior o del interior</p>
+       
+       <img src="https://i.ibb.co/Kc06V9bJ/images-7.jpg" alt="images (7)" border="0">
+       
+       <div class="gps">
+ 
+    <a href="https://maps.app.goo.gl/4um9YVqEmjJ7LZX8A" target="_blank">
+      <i class="fa fa-street-view" aria-hidden="true"></i> Ubicación
+    </a>
+  </div>
+    </div>
+    
+    <!--div class="hijo hijo4">
+    
+  
+    <div class="matrix-container">
+     <p id="matrix-text" data-text="Sección de fotos">Sección de fotos</p>
+  </div>
+    
+    <div class="slider">
+    
+  <div class="slides">
+  
+   
+    <img src="https://i.ibb.co/RkWbjdjz/hermoso-arreglo-rosas-23-2150737457.jpg
+    " alt="Foto 1">
+    <img src="https://i.ibb.co/39p3ZcQM/premium-photo-1661883809211-eb59f508b3d9.jpg
+    " alt="Foto 2">
+    <img src="https://i.ibb.co/qLsG4q5N/images-8.jpg
+    " alt="Foto 3">
+  </div>
+</div>
+
+<!-- Barra indicadora (fuera del slider) 
+<div class="indicator">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+    
+    
+  
+  
+</div>
+      
+      </div>
+      
+      <div class="hijo hijo8" id="hijo8">
+  <h2>Confirmacion de asistencia</h2>
+  <iframe  src="https://docs.google.com/forms/d/e/1FAIpQLSc6GbUSxu8mot_eFIcBaNQuCxNwEvqiJHvesoOkom3RtBm__g/viewform?usp=publish-editor"
+          width="285" height="450"
+          frameborder="0" marginheight="0" marginwidth="0">
+    Cargando…
+  </iframe>
+</div>
+
+
+      <div class="hijo hijo5">
+  <h1 class="zoom">Qr pase de entrada</h1>
+  <img class="zoom" src="https://i.ibb.co/B27gqqcW/qr-generico.jpg
+  " alt="pase-1">
+  
+</div-->
+      
+       <div class="hijo hijo7" id="hijo7">
+  <h1 id="matrix-h1" data-text="Gracias por asistir"></h1>
+
+<p id="matrix-p1" data-text="agradezco tu presencia.">
+
+<p id="matrix-p3" data-text="en este evento tan solemne.">
+    
+    
+</p><hr><br /><br /><br /><br /><br />
+<p id="matrix-p2" data-text="✨Invitaciones LuzNet✨"></p>
+
+<p id="matrix-p4" data-text="✨agradece tu preferencia✨"></p>
+  
+  <div class="footer-img">
+  <!--p>Invitaciones LuzNet agradece tu preferencia.</p-->
+  <img class="zoom-img" src="https://i.ibb.co/7tCWCQ6x/image-1771479727259.jpg" alt="Logo LuzNet">
+  </div>
+  
+</div>
+    
+  </div>
+
+  <script>
+ 
+// Intersection Observer para activar animaciones al entrar en pantalla
+const hijos = document.querySelectorAll('.hijo');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Reiniciar animación CSS: quitar y volver a poner la clase
+      entry.target.classList.remove('activo');
+      void entry.target.offsetWidth; // fuerza reflow
+      entry.target.classList.add('activo');
+
+      // Para hijo4: activar efecto Matrix cada vez que aparece
+      if (entry.target.classList.contains('hijo4')) {
+        prepararMatrixTexto();
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+hijos.forEach(hijo => observer.observe(hijo));
+
+
+
+    
+   
+    
+    // Contador regresivo (2 de diciembre)
+const hoy = new Date();
+let year = hoy.getFullYear();
+let cumple = new Date(year, 5, 13);
+if (hoy > cumple) {
+  cumple = new Date(year + 1, 5, 13);
+}
+
+function actualizarContador() {
+  const ahora = new Date().getTime();
+  const distancia = cumple.getTime() - ahora;
+
+  const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+  const contador = document.getElementById("contador");
+
+  if (distancia < 0) {
+    contador.innerHTML = "🎉 ¡Feliz cumpleaños Felipe! 🎉";
+  } else {
+    contador.innerHTML = `
+      <div class="celda"><span>${dias}</span><label>Días</label></div>
+      <div class="celda"><span>${horas}</span><label>Horas</label></div>
+      <div class="celda"><span>${minutos}</span><label>Minutos</label></div>
+      <div class="celda"><span>${segundos}</span><label>Segundos</label></div>
+    `;
+  }
+}
+
+setInterval(actualizarContador, 1000);
+
+
+ 
+
+
+// Función para preparar el efecto Matrix
+
+
+// Observer para hijo4
+const hijo4 = document.querySelector('.hijo4');
+const observer4 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      prepararMatrixTextoDiv4('matrix-text'); // activa efecto Matrix en el título
+      iniciarSliderDiv4(); // activa slider
+    }
+  });
+}, { threshold: 0.5 });
+
+if (hijo4) observer4.observe(hijo4);
+
+
+// Función Matrix exclusiva para div4
+function prepararMatrixTextoDiv4(elementId) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+
+  const texto = el.getAttribute('data-text');
+  el.textContent = '';
+
+  [...texto].forEach((letra, i) => {
+    const span = document.createElement('span');
+    if (letra === ' ') {
+      span.className = 'space';
+      span.innerHTML = '&nbsp;';
+    } else {
+      span.textContent = letra;
+      span.style.animationDelay = (i * 0.2) + 's';
+      span.style.animationName = 'matrixFall'; // 👈 usa tu animación Matrix
+    }
+    el.appendChild(span);
+  });
+}
+
+
+// Slider exclusivo para div4
+function iniciarSliderDiv4() {
+  const slides = hijo4.querySelector('.slides');
+  const dots = hijo4.querySelectorAll('.dot');
+  let index = 0;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  const total = dots.length;
+
+  function updateIndicator() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  slides.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slides.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff < -50 && index < total - 1) index++;
+    if (diff > 50 && index > 0) index--;
+
+    currentTranslate = -index * slides.clientWidth;
+    slides.style.transform = `translateX(${currentTranslate}px)`;
+    prevTranslate = currentTranslate;
+
+    updateIndicator();
+  });
+
+  // Inicializar
+  updateIndicator();
+}
+
+// Observer para hijo5
+const hijo5 = document.querySelector('.hijo5');
+
+const observer5 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Activar zoom en todos los elementos con clase .zoom dentro de hijo5
+      const zoomElements = hijo5.querySelectorAll('.zoom');
+      zoomElements.forEach(el => {
+        el.classList.remove('visible');
+        void el.offsetWidth; // reflow
+        el.classList.add('visible');
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+if (hijo5) {
+  observer5.observe(hijo5);
+}
+// Observer para activar el efecto cuando aparece en pantalla
+const hijo6 = document.getElementById('hijo6');
+const observer6 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      prepararLucesNavidad('hijo6');
+    }
+  });
+}, { threshold: 0.5 });
+
+if (hijo6) {
+  observer6.observe(hijo6);
+}
+
+function prepararLucesNavidad(divId) {
+  const cont = document.getElementById(divId);
+  if (!cont) return;
+
+  // convertir cada texto en spans
+  const elementos = cont.querySelectorAll('[data-text]');
+  elementos.forEach(el => {
+    const texto = el.getAttribute('data-text');
+    el.textContent = ''; // limpiar contenido original
+
+    [...texto].forEach(letra => {
+      if (letra === ' ') {
+        const span = document.createElement('span');
+        span.innerHTML = '&nbsp;';
+        el.appendChild(span);
+      } else if (letra === '\n') {
+        el.appendChild(document.createElement('br'));
+      } else {
+        const span = document.createElement('span');
+        span.textContent = letra;
+        el.appendChild(span);
+      }
+    });
+  });
+
+  // seleccionar todos los spans creados
+  const spans = Array.from(cont.querySelectorAll('span'));
+  let pendientes = spans.map((_, i) => i);
+
+  // encendido aleatorio
+  const interval = setInterval(() => {
+    if (pendientes.length === 0) {
+      clearInterval(interval);
+      // todas encendidas → activar ciclo sincronizado
+      spans.forEach(span => span.classList.add('colorCycle'));
+      return;
+    }
+    const randIndex = Math.floor(Math.random() * pendientes.length);
+    const idx = pendientes[randIndex];
+    spans[idx].classList.add('on');
+    pendientes.splice(randIndex, 1);
+  }, 50); // velocidad de encendido
+}
+
+// Observer para hijo7
+const hijo7 = document.getElementById('hijo7');
+const observer7 = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Procesar h1 y párrafos con data-text
+      prepararMatrixTexto('matrix-h1');
+      prepararMatrixTexto('matrix-p1');
+      prepararMatrixTexto('matrix-p2');
+      prepararMatrixTexto('matrix-p3');
+      prepararMatrixTexto('matrix-p4');
+
+      // activar zoom en la imagen
+      const zoomElements = hijo7.querySelectorAll('.zoom-img');
+      zoomElements.forEach(el => {
+        el.classList.remove('visible');
+        void el.offsetWidth; // reflow
+        el.classList.add('visible');
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+if (hijo7) observer7.observe(hijo7);
+
+
+// Función general para h1 y p con data-text
+function prepararMatrixTexto(elementId) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+
+  const texto = el.getAttribute('data-text');
+  el.textContent = '';
+
+  [...texto].forEach((letra, i) => {
+    const span = document.createElement('span');
+    if (letra === ' ') {
+      span.className = 'space';
+      span.innerHTML = '&nbsp;';
+    } else {
+      span.textContent = letra;
+      span.style.animationDelay = (i * 0.2) + 's';
+      span.style.animationName = 'matrixFade';
+    }
+    el.appendChild(span);
+  });
+
+  // activar ciclo olas después de Matrix
+  const spans = el.querySelectorAll('span');
+  const tiempoTotal = texto.length * 200;
+
+  // Inicia el efecto olas
+  setTimeout(() => {
+    spans.forEach(span => span.classList.add('colorCycle'));
+  }, tiempoTotal);
+
+  // Termina el efecto olas después de cierto tiempo (ej. 10s)
+  setTimeout(() => {
+    spans.forEach(span => span.classList.remove('colorCycle'));
+  }, tiempoTotal + 10000); // 10 segundos de olas
+}
+
+
+
+
+  </script>
+</body>
+</html>
