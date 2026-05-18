@@ -1,1 +1,676 @@
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
 
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Demo Invitacion Bautizo Básico | Invitaciones LuzNet">
+<meta property="og:description" content="Invitación digital web con sobre animado y música. Demo del Paquete Básico LuzNet para bautizo.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:url" content="https://luznet.com.mx/catalogo/invitaciones/bautizo/basica/demo/basica/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+  <title>Demo Invitacion Bautizo Basica | LuzNet</title>
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Montserrat&family=Lobster&family=Pacifico&family=Shadows+Into+Light&family=Dancing+Script&family=Raleway&family=Oswald&family=Playfair+Display&family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+      body {
+  margin: 0;
+  background-color: black;
+}
+
+.padre {
+/* font-family: 'Dancing Script';
+   cursive;*/
+   background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
+}
+
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+.hijo {
+
+
+/*
+font-family: 'Shadows Into Light';*/
+  border-radius: 10px;
+  background-color:white;
+  width: 90%;
+  max-width: 400px;
+  height: 600px;             /* altura fija para centrar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color:black;
+  
+  
+ /* https://i.ibb.co/PZD16Wqt/images-1.jpg
+  background-image: url("");*/
+  background-size: 100% 100%;
+  background-position: center;
+  box-sizing: border-box;
+ 
+  transition: opacity 2s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto;         /* centrado horizontal en móvil */
+  
+  text-align: center;        /* asegura que el texto se centre */
+  border: 1px solid #FFD700; /* dorado puro */
+}
+
+.hijo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  
+  z-index: 0; /* importante para no tapar el contenido */
+}
+.hijo * {
+  position: relative;
+  z-index: 1;
+}
+
+.hijo7,.hijo3,.hijo4,.hijo5,.hijo6{
+    background-image: url("https://i.ibb.co/tMnWkMg1/IMG-20260306-WA0001.jpg");
+    
+    
+    
+    
+    border-radius: 1%;
+  
+  object-fit: cover; 
+}
+
+.hijo1,.hijo2 {
+        
+  
+    }
+    
+.hijo p {
+font-family: Times New Roman;
+  margin: 0; /* elimina márgenes por defecto */
+  color:black; /* blanco legible */
+ 
+}
+
+
+h1{
+    font-family: 'Dancing Script';
+   cursive;
+   font-size:35px;
+    color:black; /* blanco legible */
+ 
+}
+
+
+
+
+
+
+
+
+
+img{
+    width:70%;
+    height:30%;
+    
+    
+    border: 1px solid #FFD700;
+  
+  border-radius: 10px;
+}
+
+
+
+
+.gps {
+  display: flex;              /* usa flex para centrar el texto */
+  justify-content: center;
+  align-items: center;
+  
+
+  width: 165px;
+  padding: 8px 0;
+  margin-top: 30px;           /* separación respecto a la imagen */
+  
+  border: 1px solid black;   /* borde dorado LuzNet */
+  border-radius: 50px;         /* ovalado */
+  background-color: transparent;
+  
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 22px;
+  color: black;
+  text-align: center;
+
+  /* Animaciones combinadas */
+  animation: zoomPulse 2s infinite ease-in-out,
+             colorPulse 4s infinite linear,
+             animationcolor 10s infinite; /* mismo efecto que h y p */
+}
+
+
+
+/* Estilo del enlace */
+.gps a {
+  text-decoration: none;
+  color: inherit; /* hereda el color del contenedor */
+}
+
+
+
+
+
+
+/* slider */
+.slider {
+
+
+width: 225px;
+    height: 190px;
+/*  width: 100%;
+  max-width: 400px;*/
+  overflow: hidden;
+  border: 1px solid #FFD700;
+ 
+  border-radius: 10px;
+  margin:10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slides img {
+
+
+width: 223px;
+    height: 190px;
+
+  flex-shrink: 0;
+}
+/*
+
+efecto girar cuando se active el hijo4 */
+.hijo4.activo .slider {
+  animation: girar 5s ease-out forwards;
+}
+
+
+.indicator {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,215,0,0.4); /* dorado suave */
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dot.active {
+  background: #FFD700; /* dorado fuerte */
+  transform: scale(1.2);
+}
+
+
+/*efecto matrix*/
+ .matrix-container {
+      font-size: 2rem;
+    }
+
+    @keyframes matrixFall {
+      0% {
+        transform: translateY(-100vh); /* empieza arriba */
+        opacity: 0;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0); /* se detiene en su lugar */
+        opacity: 1;
+      }
+    }
+
+    .matrix-container span {
+      opacity: 0;
+      display: inline-block;
+      animation: matrixFall 1s ease forwards;
+    }
+
+    .matrix-container .space {
+      display: inline-block;
+      width: 0.6em; /* ancho del espacio */
+    }
+    
+    /* Párrafo más grande */
+.hijo5 p.zoom {
+  font-size: 20px; /* ajusta según lo grande que lo quieras */
+}
+
+.btn{
+  font-size: 20px; 
+animation:  animationcolor 10s infinite;
+  /* ajusta según lo grande que lo quieras */
+}
+
+
+    
+
+
+
+
+
+
+hr {
+  border: none;              /* elimina el estilo por defecto */
+  height: 1px;               /* grosor de la línea */
+  background:black;       /* color dorado */
+  margin: 20px auto;         /* espacio arriba y abajo */
+  width: 60%;                /* ancho de la línea */
+}
+/* ====== Contenedor general del div 7 ====== */
+.hijo7 {
+  text-align: center;   /* centra todo el contenido */
+  padding: 20px;
+}
+
+/* ====== H1 con efecto Matrix + ciclo de color ====== */
+#matrix-h1 {
+  margin-bottom: 15px;
+}
+
+#matrix-h1 .space {
+  display: inline-block;
+  width: 0.6em;
+}
+
+@keyframes matrixFade {
+  from { opacity: 0; transform: translateY(-20px); color:#000; }
+  to   { opacity: 1; transform: translateY(0); color:black; }
+}
+
+#matrix-h1 span {
+  opacity: 0;
+  display: inline-block;
+  animation: matrixFade 0.5s forwards;
+}
+
+#matrix-h1 span.colorCycle {
+  animation: animationcolor 6s infinite ease-in-out;
+}
+
+/* ====== Párrafos con efecto olas ====== */
+.hijo7 p {
+  text-align: center;   /* centra el texto */
+/*  margin: 10px auto;*/
+  width: 100%;
+}
+
+/* ====== Imagen con zoom ====== */
+.zoom-img {
+  width: 250px;
+  height: auto;
+  transform: scale(0.2);
+  
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* centra la imagen */
+}
+
+@keyframes zoomInImg {
+  to { transform: scale(1); opacity: 1; }
+}
+
+.zoom-img.visible {
+  animation: zoomInImg 2s forwards ease-out;
+}
+
+
+
+/*
+#matrix-h1 span,
+.hijo7 p span{
+  display: inline-block;
+  animation: animationcolor 6s infinite ease-in-out;
+}*/
+/* H1: efecto olas infinito */
+#matrix-h1 span {
+  display: inline-block;
+  animation: animationcolor 6s infinite ease-in-out;
+}
+
+/* Párrafos: efecto olas que se ejecuta una sola vez */
+.hijo7 p span {
+  display: inline-block;
+  animation: animationcolor 6s ease-in-out forwards; /* sin infinite */
+}
+/*fondos*/
+
+  /* Imagen superior: se desvanece hacia abajo (centro) */
+    .img-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-image: url('https://i.ibb.co/WvxY0k82/JBN34516.jpg');
+      background-size: cover;
+      background-position: center;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: cover;
+    }
+
+/*fondos*/
+    /* Imagen inferior: se desvanece hacia arriba (centro) */
+    .img-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-image: url('https://i.ibb.co/FkbdkfgM/IMG-20260306-WA0002.jpg');
+      background-size: cover;
+      background-position: center;
+      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: cover;
+    }
+
+    
+
+    
+ 
+
+    
+    
+    /* Imagen superior: se desvanece hacia abajo (centro) */
+    .img-topuno {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  background-image: url('https://i.ibb.co/Zj5VPWL/images-2.jpg');
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  overflow: hidden;
+}
+
+
+
+
+.img-topdos {
+  position: relative; /* importante para que ::after se posicione dentro */
+  width: 100%;
+  height: 50%;
+  background-image: url('https://i.ibb.co/Wvs5bWHF/IMG-20260307-233811.jpg');
+  background-size: cover;
+  background-position: center;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  overflow: hidden;
+}
+
+
+  </style>
+
+  
+</head>
+<body>
+  <div class="padre">
+    <div class="hijo hijo1">
+       <div class="img-top"></div>
+    <div class="img-bottom"></div>
+      <h1><br /><br /><br />
+          
+      <br />El Bautizo De <br />  Nombre Tu Hij@<br /> Fecha</h1>
+      
+      <p>
+         "Con gratitud infinita a Dios <br />
+          por la vida de nuestro hijo, consagramos este día <br /> como un acto de fe y amor.<br /> Nos honra invitarles a compartir <br /> con nosotros la celebración de su Bautizo. <br /> Donde la luz divina iluminará <br /> su camino y nuestras familias <br /> se unirán en bendición."  
+      </p>
+      
+      
+     
+    </div>
+    
+    
+    <div class="hijo hijo2">
+    <div class="img-topuno"></div>
+    <div class="img-bottom"></div>
+    
+    <h1>
+      Padrinos.  </h1>
+      <p> Nombres de padrinos </p><br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+   
+    </div>
+    <div class="hijo hijo2">
+    <div class="img-topdos"></div>
+    <div class="img-bottom"></div>
+    
+    <h1 >Ya falta poco <br /> para el bautizo</h1>
+    
+      <!--div id="contador"></div-->
+   
+      <p>En este apartado va información <br>
+        sobre lugar, fecha y hora del evento </p>
+            
+        <br /><br /><br /><br /><br />
+    </div>
+
+
+
+    <div class="hijo hijo3 subir">
+      <h1>Ceremonia Religiosa</h1>
+      <p>En este apartado van  los detalles  <br /> de la ubicacion por
+       texto, enlace al maps,<br />
+       una foto ya sea del exterior o del interior</p>
+       
+       <img src="https://i.ibb.co/Kc06V9bJ/images-7.jpg" alt="images (7)" border="0">
+       
+       <div class="gps">
+ 
+    <a href="https://maps.app.goo.gl/4um9YVqEmjJ7LZX8A" target="_blank">
+      <i class="fa fa-street-view" aria-hidden="true"></i> Ubicación
+    </a>
+  </div>
+    </div>
+    
+    <div class="hijo hijo3 subir">
+      <h1>Recepcion</h1>
+      <p>En este apartado van  los detalles  <br /> de la ubicacion por
+       texto, enlace al maps,<br />
+       una foto ya sea del exterior o del interior</p>
+       
+       <img src="https://i.ibb.co/Kc06V9bJ/images-7.jpg" alt="images (7)" border="0">
+       
+       <div class="gps">
+ 
+    <a href="https://maps.app.goo.gl/4um9YVqEmjJ7LZX8A" target="_blank">
+      <i class="fa fa-street-view" aria-hidden="true"></i> Ubicación
+    </a>
+  </div>
+    </div>
+    
+    <div class="hijo hijo4">
+    <script>
+    
+  </script>
+  
+    <div class="matrix-container">
+     <p id="matrix-text" data-text="Sección de fotos">Sección de fotos</p>
+  </div>
+    
+    <div class="slider">
+    
+  <div class="slides">
+  
+   
+    <img src="https://i.ibb.co/WvxY0k82/JBN34516.jpg
+    " alt="Foto 1">
+    <img src="https://i.ibb.co/7xsV8K0K/29fd9a87ec189f296fd7490ff573a840.jpg
+    " alt="Foto 2">
+    <img src="https://i.ibb.co/gnwVxNZ/2a1ba7b433f3f6cdc860dd97a367a3f6.jpg
+    " alt="Foto 3">
+  </div>
+</div>
+
+<!-- Barra indicadora (fuera del slider) -->
+<div class="indicator">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+    
+    
+  
+  
+</div>
+      
+      </div>
+  
+       <div class="hijo hijo7" id="hijo7">
+  <h1>Gracias por asistir</h1>
+
+<p >Agradezco tu presencia <br /> en este evento tan solemne
+</p>
+
+
+    
+    
+<hr>
+<p>✨Invitaciones LuzNet✨ <br />
+✨agradece tu preferencia✨</p>
+
+
+  
+  <div class="footer-img">
+  
+  <img class="zoom-img" src="https://i.ibb.co/7tCWCQ6x/image-1771479727259.jpg" alt="Logo LuzNet">
+  </div>
+  
+</div>
+    
+  </div>
+
+  <script>
+
+ // Slider exclusivo para div4
+function iniciarSliderDiv4() {
+  const slides = hijo4.querySelector('.slides');
+  const dots = hijo4.querySelectorAll('.dot');
+  let index = 0;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  const total = dots.length;
+
+  function updateIndicator() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  slides.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  slides.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff < -50 && index < total - 1) index++;
+    if (diff > 50 && index > 0) index--;
+
+    currentTranslate = -index * slides.clientWidth;
+    slides.style.transform = `translateX(${currentTranslate}px)`;
+    prevTranslate = currentTranslate;
+
+    updateIndicator();
+  });
+
+  // Inicializar
+  updateIndicator();
+}
+   
+    
+    const slides = document.querySelector('.slides');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+const total = dots.length;
+
+function updateIndicator() {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+slides.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+slides.addEventListener('touchend', e => {
+  const endX = e.changedTouches[0].clientX;
+  const diff = endX - startX;
+
+  if (diff < -50 && index < total - 1) index++;
+  if (diff > 50 && index > 0) index--;
+
+  currentTranslate = -index * slides.clientWidth;
+  slides.style.transform = `translateX(${currentTranslate}px)`;
+  prevTranslate = currentTranslate;
+
+  updateIndicator();
+});
+
+  </script>
+</body>
+</html>
