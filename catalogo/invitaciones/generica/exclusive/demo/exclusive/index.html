@@ -1,1 +1,334 @@
 
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de Control | Graduación 2026 | Paquete Exclusive | LuzNet</title>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Panel de Control Exclusive | Graduación 2026 - LuzNet">
+<meta property="og:url" content="https://luznet.com.mx/catalogo/invitaciones/generica/exclusive/demo/exclusive/">
+<meta property="og:description" content="Demo Paquete Exclusive LuzNet. Panel de control animado con efectos premium.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  
+  <style>
+      body {
+  margin: 0;
+  background-color: black;
+}
+
+.padre {
+  font-family: 'Shadows Into Light', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  align-items: center;       /* centra horizontalmente */
+  width: 100%;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  overflow-x: hidden;
+}
+
+/* Responsive: en PC los hijos en fila y centrados */
+@media (min-width: 768px) {
+  .padre {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .hijo {
+    width: 400px;
+    height: 600px;
+    margin: 20px;
+  }
+}
+
+.hijo {
+font-family: 'Shadows Into Light';
+  border-radius: 10px;
+  border: 1px solid #FFD700; /* dorado puro */
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.7),   /* halo cercano */
+    0 0 24px rgba(255, 215, 0, 0.5),   /* brillo medio */
+    0 0 36px rgba(255, 215, 0, 0.3);   /* resplandor lejano */
+  width: 90%;
+  max-width: 400px;
+  height: 600px;             /* altura fija para centrar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color:black;
+  background-image: url("https://i.ibb.co/Kcf7vx1p/image-1770932827305.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  box-sizing: border-box;
+  opacity: 0; /* oculto hasta que se active */
+  transition: opacity 2s ease;
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto;         /* centrado horizontal en móvil */
+  animation: animationcolor 10s infinite;
+  text-align: center;        /* asegura que el texto se centre */
+}
+
+.hijo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* filtro más suave */
+  z-index: 0; /* importante para no tapar el contenido */
+}
+.hijo * {
+  position: relative;
+  z-index: 1;
+}
+
+.hijo p {
+font-size: 1.5rem;
+  margin: 0; /* elimina márgenes por defecto */
+}
+
+
+
+/* Clases activadas por Intersection Observer */
+.hijo.activo { opacity: 1; }
+.hijo1 h1 { opacity: 0; }
+.hijo1 p { opacity: 0; }
+.hijo1.activo h1 { animation: textoDerechaIzquierda 2s forwards; }
+.hijo1.activo p { animation: textoIzquierdaDerecha 2s forwards; }
+
+.hijo2 p { opacity: 0; }
+.hijo2.activo p { animation: zoomGiro 3s forwards; }
+
+.hijo3 h1 { opacity: 0; }
+.hijo3.activo h1 { animation: fadeIn 2s forwards; }
+
+/* Animaciones */
+@keyframes animationcolor {
+  0%,100% { color:#FFD700; }
+  25% { color:white; }
+  50% { color:#FFD700; }
+  75% { color:white; }
+}
+
+
+
+
+
+/* Imagen dentro del div 3 */
+.hijo3 img {
+  opacity: 0; /* estado inicial */
+  transform: rotate(0deg);
+}
+
+.hijo3.activo img {
+  animation: girar 5s ease-out forwards; /* duración ajustable */
+}
+
+
+
+/* Estilo del enlace */
+a {
+  text-decoration: none;
+  color: inherit; /* hereda el color del contenedor */
+  font-size: 2rem;
+  padding:5px;
+  width: 180px;
+  border-radius: 40px;
+  border: 1px solid #FFD700; /* dorado puro */
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.7),   /* halo cercano */
+    0 0 24px rgba(255, 215, 0, 0.5),   /* brillo medio */
+    0 0 36px rgba(255, 215, 0, 0.3);   /* resplandor lejano */
+}
+
+
+/*efecto hijo 3*/
+.hijo3 {
+  opacity: 0; /* estado inicial */
+}
+
+.hijo3.activo {
+  animation: encendidoLento 5s ease forwards; /* duración lenta */
+}
+
+.hijo3.activo h1,
+.hijo3.activo p {
+  animation: encendidoLento 5s ease forwards, animationcolor 10s infinite;
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hijo3 p,
+.hijo3 h1 {
+  opacity: 0;
+  display: inline-block; /* necesario para animar cada letra */
+}
+
+.hijo3.activo p,
+.hijo3.activo h1, 
+.hijo3.activo a
+{
+  animation: matrixFall 5s ease forwards,
+  animationcolor 10s infinite
+}
+
+/*efecto de pixel div 1*/
+
+
+    /* Overlay de píxeles solo sobre iframe hijo1 */
+    .hijo1 .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+
+    .hijo1 .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .pixel {
+      background: black;
+      opacity: 1;
+      transition: opacity .1s ease;
+      aspect-ratio: 1 / 1;
+    }
+
+    .pixel.hide { opacity: 0; }
+
+    /* Zoom iframe hijo2 */
+    @keyframes zoomIn {
+      0% { transform: scale(0.2); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .hijo2 iframe {
+      opacity: 0;
+      transform: scale(0.2);
+      transition: none;
+    }
+
+    .hijo2.activo iframe {
+      animation: zoomIn 1.5s ease forwards;
+    }
+
+  </style>
+
+  
+</head>
+<body>
+  <div class="padre">
+    <div class="hijo hijo1">
+    <div class="overlay"></div>
+    
+    <iframe src="https://script.google.com/macros/s/AKfycbxE_tJrX8XRXCCpuLNUZPXFIERSuFL_y93FG9fDpHGELir1j4raRQuHVdvuWd5dXlPC/exec?page=control
+  "
+     width="100%" 
+  height="200px"  
+  style="border:none;"
+  
+  ></iframe>
+      </div>
+    <div class="hijo hijo2">
+    <iframe src="https://script.google.com/macros/s/AKfycbw7PkJFA6dqz6OKnNwUfJcHxsgZHHtz296m5UgxoA6NKglNbY1X3T-xpoBORG2hxYdt/exec?page=consulta
+    
+    "
+    
+    width="85%" 
+ height="300" 
+ style="border:none;"></iframe>
+    </div>
+
+<div class="hijo hijo3">
+<h1 id="slide-p" data-text="Enlace">Enlace</h1>
+  <p id="slide-p">En este apartado va el enlace <br /> a la invitacion
+          
+      </p>
+      <a id="link1" href="sobre.html">Invitado </a>
+</div>
+
+    
+  </div>
+<script>
+    // Generar píxeles en overlay hijo1
+    function generarPixeles() {
+      const overlay = document.querySelector('.hijo1 .overlay');
+      overlay.innerHTML = "";
+      for (let i = 0; i < 200; i++) {
+        const px = document.createElement('div');
+        px.className = 'pixel';
+        overlay.appendChild(px);
+      }
+    }
+
+    // Animación pixel reveal
+    function pixelReveal() {
+      const pixels = Array.from(document.querySelectorAll('.hijo1 .pixel'));
+      for (let i = pixels.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pixels[i], pixels[j]] = [pixels[j], pixels[i]];
+      }
+      pixels.forEach((px, i) => {
+        setTimeout(() => { px.classList.add('hide'); }, i * 10);
+      });
+    }
+
+    // Observer general
+    const hijos = document.querySelectorAll('.hijo');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('activo');
+          void entry.target.offsetWidth;
+          entry.target.classList.add('activo');
+
+          // Si es hijo1 → regenerar y ejecutar pixel reveal
+          if (entry.target.classList.contains('hijo1')) {
+            generarPixeles();
+            pixelReveal();
+          }
+          // Si es hijo2 → el iframe hace zoom por CSS
+        }
+      });
+    }, { threshold: 0.5 });
+
+    hijos.forEach(hijo => observer.observe(hijo));
+  </script>
+  
+</body>
+</html>
