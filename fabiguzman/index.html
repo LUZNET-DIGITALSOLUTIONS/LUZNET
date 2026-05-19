@@ -259,9 +259,9 @@ img{
     
     
     border: 1px #FFD700;
-      box-shadow: 0 0 1px #FFD700
+      box-shadow: 0 0 20px #FFD700
       , 0 0 1px #FFD700
-      , 0 0 45px #FFD700
+      , 0 0 1px #FFD700
       ;
   border-radius: 10px;
 }
@@ -289,7 +289,7 @@ img{
   border: 1px #FFD700;
       box-shadow: 0 0 1px #FFD700
       , 0 0 1px #FFD700
-      , 0 0 45px #FFD700
+      , 0 0 20px #FFD700
       ;
   transition: transform 0.2s, color 0.3s;
 
@@ -642,7 +642,7 @@ hr {
   flex-direction: row;
   justify-content: flex-start;   /* alineación inicial */
   gap: 20px;
-  margin-top: 20px;
+  
   overflow: hidden;              /* oculta lo que se sale */
   animation: trenecito 10s linear infinite; /* animación infinita */
 }
@@ -657,8 +657,8 @@ hr {
 }
 
 .contador .celda {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: rgba(255, 215, 0, 0.15);
   border: 2px solid gold;
@@ -673,11 +673,11 @@ hr {
 }
 
 .contador .celda span {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .contador .celda label {
-  font-size: 15px;
+  font-size: 13px;
   color:white;
 }
 
@@ -705,9 +705,11 @@ hr {
 
     <div class="hijo hijo2">
     <h1>Mi graduacion</h1>
-      <p>Los esperamos este 13 de junio del 2026 <br>
-        sobre lugar, fecha y hora del evento <br>
-        como también un contador regresivo</p>
+      <p>Los esperamos este 13 de junio del 2026 <br /> Apartir de las 7pm <br /> En la terraza el patron<br>
+        Calle Sta. Martha 301,<br />
+         El Refugio, 45599 <br />
+          San Pedro Tlaquepaque, Jal.
+       </p>
        <h1>Ya Falta Poco</h1>
     <div id="contador" class="contador"></div>
     </div>
@@ -720,11 +722,13 @@ hr {
        texto, enlace al maps,<br />
        una foto ya sea del exterior o del interior</p>
        
-       <img src="https://i.ibb.co/Kc06V9bJ/images-7.jpg" alt="images (7)" border="0">
+       <img src="https://i.ibb.co/fGM0B86M/IMG-20260518-235559.jpg
+       " alt="images (7)" border="0">
        
        <div class="gps">
  
-    <a href="https://maps.app.goo.gl/4um9YVqEmjJ7LZX8A" target="_blank">
+    <a href="https://maps.app.goo.gl/hhsptVXGW1wV8suVA?g_st=ac
+    " target="_blank">
       <i class="fa fa-street-view" aria-hidden="true"></i> Ubicación
     </a>
   </div>
@@ -831,17 +835,22 @@ hijos.forEach(hijo => observer.observe(hijo));
     
    
     
-    // Contador regresivo (2 de diciembre)
+    
+
+ // Contador regresivo (13 de junio, 7:00 PM)
 const hoy = new Date();
 let year = hoy.getFullYear();
-let cumple = new Date(year, 5, 13);
-if (hoy > cumple) {
-  cumple = new Date(year + 1, 5, 13);
+
+// Mes 5 = junio (porque enero = 0), día 13, hora 19:00
+let evento = new Date(year, 5, 13, 19, 0, 0);
+
+if (hoy > evento) {
+  evento = new Date(year + 1, 5, 13, 19, 0, 0); // si ya pasó, apunta al próximo año
 }
 
 function actualizarContador() {
   const ahora = new Date().getTime();
-  const distancia = cumple.getTime() - ahora;
+  const distancia = evento.getTime() - ahora;
 
   const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
   const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -851,7 +860,7 @@ function actualizarContador() {
   const contador = document.getElementById("contador");
 
   if (distancia < 0) {
-    contador.innerHTML = "🎉 ¡Feliz cumpleaños Felipe! 🎉";
+    contador.innerHTML = "🎉 ¡Llegó el momento! 🎉";
   } else {
     contador.innerHTML = `
       <div class="celda"><span>${dias}</span><label>Días</label></div>
@@ -863,9 +872,6 @@ function actualizarContador() {
 }
 
 setInterval(actualizarContador, 1000);
-
-
- 
 
 
 // Función para preparar el efecto Matrix
