@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   1/2/2026
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, 
+   así es LuzNet
+   ========================================= -->
+<html>
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Demo Sobre XV años Basica | Invitaciones LuzNet">
+<meta property="og:description" content="Invitación digital web con sobre animado y música. Demo del Paquete Basica LuzNet para XV años.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:url" content="https://luznet.com.mx/xv/basica/demo/basica">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Sobre XV años Basica | LuzNet</title>
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .envelope {
+      position: relative;
+      width: 340px;
+      height: 250px;
+      background: url("https://i.ibb.co/B5mrC96b/IMG-20260328-153232.jpg") no-repeat center center;
+      background-size: cover;
+      border: 1px solid deeppink;
+      
+      overflow: hidden;
+      perspective: 1200px;
+    }
+
+    
+   
+    .seal img {
+    position: absolute;
+      top: 55%;
+     
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+    }
+
+    .sobre {
+      position: absolute;
+      bottom: 0;
+      width:100%;
+      height: 100%;
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .invitation {
+      opacity: 0;
+      transition: opacity 1s ease 0.5s;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      color: #6b2c3e;
+    }
+    /*zoom del sello*/
+    .seal {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  z-index: 3;
+  animation: zoomSeal 2.5s ease-in-out infinite;
+}
+
+@keyframes zoomSeal {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+  </style>
+</head>
+<body>
+
+  <div class="envelope">
+    <div class="flap"></div>
+    <!-- Imagen del sello -->
+    <div class="seal" onclick="openEnvelope()">
+      <img src="https://i.ibb.co/KpMk86BW/sello-xv.png
+      " alt="Sello XV">
+    </div>
+    <div class="sobre">
+      <div class="invitation"></div>
+    </div>
+  </div>
+<div id="sobreAbierto" style="display:none; text-align:center;">
+  <img src="https://i.ibb.co/zHFzMJkh/1774733846909.png
+  " alt="Sobre abierto" style="max-width:100%; height:auto;">
+</div>
+  <!-- Audio que se reproducirá -->
+  <audio id="audioSeal" src="https://dl.dropbox.com/scl/fi/f62hfvox43hrsidg9hjha/te-invito-a-mi-fiesta.mp3?rlkey=3uek03kdcxmv6hlacqkvwaxo9&st=72lk0lkr&dl=1
+  "></audio>
+  
+  <script>
+    
+    function openEnvelope() {
+    // Animación de apertura
+    document.querySelector('.flap').style.transform = 'rotateX(-180deg)';
+    document.querySelector('.invitation').style.opacity = '1';
+
+    // Reproducir audio
+    var audio = document.getElementById("audioSeal");
+    audio.play();
+
+    // Mostrar imagen del sobre abierto
+    setTimeout(function() {
+      document.querySelector('.envelope').style.display = "none";
+      document.getElementById("sobreAbierto").style.display = "block";
+    }, 1000);
+
+    // Redirección
+    setTimeout(function() {
+      window.location.href = "xv.html"; 
+    }, 2200);
+}
+  </script>
+  
+
+  
+
+</body>
+</html>
