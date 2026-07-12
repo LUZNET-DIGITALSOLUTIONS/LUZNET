@@ -1,1 +1,528 @@
+<!DOCTYPE html>
+<!-- =========================================
+   Propiedad de LuzNet ©
+   Creado por Felipe Jiménez
+   Así de fácil, así de impresionante, así es LuzNet
+   ========================================= -->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
 
+<!-- SEO Principal -->
+<title>LuzNet Tlaquepaque | Invitaciones Digitales y Tarjetas con QR</title>
+<meta name="description" content="LuzNet Tlaquepaque: Invitaciones digitales para eventos y tarjetas de presentación con QR. Entrega 24h desde $300 MXN. WhatsApp 3337161869">
+<link rel="canonical" href="https://luznet.com.mx/">
+
+<!-- Google Search Console -->
+<meta name="google-site-verification" content="V0THThwr-4ydj3sCADga2x_MJItVB2-wC9XrjaX0yZ0" />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luznet.com.mx/">
+<!-- Open Graph para WhatsApp/Facebook -->
+<meta property="og:title" content="LuzNet Tlaquepaque | Invitaciones Digitales y Tarjetas QR">
+<meta property="og:description" content="Invitaciones digitales para eventos y tarjetas de presentación con QR. Entrega 24h desde $300 MXN en Tlaquepaque.">
+<meta property="og:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="LuzNet Digital Solutions">
+
+<!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LuzNet Tlaquepaque | Invitaciones Digitales">
+<meta name="twitter:description" content="Invitaciones digitales y tarjetas con QR. Entrega 24h desde $300 MXN.">
+<meta name="twitter:image" content="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg">
+  
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+
+  
+  <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: black;
+  flex-wrap: wrap;
+}
+
+/* Tarjeta */
+.card {
+  position: relative;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: .5s;
+  margin: 15px 20px;
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  font-family: 'Shadows Into Light';
+  
+}
+/* Fondo de nubes */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.card::before {
+  animation: mover1 5s infinite linear;
+  z-index: -2;
+}
+
+.card::after {
+  opacity: 0.5;
+  animation: mover2 5s infinite linear;
+  z-index: -1;
+}
+
+/* Responsive: En PC la tarjeta crece */
+@media (min-width: 768px) {
+  .card { 
+    width: 400px; /* En PC: más ancha */
+    min-height: 600px; /* En PC: más alta */
+    margin: 20px; 
+  }
+  
+  .card .description {
+    min-height: 280px; /* Más espacio pa' texto en PC */
+  }
+}
+
+
+@keyframes mover1 {
+  0%   { transform: scale(1) translate(0,0); }
+  50%  { transform: scale(1.1) translate(-20px, -10px); }
+  100% { transform: scale(1) translate(0,0); }
+}
+
+@keyframes mover2 {
+  0%   { transform: scale(1) translate(0,0); }
+  50%  { transform: scale(1.1) translate(20px, 15px); }
+  100% { transform: scale(1) translate(0,0); }
+}
+
+
+
+/* Encabezado */
+.card .head {
+  height: 10px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+background:transparent;   /* 👈 elimina el fondo negro */
+  border: none;              /* opcional: quita cualquier marco */
+height: 150px;
+  width: 150px;       /* tamaño del círculo */
+       /* mismo valor para ancho y alto */
+  border-radius: 50%; /* recorte circular */
+  overflow: hidden;   /* oculta todo lo que sobresalga */
+  margin: 10px auto 0px auto;
+  position: relative;
+}
+
+.logo-container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+
+  /* 👇 Animación de zoom */
+  transform: scale(0.5);          /* inicia más pequeño */
+  animation: zoomIn 3s ease-out forwards; /* se expande una sola vez */
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5); /* inicio pequeño */
+    opacity: 0.5;          /* opcional: un poco transparente */
+  }
+  to {
+    transform: scale(1);   /* tamaño normal */
+    opacity: 1;            /* opaco */
+  }
+}
+
+    .card .head .img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+
+/* Texto */
+.card .description {
+  height: 220px; /* Bájale de 240px-250px a 200px */
+ /* padding: 40px 20px 20px 20px;*/
+  border-bottom:  solid 1px ;
+  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+h1{
+   font-size:30px; 
+}
+
+h2{
+   font-size:20px; 
+}
+
+
+
+a{
+   font-size:25px; 
+}
+.card .description h1,h2,h4,p,i{
+  animation: animate 10s infinite linear;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+}
+
+
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
+}
+
+/* Redes sociales */
+.card .contact {
+  width: 100%;
+  height: 50px; /* Era 75px, ahora 50px */
+  margin-top: 20px; /* Lo jala hacia arriba */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: relative;
+  z-index: 1;
+}
+
+.card .contact a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 100%;
+  transition: .5s;  
+}
+
+.card .contact a:hover {
+  background: linear-gradient(to top,blue,black);
+  box-shadow: 0 5px 5px rgba(0,0,0,1);
+  transform: translateY(-10px);
+}
+
+/* Botón catálogo */
+
+/*efecto matrix h2*/
+   #matrix-text {
+   /* font-size:3em;*/
+    font-size:30px;
+    
+    white-space: pre;
+  /*  font-family: 'Montserrat', sans-serif;*/
+    letter-spacing: 0px;
+    color: #00ff00; /* verde Matrix */
+  }
+
+  /* Animación Matrix para cada letra */
+  #matrix-text span {
+    opacity: 0;
+    transform: translateY(-400px);
+    display: inline-block;
+    animation: caer 3s forwards;
+  }
+
+  @keyframes caer {
+    0%   { opacity: 0; transform: translateY(-400px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  
+  /*efecto olas de mar h4*/
+    #wave-text {
+   /* font-size:2em;*/
+    font-size:20px;
+ /*   font-family: 'Raleway', sans-serif;*/
+    display: inline-block;
+    color: #00ffff; /* aqua */
+    white-space: pre; /* mantiene los espacios */
+  }
+
+  #wave-text span {
+    display: inline-block;
+    animation: wave 2s infinite ease-in-out;
+  }
+
+  @keyframes wave {
+    0%   { transform: translateY(0); }
+    25%  { transform: translateY(-8px); }
+    50%  { transform: translateY(0); }
+    75%  { transform: translateY(8px); }
+    100% { transform: translateY(0); }
+  }
+  /*efecto zoom p */
+   #zoom-text {
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: scale(0);
+  animation: zoomIn 5s forwards ease-out, animate 10s infinite linear;
+}
+
+  @keyframes zoomIn {
+    0%   { opacity: 0; transform: scale(0); }
+    50%  { opacity: 0.7; transform: scale(1.2); } /* ligero sobre-zoom */
+    100% { opacity: 1; transform: scale(1); }     /* tamaño final */
+  }
+  
+  
+ /* Contenedor general de los botones */
+.CATALOGO {
+
+  padding:5px;
+  font-size: 20px;
+  
+  margin: 5px auto;       /* centra horizontalmente */
+  text-align: center;
+  width: fit-content;
+  position: relative;
+  opacity: 0;
+  border-radius: 20px;
+  border: 1px solid white;
+
+  text-shadow: -2px 1px purple;
+  background: transparent;
+  background-size: 300%;
+  animation: bg-animation 20s infinite linear; /* gradiente animado */
+}
+
+/* Estilo de los enlaces con zoom constante */
+.CATALOGO a  {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+/*  padding: 10px 20px;"*/
+  border-radius: 8px;
+  transition: transform 0.3s;
+  animation: zoomPulse 2s infinite ease-in-out; /* zoom constante */
+}
+
+
+
+/* Entrada desde la izquierda */
+.izquierda {
+  animation: entrarIzquierda 1s forwards ease-out;
+}
+
+@keyframes entrarIzquierda {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Entrada desde la derecha */
+.derecha {
+  animation: entrarDerecha 1s forwards ease-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes entrarDerecha {
+  0%   { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Fondo animado */
+@keyframes bg-animation {
+  0%   { background-position: left; }
+  50%  { background-position: right; }
+  100% { background-position: left; }
+}
+
+/* Zoom infinito aplicado al enlace */
+@keyframes zoomPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+audio {
+    display: none; /* oculta el reproductor */
+  }
+  
+  
+  button {
+  background: none;   /* sin fondo */
+  border: none;       /* sin borde */
+  color: #FFD700;     /* dorado elegante */
+  font-size: 18px;    /* tamaño de letra */
+  cursor: pointer;    /* mano al pasar */
+  text-decoration: underline; /* opcional, estilo de enlace */
+}
+button:hover {
+  color: #00BFFF;     /* azul ceremonial al pasar */
+  }
+  .uno{
+      font-size: 180px; 
+  }
+  
+  img {
+      width: 250px;
+      height: 125px;
+      
+      object-fit: cover;
+    }
+     
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "LuzNet Digital Solutions",
+  "image": "https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg",
+  "url": "https://luznet.com.mx",
+  "telephone": "+52-333-716-1869",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tlaquepaque",
+    "addressRegion": "Jalisco",
+    "addressCountry": "MX"
+  },
+  "description": "Invitaciones digitales para eventos y tarjetas de presentación con QR en Tlaquepaque. Entrega 24h desde $300 MXN.",
+  "sameAs": [
+    "https://wa.me/523337161869"
+  ]
+}
+</script>
+</head>
+<body>
+  <div class="card">
+  <div class="logo-container">
+  
+  
+  <img src="https://i.ibb.co/gb25k4yg/IMG-20260502-212455.jpg" alt="Logo LuzNet Invitaciones Digitales Tlaquepaque">
+</div>
+    <div class="head">
+      <!-- Esfera 3D -->
+      <div id="sphere-container"></div>
+    </div>
+    
+    
+    
+      
+    
+      <div class="description">
+      <!-- H1 REAL PARA SEO - NO ELIMINAR -->
+      <h1 style="position:absolute;left:-9999px;">Invitaciones Digitales y Tarjetas con QR en Tlaquepaque</h1>
+      
+      <h2 id="matrix-text" data-text="LUZNET&#10;Digital Solutions"></h2>
+      <!--h2 id="wave-text">DISEÑO WEB</h2-->
+      
+      <p id="zoom-text">
+          TU NOMBRE <br />
+            
+                 <br />
+            
+            TU PUESTO O TU NEGOCIO
+            BREVE DESCRIPCIÓN DE LO QUE HACES 
+      CONTACTAME
+    </div>
+    <div class="contact">
+      <!--a href="tel:3312381872"><i class="fa fa-phone"></i></a-->
+      <a href="https://wa.me/523337161869?text=Hola,%20quiero%20más%20información."
+   onclick="playAndGo('audioWhats','https://wa.me/523337161869?text=Hola,%20quiero%20más%20información.',3500); return false;">
+   <i class="fa fa-whatsapp"></i> 
+</a>
+<!--a href="https://www.facebook.com/luznetdigitalsolutions
+        "><i class="fa fa-facebook"></i></a-->
+<a href="https://www.facebook.com/LuzNetDigitalSolutions"
+   onclick="playAndGo('audioFacebook','https://www.facebook.com/LuzNetDigitalSolutions',3500); return false;">
+   <i class="fa fa-facebook"></i>
+</a>
+      <!--a href="https://www.facebook.com/Digital-World-100310082725612/"><i class="fa fa-facebook"></i></a>
+      <a href="http://tiktok.com/@felipemartinez5483"><i class="fa fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/invites/contact/?i=1qfx13l6t6gy5&utm_content=g1iuoqt"><i class="fa fa-instagram"></i></a>
+      <a href="https://youtube.com/c/FELIPEMARTINEZCOMPOSITOR"><i class="fa fa-youtube"></i></a>
+      <a href="mailto:felipemartinez84@live.com.mx?Subject=bienvenido"><i class="fa fa-envelope-open"></i></a-->
+    </div>
+      <script>
+function playAndGo(audioId, url, delay) {
+  const audio = document.getElementById(audioId);
+  audio.play(); // reproduce el audio
+  setTimeout(() => { window.location.href = url; }, delay); 
+  // espera el tiempo indicado antes de abrir el enlace
+}
+</script>
+<!-->audios<-->
+<audio id="audioFacebook" src="https://dl.dropbox.com/scl/fi/au60dp8p8pacd66hjkzwh/Luznet-1.mp3?rlkey=sra61i1nbnkbq6v7p3bmdt7lc&st=5qwfs0d7&dl=1
+"></audio>
+
+<audio id="audioWhats" src="https://dl.dropbox.com/scl/fi/au60dp8p8pacd66hjkzwh/Luznet-1.mp3?rlkey=sra61i1nbnkbq6v7p3bmdt7lc&st=5qwfs0d7&dl=1
+"></audio>
+   
+    <!--div class="CATALOGO izquierda">
+
+
+<!-- Botón WhatsApp >
+<button onclick="playAndGo('audioWhats','https://wa.me/523337161869?text=Hola,%20quiero%20más%20información.',3500)">
+   <i class="fa fa-whatsapp"> CONTACTAME</i>
+</button>
+
+</div-->
+
+
+
+<div class="CATALOGO derecha">
+<!-- Botón Catálogo -->
+<button onclick="document.getElementById('audioCatalogo').play().catch(()=>{}); setTimeout(()=>{location.href='/catalogo/'},1300)">
+  <i class="fa fa-hand-o-right"> 
+   CATALOGO 
+   </i>
+</button>
+<audio id="audioCatalogo" src="https://dl.dropbox.com/scl/fi/pyojk2qxhxrw5k5yzr3g6/Luznet-2.mp3?rlkey=trodms16zmu7ass4grkn8q1ng&st=agpspmra&dl=1
+"></audio>
+
+  
+</div>
+  </div>
+    
+<img src="https://i.ibb.co/W4yLGQdZ/IMG-20260710-235945.jpg
+" alt="qr Invitaciones Digitales Tlaquepaque">  
+ 
+</body>
+</html>
