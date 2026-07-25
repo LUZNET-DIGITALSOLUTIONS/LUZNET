@@ -55,6 +55,7 @@
   width: 100%;
   min-height: 100vh;         /* ocupa toda la pantalla */
   overflow-x: hidden;
+  
 }
 
 /* Responsive: en PC los hijos en fila y centrados */
@@ -73,12 +74,11 @@
 
 
    .hijo {
-   
-position: relative;
- font-family: 'Shadows Into Light';
+  position: relative;
+  font-family: 'Shadows Into Light';
   border-radius: 10px;
-border: 1px solid transparent;
-  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #007BFF, #FF2E00) 1;
   width: 90%;
   max-width: 400px;
   height: 550px;
@@ -88,14 +88,25 @@ border: 1px solid transparent;
   align-items: center;
   font-weight: bold;
   color: black;
-  background-image: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg");
-  background-size: 110% 100%;
-  background-position: center;
   box-sizing: border-box;
-  opacity: 1; /* ahora siempre visible */
   margin: 20px auto;
   text-align: center;
   text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+  overflow: hidden; /* importante para el border-radius */
+  
+  
+}
+
+/* Aquí va tu imagen con opacidad */
+.hijo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.ibb.co/HLSq87V0/fondo.png");
+  background-size: 110% 100%;
+  background-position: center;
+  opacity: .5; /* 👈 aquí controlas que tan transparente quieres la imagen */
+  z-index: -1;
 }
 
 .zoom {
@@ -141,8 +152,8 @@ font-size: 20px;
 h1{
 font-size: 25px;
     display: inline-block;
+      animation: animate 10s infinite linear,
       
-    animation: animate 10s infinite linear,  
       girar 2s ease-in-out  forwards;
     }
 
@@ -158,9 +169,9 @@ font-size: 25px;
     }
 
 @keyframes animate {
-  0%,100%{ color:aqua; }
-  25%{ color: deeppink; }
-  50%{ color:deepskyblue; }
+  0%,100%{ color:white; }
+  25%{ color:white; }
+  50%{ color:white; }
   75%{ color: white; }
 }
 
@@ -245,6 +256,29 @@ font-size: 25px;
   animation: animate 10s infinite linear,
   entrar-izquierda 1.5s ease-out forwards;
 }
+
+#link-catalogos {
+  font-size: 25px;
+  border: 1px solid white;    /* borde dorado */
+  border-radius: 30px;        /* forma ovalada */
+  display: inline-block;
+  animation: caer-arriba 1.5s ease-out forwards,
+             animate 10s infinite linear;
+}
+
+/* Animación de caída */
+@keyframes caer-arriba {
+  0% {
+    transform: translateY(-200px); /* inicia fuera de pantalla arriba */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);      /* llega a su posición normal */
+    opacity: 1;
+  }
+}
+
+ 
   </style>
   <script type="application/ld+json">
 {
@@ -274,20 +308,23 @@ font-size: 25px;
     <a href="/">Inicio</a> > <span>Catálogo</span>
   </nav>
     <h1 >
-    Catálogo de:<br /> Invitaciones Digitales <br /> y <br />
-    Tarjetas con QR</h1>
+    Catálogo de productos:<br /> </h1>
     <p>Explora nuestros productos: <br />
-    Invitaciones digitales para eventos <br /> y <br /> tarjetas de presentación con QR. <br />
+    Invitaciones digitales para eventos <br /> tarjetas de presentación <br /> Catalogos <br />
     Elige tu diseño y cotiza por WhatsApp.
     </p>
     <a id="link-invitaciones" href="/catalogo/invitaciones/">INVITACIONES</a>
     <a id="link-tarjetas" href="/catalogo/tarjetas/">TARJETAS DE PRESENTACIÓN</a>
+    
+    <a id="link-catalogos" href="/catalogo/catalogos/">CATALOGOS</a>
 </div>
     
     
 </div>
    
   </div>
+  
+  
     
 </body>
 </html>
