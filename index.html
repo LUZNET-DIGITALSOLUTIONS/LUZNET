@@ -215,6 +215,20 @@ a{
    font-size:25px; 
    
 }
+
+
+
+h2{
+  animation: animate 10s infinite linear;
+}
+
+@keyframes animate {
+  0%,100%{ color:aqua; }
+  25%{ color: deeppink; }
+  50%{ color:deepskyblue; }
+  75%{ color: white; }
+}
+
 /*
 .card .description h1,h2,h4,p,i{
   animation: animate 10s infinite linear;
@@ -312,7 +326,7 @@ a{
   font-size: 1.2rem;
   opacity: 0;
   transform: scale(0);
-  animation: zoomIn 5s forwards ease-out, animate 10s infinite linear;
+  animation: zoomIn 5s forwards ease-out; 
 }
 
   @keyframes zoomIn {
