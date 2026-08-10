@@ -76,11 +76,11 @@
 
 
    .hijo {
-position: relative;
- font-family: 'Shadows Into Light';
+  position: relative;
+  font-family: 'Shadows Into Light';
   border-radius: 10px;
-border: 1px solid transparent;
-  border-image: linear-gradient(90deg, #ff00cc, #00ccff) 1;
+  border: 1px solid transparent;
+  border-image: linear-gradient(90deg, #007BFF, #FF2E00) 1;
   width: 90%;
   max-width: 400px;
   height: 550px;
@@ -90,17 +90,23 @@ border: 1px solid transparent;
   align-items: center;
   font-weight: bold;
   color: black;
-  background-image: url("https://i.ibb.co/k6zqJPLG/IMG-20260502-205013.jpg");
-  background-size: 110% 100%;
-  background-position: center;
   box-sizing: border-box;
-  opacity: 1; /* ahora siempre visible */
   margin: 20px auto;
   text-align: center;
   text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+  overflow: hidden; /* 👈 asegura que ::before no se desborde */
 }
 
-
+.hijo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.ibb.co/HLSq87V0/fondo.png");
+  background-size: 110% 100%;
+  background-position: center;
+  opacity: 0.5; /* 👈 controla transparencia solo del fondo */
+  z-index: -1;
+}
 
     .mensaje-inicio h2 {
       font-size: 35px;
