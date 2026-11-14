@@ -1,1 +1,329 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>CALENDARIO INFINITO 2-2-2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Baloo 2', cursive; }
+:root { --gradient: linear-gradient(-45deg,white, red,black,red,white ); }
+body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:black; background-size:10%; }
+.card { width: 100%; max-width: 400px; min-height: 52vh; text-align: center; border: 1px solid #FFFFFF;
+box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red; background-image: var(--gradient); background-size: 300% 300%; -webkit-animation: bg-animation 30s infinite; animation: bg-animation 30s infinite; border-radius: 10px; overflow: hidden; margin: 15px; padding: 10px; }
+@keyframes bg-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.titulo { color:white; font-size:22px; text-transform:uppercase; margin:10px 0; text-shadow:red -2px 1px 1px; }
+.calendario { background-color: rgba(255,255, 255, .1); border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; width:100%; padding:5px; }
+table { border-collapse:collapse; width:100%; font-weight:bold; background-image:url('https://i.ibb.co/JzdkvNg/666.jpg'); background-size:100%; }
+th, td { border:1px solid black; text-align:center; }
+th { background:#f0f0f0; opacity:0.8; padding:4px; font-size:13px; }
+td { background:#fff; opacity:0.85; font-size:10px; height:38px; cursor:pointer; }
+td.vacio { background:#fff; opacity:0.85; border:1px solid black; cursor:default; }
+td.dia { background: rgba(255, 255, 255, 0.85) !important; color: black !important; }
+td.noche { background: rgba(137, 138, 142, 0.85) !important; color: white !important; }
+td.descanso { background: rgba(70, 70, 72, 0.85) !important; color: white !important; }
+td.extra { background: rgba(255, 215, 0, 0.95) !important; color: black !important; border: 2px solid gold !important; }
+.controles { display:flex; justify-content:space-between; gap:8px; margin-top:12px; }
+.btn { flex:1; background-color: rgba(255,255, 255, .1); color:white; border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; padding:8px; cursor:pointer; font-size:16px; text-decoration:none; }
+.btn:hover { transform:translateY(-2px); }
+.btn.hoy { border-color:red solid; }
+.btn.extra-btn { background-color: rgba(255,255, 255, .1) !important; color:white !important; border:1px red solid !important; box-shadow:red -1px 1px 5px, red 1px -1px 5px !important; font-weight:normal !important; }
+H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
+@keyframes animate { 0%,100%{ color: white; } 25%{ color: deeppink; } 50%{ color:deepskyblue; } 75%{ color: black; } }
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:99; }
+.modal-caja { background:white; width:90%; max-width:340px; padding:18px; border-radius:10px; text-align:left; max-height:85vh; overflow-y:auto; }
+.modal-caja h3 { text-align:center; margin-bottom:10px; }
+.modal-caja label { font-size:14px; font-weight:bold; }
+.modal-caja input, .modal-caja select { width:100%; padding:8px; margin:5px 0 12px 0; border:1px solid #ccc; border-radius:5px; font-size:15px; }
+.lista-item { background:#f5f5f5; border:1px solid #ddd; border-radius:8px; padding:8px; margin-bottom:8px; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="card">
+<h1>LETICIA VAZQUEZ</br>RICARDO DELGADO</h1>
+  <div class="titulo" id="titulo"></div>
+  <div class="calendario" id="calendario"></div>
+  <div class="controles">
+    <button class="btn" onclick="cambiarMes(-1)"> ANTERIOR ◀</button>
+    <button class="btn hoy" onclick="irHoy()">HOY</button>
+    <button class="btn" onclick="cambiarMes(1)">SIGUIENTE ▶</button>
+  </div>
+  <div style="margin-top:10px; display:flex; gap:8px;">
+    <button class="btn" onclick="window.location.href='index.html'" style="flex:1;">INICIO</button>
+    <button class="btn extra-btn" onclick="abrirLista()" style="flex:1;">⭐ VER TIEMPOS EXTRAS</button>
+  </div>
+</div>
+
+<div class="modal" id="modalGuardar">
+  <div class="modal-caja">
+    <h3 id="tituloModal">TIEMPO EXTRA</h3>
+    <label>Servicio</label>
+    <input type="text" id="servicio" placeholder="Ej: LOS ALTOS">
+    <label>Turno del extra</label>
+    <input type="text" id="turnoExtra" placeholder="Ej: noche / dia">
+    <label>Cantidad</label>
+    <input type="text" id="cantidad" placeholder="Ej: 50" inputmode="numeric">
+    <div style="display:flex; gap:8px;">
+      <button class="btn" onclick="guardarExtra()" style="background:black;">GUARDAR</button>
+      <button class="btn" onclick="borrarExtra()" style="background:#c00;">BORRAR</button>
+      <button class="btn" onclick="cerrarModal()" style="background:#555;">CERRAR</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalLista">
+  <div class="modal-caja">
+    <h3>⭐ TIEMPOS EXTRAS GUARDADOS</h3>
+    <div id="contenidoLista"></div>
+    <button class="btn" onclick="descargarListaImagen()" style="background:#0a7a2e; width:100%; margin-top:10px;">📸 VER COMO IMAGEN</button>
+    <button class="btn" onclick="cerrarModal()" style="background:black; width:100%; margin-top:8px;">CERRAR</button>
+  </div>
+</div>
+
+<div class="modal" id="modalImagen">
+  <div class="modal-caja" style="text-align:center;">
+    <h3>📸 TU LISTA COMO IMAGEN</h3>
+    <p style="font-size:13px; margin-bottom:10px;">Mantén presionada la imagen para guardarla:</p>
+    <img id="imgGenerada" style="width:100%; border:1px solid #ccc; border-radius:8px;">
+    <button class="btn" onclick="compartirImagen()" style="background:#25D366; color:black; width:100%; margin-top:10px; font-weight:bold;">📤 COMPARTIR IMAGEN A WHATSAPP</button>
+    <button class="btn" onclick="cerrarModal()" style="background:black; width:100%; margin-top:8px;">CERRAR</button>
+  </div>
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3IXAxppchT8a7z1FTSxvjZe_FnoZ4yazEO3m3jX6HcFtt2BXWrbfi1IxipaHYJyN9/exec";
+const GRUPO = "Calendario3";
+const ANCLA = new Date(2026, 0, 6);
+const CICLO = ["dia","dia","noche","noche","descanso","descanso"];
+let vista = new Date();
+let fechaSeleccionada = "";
+let ultimaImagenURL = "";
+let ultimaImagenBlob = null;
+let memoriaExtras = {};
+let ultimoWebViewString = "";
+function getExtras() { return memoriaExtras; }
+function setExtras(obj, guardarEnNube = true) {
+  memoriaExtras = obj;
+  const txt = JSON.stringify(obj);
+  ultimoWebViewString = txt;
+  try { if (window.AppInventor) window.AppInventor.setWebViewString(txt); } catch(e) {}
+  if (guardarEnNube && SCRIPT_URL) { syncACloud(); }
+}
+function normalizarFecha(k) {
+  k = String(k).trim();
+  if (k.length >= 10 && k[4] === "-") {
+    let y = parseInt(k.substring(0,4));
+    if (y === 2001) return "2026" + k.substring(4,10);
+    return k.substring(0,10);
+  }
+  let d = new Date(k);
+  if (!isNaN(d)) {
+    let y = d.getFullYear();
+    if (y === 2001) y = 2026;
+    return y + "-" + String(d.getMonth()+1).padStart(2,'0') + "-" + String(d.getDate()).padStart(2,'0');
+  }
+  return k.substring(0,10);
+}
+function cargarDatos(txt) {
+  try {
+    if (!txt || txt === "" || txt === "{}") { memoriaExtras = {}; } else {
+      let obj = JSON.parse(txt);
+      let limpios = {};
+      for (let k in obj) limpios[normalizarFecha(k)] = obj[k];
+      memoriaExtras = limpios;
+    }
+    ultimoWebViewString = JSON.stringify(memoriaExtras);
+    render();
+  } catch(e) {}
+}
+async function cargarDeCloud() {
+  if (!SCRIPT_URL) return;
+  try {
+    const r = await fetch(SCRIPT_URL + "?action=list&grupo=" + encodeURIComponent(GRUPO));
+    const data = await r.json();
+    if (data && data.extras) {
+      let limpios = {};
+      for (let k in data.extras) limpios[normalizarFecha(k)] = data.extras[k];
+      memoriaExtras = limpios;
+      ultimoWebViewString = JSON.stringify(limpios);
+      try { if (window.AppInventor) window.AppInventor.setWebViewString(ultimoWebViewString); } catch(e) {}
+      render();
+      setTimeout(render, 500);
+      setTimeout(render, 1200);
+    }
+  } catch(e) {}
+}
+async function syncACloud() {
+  if (!SCRIPT_URL) return;
+  try { await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ action: "saveAll", grupo: GRUPO, extras: memoriaExtras }) }); } catch(e) {}
+}
+function getTurno(fecha) {
+  const diff = Math.floor((fecha - ANCLA) / (1000*60*60*24));
+  let index = diff % 6;
+  if(index < 0) index += 6;
+  return CICLO[index];
+}
+function render() {
+  const año = vista.getFullYear();
+  const mes = vista.getMonth();
+  const mesesNombres = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+  document.getElementById("titulo").innerText = `${mesesNombres[mes]} ${año}`;
+  const diasSemana = ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+  const diasEnMes = new Date(año, mes + 1, 0).getDate();
+  let primerDia = new Date(año, mes, 1).getDay();
+  primerDia = primerDia === 0 ? 6 : primerDia - 1;
+  const extras = getExtras();
+  let html = `<table><thead><tr>${diasSemana.map(d=>`<th>${d}</th>`).join("")}</tr></thead><tbody><tr>`;
+  for(let i=0;i<primerDia;i++) html+=`<td class="vacio"></td>`;
+  for(let d=1; d<=diasEnMes; d++){
+    const pos = (primerDia + d -1) % 7;
+    if(pos===0 && d!==1) html+=`</tr><tr>`;
+    const fecha = new Date(año, mes, d);
+    const turno = getTurno(fecha);
+    const iso = `${año}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const esExtra = extras[iso] ? "extra" : "";
+    const estrella = extras[iso] ? "<br>★ EXTRA" : "";
+    html+=`<td class="${turno} ${esExtra}" onclick="abrirModal('${iso}', ${d})">${d}<br>${turno}${estrella}</td>`;
+  }
+  let total = primerDia + diasEnMes;
+  while(total < 42){
+    const pos = total % 7;
+    if(pos===0) html+=`</tr><tr>`;
+    html+=`<td class="vacio"></td>`;
+    total++;
+  }
+  html+=`</tr></tbody></table>`;
+  document.getElementById("calendario").innerHTML = html;
+}
+function cambiarMes(dir){ vista.setMonth(vista.getMonth() + dir); render(); }
+function irHoy(){ vista = new Date(); render(); }
+function abrirModal(iso, dia) {
+  fechaSeleccionada = iso;
+  document.getElementById("tituloModal").innerText = "TIEMPO EXTRA - " + iso;
+  const extras = getExtras();
+  const guardado = extras[iso];
+  if (guardado) {
+    document.getElementById("servicio").value = guardado.servicio || guardado.dato1 || "";
+    document.getElementById("turnoExtra").value = guardado.turno || "";
+    document.getElementById("cantidad").value = guardado.cantidad || guardado.dato2 || "";
+  } else {
+    document.getElementById("servicio").value = "";
+    document.getElementById("turnoExtra").value = "";
+    document.getElementById("cantidad").value = "";
+  }
+  document.getElementById("modalGuardar").style.display = "flex";
+}
+function guardarExtra() {
+  const servicio = document.getElementById("servicio").value.trim();
+  const turno = document.getElementById("turnoExtra").value.trim();
+  const cantidad = document.getElementById("cantidad").value.trim();
+  if(!servicio && !turno && !cantidad) { alert("Escribe al menos un dato"); return; }
+  const extras = getExtras();
+  extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: cantidad, dato1: servicio + " turno " + turno, dato2: cantidad + "p" };
+  setExtras(extras);
+  cerrarModal();
+  render();
+}
+function borrarExtra() {
+  const extras = getExtras();
+  delete extras[fechaSeleccionada];
+  setExtras(extras);
+  cerrarModal();
+  render();
+}
+function textoDeExtra(e) {
+  if (e.servicio) return e.servicio + " - turno " + e.turno + " - " + e.cantidad + "p";
+  return (e.dato1 || "") + " | " + (e.dato2 || "");
+}
+function abrirLista() {
+  render();
+  const extras = getExtras();
+  const keys = Object.keys(extras).sort();
+  let html = "";
+  if(keys.length === 0) html = "<p style='text-align:center;'>No hay tiempos extras guardados</p>";
+  keys.forEach(k => {
+    html += `<div class="lista-item"><b>${k}</b><br>1: ${textoDeExtra(extras[k])}<br><button onclick="borrarDesdeLista('${k}')" style="margin-top:5px; padding:4px 8px; background:#c00; color:white; border:none; border-radius:5px;">Borrar</button></div>`;
+  });
+  document.getElementById("contenidoLista").innerHTML = html;
+  document.getElementById("modalLista").style.display = "flex";
+}
+function borrarDesdeLista(iso) {
+  const extras = getExtras();
+  delete extras[iso];
+  setExtras(extras);
+  abrirLista();
+  render();
+}
+function cerrarModal() {
+  document.getElementById("modalGuardar").style.display = "none";
+  document.getElementById("modalLista").style.display = "none";
+  document.getElementById("modalImagen").style.display = "none";
+  render();
+}
+function generarTextoLista() {
+  const extras = getExtras();
+  const keys = Object.keys(extras).sort();
+  let txt = "⭐ TIEMPOS EXTRAS\n\n";
+  keys.forEach(k => { txt += k + " - " + textoDeExtra(extras[k]) + "\n"; });
+  return { txt, keys, extras };
+}
+function descargarListaImagen() {
+  const { keys, extras } = generarTextoLista();
+  if(keys.length === 0) { alert("No hay nada que descargar"); return; }
+  // 👇 AQUÍ CAMBIAS EL NOMBRE QUE SALE ABAJO DEL TÍTULO EN LA IMAGEN
+  const NOMBRE = "";
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = 700;
+  canvas.height = 145 + keys.length * 72;
+  ctx.fillStyle = "white"; ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "black"; ctx.textAlign = "center";
+  // Renglón 1
+  ctx.font = "bold 30px Arial";
+  ctx.fillText("⭐ TIEMPOS EXTRAS", 350, 50);
+  // Renglón 2 - SALTO DE LÍNEA, ya bajado
+  ctx.font = "bold 24px Arial";
+  ctx.fillText(NOMBRE, 350, 110);
+  // Lista
+  ctx.textAlign = "left"; ctx.font = "20px Arial";
+  let y = 165;
+  keys.forEach(k => {
+    ctx.fillStyle = "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
+    ctx.fillStyle = "black";
+    ctx.fillText(k + "  -  " + textoDeExtra(extras[k]), 30, y+8);
+    y += 72;
+  });
+  canvas.toBlob(function(blob){
+    ultimaImagenBlob = blob;
+    ultimaImagenURL = URL.createObjectURL(blob);
+    document.getElementById("imgGenerada").src = ultimaImagenURL;
+    document.getElementById("modalLista").style.display = "none";
+    document.getElementById("modalImagen").style.display = "flex";
+  }, "image/png");
+}
+async function compartirImagen() {
+  if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
+  try {
+    const blobUrl = URL.createObjectURL(ultimaImagenBlob);
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = "tiempos_extras.png";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch(e) {}
+  try {
+    const archivo = new File([ultimaImagenBlob], "tiempos_extras.png", { type: "image/png" });
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [archivo] })) {
+      await navigator.share({ files: [archivo], title: "Tiempos Extras", text: "Mira mis tiempos extras" });
+    } else {
+      alert("Ya se descargó. Si no la ves, mantén presionada la imagen de arriba y dale Guardar imagen");
+    }
+  } catch(e) {}
+}
+render();
+cargarDeCloud();
+</script>
+</body>
+</html>
