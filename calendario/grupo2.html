@@ -297,11 +297,11 @@ function descargarListaImagen() {
     document.getElementById("modalImagen").style.display = "flex";
   }, "image/png");
 }
-// CORREGIDO - igual que Grupo 1, manda la señal para activar el ActivityStarter
+// CORREGIDO GRUPO 2 - manda la señal para activar el ActivityStarter del Grupo 2
 function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
   if (window.AppInventor) {
-    try { window.AppInventor.setWebViewString("ABRIR_CHROME"); } catch(e) {}
+    try { window.AppInventor.setWebViewString("ABRIR_CHROME_2"); } catch(e) {}
     return;
   }
   try {
