@@ -285,7 +285,6 @@ function descargarListaImagen() {
     ctx.fillText(k + "  -  " + textoDeExtra(extras[k]), 30, y+8);
     y += 72;
   });
-  // Guardamos como blob para el emulador, no como data: directo
   canvas.toBlob(function(blob){
     ultimaImagenBlob = blob;
     ultimaImagenURL = URL.createObjectURL(blob);
@@ -294,11 +293,14 @@ function descargarListaImagen() {
     document.getElementById("modalImagen").style.display = "flex";
   }, "image/png");
 }
-// CORREGIDO PARA EMULADOR - ya NO usa window.open(data:...) que es lo que daba el error de la consola
-async function compartirImagen() {
+// CORREGIDO - ahora si manda la señal para activar el ActivityStarter
+function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
+  if (window.AppInventor) {
+    try { window.AppInventor.setWebViewString("ABRIR_CHROME"); } catch(e) {}
+    return;
+  }
   try {
-    // 1. Descarga con blob: (esto sí lo permite el emulador)
     const blobUrl = URL.createObjectURL(ultimaImagenBlob);
     const a = document.createElement("a");
     a.href = blobUrl;
@@ -306,16 +308,6 @@ async function compartirImagen() {
     document.body.appendChild(a);
     a.click();
     a.remove();
-  } catch(e) {}
-  try {
-    // 2. Compartir solo si el sistema lo permite, sin bloquear si falla
-    const archivo = new File([ultimaImagenBlob], "tiempos_extras.png", { type: "image/png" });
-    if (navigator.share && navigator.canShare && navigator.canShare({ files: [archivo] })) {
-      await navigator.share({ files: [archivo], title: "Tiempos Extras", text: "Mira mis tiempos extras" });
-    } else {
-      // En emulador no comparte, solo deja la imagen para guardar con presión larga
-      alert("Ya se descargó. Si no la ves, mantén presionada la imagen de arriba y dale Guardar imagen");
-    }
   } catch(e) {}
 }
 render();
