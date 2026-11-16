@@ -297,8 +297,13 @@ function descargarListaImagen() {
     document.getElementById("modalImagen").style.display = "flex";
   }, "image/png");
 }
-async function compartirImagen() {
+// CORREGIDO - igual que Grupo 1, manda la señal para activar el ActivityStarter
+function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
+  if (window.AppInventor) {
+    try { window.AppInventor.setWebViewString("ABRIR_CHROME"); } catch(e) {}
+    return;
+  }
   try {
     const blobUrl = URL.createObjectURL(ultimaImagenBlob);
     const a = document.createElement("a");
@@ -307,14 +312,6 @@ async function compartirImagen() {
     document.body.appendChild(a);
     a.click();
     a.remove();
-  } catch(e) {}
-  try {
-    const archivo = new File([ultimaImagenBlob], "tiempos_extras.png", { type: "image/png" });
-    if (navigator.share && navigator.canShare && navigator.canShare({ files: [archivo] })) {
-      await navigator.share({ files: [archivo], title: "Tiempos Extras", text: "Mira mis tiempos extras" });
-    } else {
-      alert("Ya se descargó. Si no la ves, mantén presionada la imagen de arriba y dale Guardar imagen");
-    }
   } catch(e) {}
 }
 render();
