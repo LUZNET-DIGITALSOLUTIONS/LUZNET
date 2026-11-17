@@ -1,339 +1,236 @@
 <!DOCTYPE html>
-<!--creado por Felipe Jiménez-->
+<!--creado por Felipe Jiménez - Con tus audios por URL-->
 <html>
     <head>
         <title>SERVICIOS</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible"content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Mukta:wght@800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet"type="text/css"
-href="estilos1.css">
-
-
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Mukta:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="estilos1.css">
     </head>
     
     <style>
         /* COLOR DE FONDO ANIMADO*/
-/*creado por Felipe Jiménez*/
-:root {
-  --gradient: linear-gradient(-45deg,white, red,black,red,white );
-}
-    /*cuerpo*/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-   font-family: 'Baloo 2';
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    
-    min-height: 100vh;
-       Background-color:BLACK; /*background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');*/
-    background-size: 10%; 
- 
-/*  background:black;*/
-    flex-wrap: wrap;
-}
-/*contenedor principal*/
-.card {
-padding:  0px 0px 55px ;
-border: 1px solid #FFFFFF;
-   
-    Background-color:BLACK;
-   
-    
-box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
-
-    position: relative;
-    width: 400px;
-  /*  height: 900px;*/
-    border-radius: 5px;
-    overflow: hidden;
-    transition: .5s;
-    margin: 15px 20px;
-    min-height: 100%;
-  background-size: 300%;
-  background-image: var(--gradient);
-  -webkit-animation: bg-animation 30s infinite;
-          animation: bg-animation 30s infinite;
-}
-
-@-webkit-keyframes bg-animation {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
-}
-
-@keyframes bg-animation {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
-
-
-}
-
-/*
-.card:hover {
-    box-shadow: 0 5px 10px rgba(0,0,0,1);
-    transform: translateY(-20px);
-}
-*/
-
-/*contenedor del texto*/
-.card .description {
-width: 100%;
-  /*  height: 200px;*/
-    
- 
-    text-align: center;
-}
-
-H1{
-    font-size: 60px;
-}
-
-H2{
-    font-size: 29px;
-}
-
-A{
-    font-size: 30px;
-}
-
-H1,H2,A{
-    animation: animate 20s infinite linear;
-    text-shadow: -1px 1px white;
-    
-}
-
-
-@keyframes animate
-
-{
-
-    0%,100%{
-
-        color: white;
-
-    }
-
-    25%{
-
-        color: deeppink;
-
-    }
-
-    50%{
-
-        color:deepskyblue;
-
-    }
-
-    75%{
-
-        color: black;
-
-    }
-
-}
-
-
-
-
-/*MENU DE ENLACES*/
-
- .menu li{
-  display: inline-block;
-  text-align:center; 
-  Position:center; 
-}
-
-.menu li a{
-  display: flex;
-  flex-direction:column;
-  color: white;
-  text-decoration: none;
-  
-  padding: 10px 10px 55px ;
-  width: 200px;
-  height: 50px;
-  border-radius: 100px;
-  Margin:10px 0px;
-  
-  background-color: rgba(255,255, 255, .1);
-        -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
-                box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
- 
- }
-         
-         
-div.shape {
-position: relative;
-Left:140px;
-    width: 60px;
-    height: 50px;
-    font-size:30px;
-    Align-items:center;
-    -webkit-animation-name: shape;   
-    -webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: infinite;
-    animation-name: shape;   
-    animation-duration: 2s; 
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-@keyframes shape {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@-webkit-keyframes shape {
-     
-    0%{ transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-} 
-
-table {
-  border-collapse: collapse;
-  width: 100px;
-  height: 100%;
-  
-  
-  background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');
-  no-repeat;
-  background-size: 100%;
-  font-weight:bold;
-  
-  
- 
-}
-
-th, td {
-  border: 1px solid black;
-  padding:0px;
-  text-align: center;
-}
-
-th {
- background-color: #f0f0f0;
- opacity: 0.8;
-}
-
-td {
-background-color: #fff;
-opacity: 0.8;
-  font-size: 10px;
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-  opacity: 0.8;
-  
-/* background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');*/
-  
-.calendario {
-
-position: absolute;
-
-left: 0%;
-
-top: 1px;
-
-background: black;
-
-float: left;
-
-border: 1px red solid;
-
-box-shadow: red 1px 1px 5px,
-
-red 1px 1px 5px;
-
-border-radius: 5px;
-
-width: 300px;
-
-max-height: 500px;
-
-padding: 0px;
-
-margin: 1px;
-
-overflow-x: auto;
-
-overflow-y: auto;
-
-word-break: break-all;
-
-}
-
-
- 
+        /*creado por Felipe Jiménez*/
+        :root {
+          --gradient: linear-gradient(-45deg,white, red,black,red,white );
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           font-family: 'Baloo 2';
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 100vh;
+               Background-color:BLACK;
+            background-size: 10%; 
+            flex-wrap: wrap;
+        }
+        .card {
+        padding:  0px 0px 55px ;
+        border: 1px solid #FFFFFF;
+            Background-color:BLACK;
+        box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
+            position: relative;
+            width: 400px;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: .5s;
+            margin: 15px 20px;
+            min-height: 100%;
+          background-size: 300%;
+          background-image: var(--gradient);
+          -webkit-animation: bg-animation 30s infinite;
+                  animation: bg-animation 30s infinite;
+        }
+        @-webkit-keyframes bg-animation {
+          0% { background-position: left; }
+          50% { background-position: right; }
+          100% { background-position: left; }
+        }
+        @keyframes bg-animation {
+          0% { background-position: left; }
+          50% { background-position: right; }
+          100% { background-position: left; }
+        }
+        .card .description {
+        width: 100%;
+            text-align: center;
+        }
+        H1{ font-size: 60px; }
+        H2{ font-size: 29px; }
+        A{ font-size: 30px; }
+        H1,H2,A{
+            animation: animate 20s infinite linear;
+            text-shadow: -1px 1px white;
+        }
+        @keyframes animate {
+            0%,100%{ color: white; }
+            25%{ color: deeppink; }
+            50%{ color:deepskyblue; }
+            75%{ color: black; }
+        }
+         .menu li{
+          display: inline-block;
+          text-align:center; 
+          Position:center; 
+        }
+        .menu li a{
+          display: flex;
+          flex-direction:column;
+          color: white;
+          text-decoration: none;
+          padding: 10px 10px 55px ;
+          width: 200px;
+          height: 50px;
+          border-radius: 100px;
+          Margin:10px 0px;
+          background-color: rgba(255,255, 255, .1);
+                -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+                        box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+         }
+        div.shape {
+        position: relative;
+        Left:140px;
+            width: 60px;
+            height: 50px;
+            font-size:30px;
+            Align-items:center;
+            -webkit-animation-name: shape;   
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: infinite;
+            animation-name: shape;   
+            animation-duration: 2s; 
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes shape {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @-webkit-keyframes shape {
+            0%{ transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        } 
+        table {
+          border-collapse: collapse;
+          width: 100px;
+          height: 100%;
+          background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');
+          background-size: 100%;
+          font-weight:bold;
+        }
+        th, td {
+          border: 1px solid black;
+          padding:0px;
+          text-align: center;
+        }
+        th { background-color: #f0f0f0; opacity: 0.8; }
+        td { background-color: #fff; opacity: 0.8; font-size: 10px; }
+        table tr:nth-child(even) { background-color: #f2f2f2; opacity: 0.8; }
+        .calendario {
+        position: absolute;
+        left: 0%;
+        top: 1px;
+        background: black;
+        float: left;
+        border: 1px red solid;
+        box-shadow: red 1px 1px 5px, red 1px 1px 5px;
+        border-radius: 5px;
+        width: 300px;
+        max-height: 500px;
+        padding: 0px;
+        margin: 1px;
+        overflow-x: auto;
+        overflow-y: auto;
+        word-break: break-all;
+        }
     </style>
-    <body >
-    <div 
-    
-    class="card">
+    <body>
+    <div class="card">
         <div class="head">
             <div class="circle"></div>
-            
         </div>
-            
-        
         <div class="description">
-           
             <h2 class="text-animation"> <br /> </h2>
-            
-            <div class="loader"
-    >
+            <div class="loader">
         <ul class="menu">
     <li>
-      <a href="grupo1.html">GRUPO 1</a>
+      <a href="grupo1.html" onclick="sonar(event, 'grupo1', this.href); return false;">GRUPO 1</a>
    </li>
-   
-   
    <li>
-      <a href="grupo2.html">GRUPO 2</a>
+      <a href="grupo2.html" onclick="sonar(event, 'grupo2', this.href); return false;">GRUPO 2</a>
    </li>
-   
     <li>
-      <a href="grupo3.html">GRUPO 3</a>
+      <a href="grupo3.html" onclick="sonar(event, 'grupo3', this.href); return false;">GRUPO 3</a>
    </li>
-   
    <li>
-      <a href="index.html">INICIO</a>
+      <a href="index.html" onclick="sonar(event, 'inicio', this.href); return false;">INICIO</a>
    </li>
-    
-    
     </ul>
     </div>
         </div>     
     </div>
-        
+
+<script>
+// ===== AQUÍ PEGAS TUS URLS DE TUS AUDIOS - Felipe Jiménez =====
+const AUDIOS = {
+  grupo1: "https://www.dropbox.com/scl/fi/4h9tn6hm2imazqcxz8mku/grupo1.mp3?rlkey=2agrg521if0efayurgmatow7v&st=tsambytk&dl=1",
+  grupo2: "https://www.dropbox.com/scl/fi/wcqya0zcd6tbtkwf7vvm1/grupo2.mp3?rlkey=te9supakofj6unxwwitt0tara&st=3s2mrqdv&dl=1",
+  grupo3: "https://www.dropbox.com/scl/fi/lxr6zjcs30kqpyc6mld4k/grupo3.mp3?rlkey=87y0f7wkmujr0kgn15un5m8qk&st=4ioe8auc&dl=1",
+  inicio: "PEGA AQUÍ TU URL DE INICIO"
+};
+// ===============================================================
+
+let audioActual = null;
+
+function sonar(event, cual, urlDestino) {
+  event.preventDefault();
+
+  var urlAudio = AUDIOS[cual];
+
+  // Si no pusiste URL, que igual abra el grupo para que no se trabe
+  if (!urlAudio || urlAudio.includes("PEGA AQUÍ")) {
+    window.location.href = urlDestino;
+    return;
+  }
+
+  // Si ya está sonando otro, lo paramos
+  if (audioActual) {
+    audioActual.pause();
+    audioActual.currentTime = 0;
+  }
+
+  audioActual = new Audio(urlAudio);
+  audioActual.play().catch(function() {
+    // Si el navegador lo bloquea, abre el grupo de todos modos
+    window.location.href = urlDestino;
+  });
+
+  var yaAbrio = false;
+  function abrir() {
+    if (!yaAbrio) {
+      yaAbrio = true;
+      window.location.href = urlDestino;
+    }
+  }
+
+  // Cuando termina tu audio, abre el grupo
+  audioActual.onended = abrir;
+
+  // Respaldo: si tu audio dura mucho, abre a los 3 segundos
+  setTimeout(abrir, 3000);
+}
+</script>
+
     </body>
 </html>
