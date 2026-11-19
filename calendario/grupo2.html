@@ -39,6 +39,11 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 </style>
 </head>
 <body>
+
+<audio id="audioExtra" preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/a9q0604piiaouihnt0pyd/tiempo-extra.mp3?rlkey=9h5cfi1wxogsqfd06nejefoia&st=j87tgdbb&dl=1" type="audio/mpeg">
+</audio>
+
 <div class="card">
 <h1>FELIPE JIMENEZ</br>CARMEN EVELIA</h1>
   <div class="titulo" id="titulo"></div>
@@ -213,6 +218,13 @@ function abrirModal(iso, dia) {
   }
   document.getElementById("modalGuardar").style.display = "flex";
 }
+function reproducirAudioExtra() {
+  const audio = document.getElementById("audioExtra");
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(e => console.log("No se pudo reproducir", e));
+  }
+}
 function guardarExtra() {
   const servicio = document.getElementById("servicio").value.trim();
   const turno = document.getElementById("turnoExtra").value.trim();
@@ -221,6 +233,7 @@ function guardarExtra() {
   const extras = getExtras();
   extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: cantidad, dato1: servicio + " turno " + turno, dato2: cantidad + "p" };
   setExtras(extras);
+  reproducirAudioExtra();
   cerrarModal();
   render();
 }
@@ -297,7 +310,6 @@ function descargarListaImagen() {
     document.getElementById("modalImagen").style.display = "flex";
   }, "image/png");
 }
-// CORREGIDO GRUPO 2 - manda la señal para activar el ActivityStarter del Grupo 2
 function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
   if (window.AppInventor) {
