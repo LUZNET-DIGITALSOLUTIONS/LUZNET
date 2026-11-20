@@ -41,8 +41,11 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 <body>
 
 <audio id="audioExtra" preload="auto">
-  <source src="https://www.dropbox.com/scl/fi/a9q0604piiaouihnt0pyd/tiempo-extra.mp3?rlkey=9h5cfi1wxogsqfd06nejefoia&st=j87tgdbb&dl=1
-  " type="audio/mpeg">
+  <source src="https://www.dropbox.com/scl/fi/a9q0604piiaouihnt0pyd/tiempo-extra.mp3?rlkey=9h5cfi1wxogsqfd06nejefoia&st=j87tgdbb&dl=1" type="audio/mpeg">
+</audio>
+
+<audio id="audioReporte" preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/wuaot57701cg440zdh475/reporte.mp3?rlkey=iwi58jzszj8ulzh1a6zb4mf08&st=yi4emdve&dl=1" type="audio/mpeg">
 </audio>
 
 <div class="card">
@@ -226,6 +229,13 @@ function reproducirAudioExtra() {
     audio.play().catch(e => console.log("No se pudo reproducir", e));
   }
 }
+function reproducirAudioReporte() {
+  const audio = document.getElementById("audioReporte");
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(e => console.log("No se pudo reproducir reporte", e));
+  }
+}
 function guardarExtra() {
   const servicio = document.getElementById("servicio").value.trim();
   const turno = document.getElementById("turnoExtra").value.trim();
@@ -284,44 +294,50 @@ function generarTextoLista() {
 function descargarListaImagen() {
   const { keys, extras } = generarTextoLista();
   if(keys.length === 0) { alert("No hay nada que descargar"); return; }
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  canvas.width = 700;
-  canvas.height = 90 + keys.length * 72;
-  ctx.fillStyle = "white"; ctx.fillRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "black"; ctx.font = "bold 30px Arial"; ctx.textAlign = "center";
-  ctx.fillText("⭐ TIEMPOS EXTRAS", 350, 55);
-  ctx.textAlign = "left"; ctx.font = "20px Arial";
-  let y = 105;
-  keys.forEach(k => {
-    ctx.fillStyle = "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
-    ctx.fillStyle = "black";
-    ctx.fillText(k + "  -  " + textoDeExtra(extras[k]), 30, y+8);
-    y += 72;
-  });
-  canvas.toBlob(function(blob){
-    ultimaImagenBlob = blob;
-    ultimaImagenURL = URL.createObjectURL(blob);
-    document.getElementById("imgGenerada").src = ultimaImagenURL;
-    document.getElementById("modalLista").style.display = "none";
-    document.getElementById("modalImagen").style.display = "flex";
-  }, "image/png");
+  reproducirAudioReporte();
+  setTimeout(() => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 700;
+    canvas.height = 90 + keys.length * 72;
+    ctx.fillStyle = "white"; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "black"; ctx.font = "bold 30px Arial"; ctx.textAlign = "center";
+    ctx.fillText("⭐ TIEMPOS EXTRAS", 350, 55);
+    ctx.textAlign = "left"; ctx.font = "20px Arial";
+    let y = 105;
+    keys.forEach(k => {
+      ctx.fillStyle = "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
+      ctx.fillStyle = "black";
+      ctx.fillText(k + "  -  " + textoDeExtra(extras[k]), 30, y+8);
+      y += 72;
+    });
+    canvas.toBlob(function(blob){
+      ultimaImagenBlob = blob;
+      ultimaImagenURL = URL.createObjectURL(blob);
+      document.getElementById("imgGenerada").src = ultimaImagenURL;
+      document.getElementById("modalLista").style.display = "none";
+      document.getElementById("modalImagen").style.display = "flex";
+    }, "image/png");
+  }, 800);
 }
 function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
-  if (window.AppInventor) {
-    try { window.AppInventor.setWebViewString("ABRIR_CHROME"); } catch(e) {}
-    return;
-  }
-  try {
-    const blobUrl = URL.createObjectURL(ultimaImagenBlob);
-    const a = document.createElement("a");
-    a.href = blobUrl;
-    a.download = "tiempos_extras.png";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  } catch(e) {}
+  reproducirAudioReporte();
+  setTimeout(() => {
+    if (window.AppInventor) {
+      try { window.AppInventor.setWebViewString("ABRIR_CHROME"); } catch(e) {}
+      return;
+    }
+    try {
+      const blobUrl = URL.createObjectURL(ultimaImagenBlob);
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "tiempos_extras.png";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch(e) {}
+  }, 800);
 }
 render();
 cargarDeCloud();
