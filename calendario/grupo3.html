@@ -114,6 +114,7 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
     <h3>⭐ TIEMPOS EXTRAS GUARDADOS</h3>
     <div id="contenidoLista"></div>
     <button class="btn" onclick="descargarListaImagen()" style="background:#0a7a2e; width:100%; margin-top:10px;">📸 VER COMO IMAGEN</button>
+    <button class="btn" onclick="borrarRealizados()" style="background:#c00; width:100%; margin-top:8px;">🗑️ BORRAR SOLO REALIZADOS (VERDES)</button>
     <button class="btn" onclick="cerrarModal()" style="background:black; width:100%; margin-top:8px;">CERRAR</button>
   </div>
 </div>
@@ -333,6 +334,17 @@ function borrarDesdeLista(iso) {
   setExtras(extras);
   abrirLista();
   render();
+}
+function borrarRealizados() {
+  const extras = getExtras();
+  const paraBorrar = Object.keys(extras).filter(k => esRealizado(k));
+  if(paraBorrar.length === 0){ alert("No hay extras REALIZADOS para borrar, carnal. Solo tienes AGENDADOS."); return; }
+  if(!confirm("¿Borrar " + paraBorrar.length + " extras REALIZADOS (verdes)?\n\n¿Ya los pasaste a tu tabla de consulta?\n\nLos AGENDADOS (amarillos) NO se van a borrar.")){ return; }
+  paraBorrar.forEach(k => { delete extras[k]; });
+  setExtras(extras);
+  abrirLista();
+  render();
+  alert("Listo, carnal. Se borraron " + paraBorrar.length + " realizados. Los agendados quedaron intactos.");
 }
 function cerrarModal() {
   document.getElementById("modalGuardar").style.display = "none";
