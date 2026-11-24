@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Baloo 2'; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Baloo 2',; }
 :root { --gradient: linear-gradient(-45deg,white, red,black,red,white ); }
 body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:black; background-size:10%; }
 .card { width: 100%; max-width: 400px; min-height: 52vh; text-align: center; border: 1px solid #FFFFFF;
@@ -74,8 +74,13 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
       <option value="dia">DÍA ☀️</option>
       <option value="noche">NOCHE 🌙</option>
     </select>
-    <label>Cantidad</label>
-    <input type="text" id="cantidad" placeholder="Ej: 50" inputmode="numeric">
+    <label>Motivo</label>
+    <select id="motivo">
+      <option value="" disabled selected>Selecciona motivo...</option>
+      <option value="500">500</option>
+      <option value="ARREGLO">ARREGLO</option>
+      <option value="ADELANTO">ADELANTO</option>
+    </select>
     <div style="display:flex; gap:8px;">
       <button class="btn" onclick="guardarExtra()" style="background:black;">GUARDAR</button>
       <button class="btn" onclick="borrarExtra()" style="background:#c00;">BORRAR</button>
@@ -216,25 +221,43 @@ function abrirModal(iso, dia) {
   const extras = getExtras();
   const guardado = extras[iso];
   if (guardado) {
-    document.getElementById("servicio").value = guardado.servicio || guardado.dato1 || "";
+    document.getElementById("servicio").value = guardado.servicio || "";
     let t = (guardado.turno || "").toLowerCase().trim();
     if(t === "día" || t === "dia") t = "dia";
     if(t === "noche") t = "noche";
     document.getElementById("turnoExtra").value = t || "";
-    document.getElementById("cantidad").value = guardado.cantidad || guardado.dato2 || "";
+    // Soporta datos viejos (cantidad) y nuevos (motivo)
+    let m = (guardado.motivo || guardado.cantidad || "").toString().toUpperCase().trim();
+    // Si era "50p" o "500p" lo limpiamos
+    m = m.replace("P","").trim();
+    if(m === "50" || m === "500") m = "500";
+    document.getElementById("motivo").value = (m === "500" || m === "ARREGLO" || m === "ADELANTO") ? m : "";
   } else {
     document.getElementById("servicio").value = "";
     document.getElementById("turnoExtra").value = "";
-    document.getElementById("cantidad").value = "";
+    document.getElementById("motivo").value = "";
   }
   document.getElementById("modalGuardar").style.display = "flex";
 }
-function reproducirAudioExtra() {
+function hablar(texto){
+  try{
+    if('speechSynthesis' in window){
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(texto);
+      u.lang = 'es-MX';
+      u.rate = 0.95;
+      window.speechSynthesis.speak(u);
+      return;
+    }
+  }catch(e){}
+  // Si no hay voz, usa tu audio viejo
   const audio = document.getElementById("audioExtra");
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(e => console.log("No se pudo reproducir", e));
-  }
+  if(audio){ audio.currentTime = 0; audio.play().catch(()=>{}); }
+}
+function reproducirAudioExtra(motivo) {
+  if(motivo === "ARREGLO") hablar("Arreglo confirmado");
+  else if(motivo === "ADELANTO") hablar("Adelanto confirmado");
+  else hablar("Tiempo extra registrado");
 }
 function reproducirAudioReporte() {
   const audio = document.getElementById("audioReporte");
@@ -246,13 +269,15 @@ function reproducirAudioReporte() {
 function guardarExtra() {
   const servicio = document.getElementById("servicio").value.trim();
   const turno = document.getElementById("turnoExtra").value.trim();
-  const cantidad = document.getElementById("cantidad").value.trim();
-  if(!servicio && !turno && !cantidad) { alert("Escribe al menos un dato"); return; }
+  const motivo = document.getElementById("motivo").value.trim();
+  if(!servicio && !turno && !motivo) { alert("Escribe al menos un dato"); return; }
   if(!turno){ alert("Selecciona el turno Día o Noche"); return; }
+  if(!motivo){ alert("Selecciona el motivo"); return; }
   const extras = getExtras();
-  extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: cantidad, dato1: servicio + " turno " + turno, dato2: cantidad + "p" };
+  // Guardamos motivo en cantidad también para que no se pierda en la nube vieja
+  extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: motivo, motivo: motivo, dato1: servicio + " turno " + turno, dato2: motivo };
   setExtras(extras);
-  reproducirAudioExtra();
+  reproducirAudioExtra(motivo);
   cerrarModal();
   render();
 }
@@ -264,8 +289,9 @@ function borrarExtra() {
   render();
 }
 function textoDeExtra(e) {
-  if (e.servicio) return e.servicio + " - turno " + e.turno + " - " + e.cantidad + "p";
-  return (e.dato1 || "") + " | " + (e.dato2 || "");
+  const mot = e.motivo || e.cantidad || e.dato2 || "";
+  if (e.servicio) return e.servicio + " - turno " + e.turno + " - " + mot;
+  return (e.dato1 || "") + " | " + mot;
 }
 function abrirLista() {
   render();
