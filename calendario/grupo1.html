@@ -23,6 +23,7 @@ td.dia { background: rgba(255, 255, 255, 0.85) !important; color: black !importa
 td.noche { background: rgba(137, 138, 142, 0.85) !important; color: white !important; }
 td.descanso { background: rgba(70, 70, 72, 0.85) !important; color: white !important; }
 td.extra { background: rgba(255, 215, 0, 0.95) !important; color: black !important; border: 2px solid gold !important; }
+td.extra-realizado { background: rgba(34, 197, 94, 0.95) !important; color: white !important; border: 2px solid #16a34a !important; }
 .controles { display:flex; justify-content:space-between; gap:8px; margin-top:12px; }
 .btn { flex:1; background-color: rgba(255,255, 255, .1); color:white; border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; padding:8px; cursor:pointer; font-size:16px; text-decoration:none; }
 .btn:hover { transform:translateY(-2px); }
@@ -36,6 +37,8 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 .modal-caja label { font-size:14px; font-weight:bold; }
 .modal-caja input, .modal-caja select { width:100%; padding:8px; margin:5px 0 12px 0; border:1px solid #ccc; border-radius:5px; font-size:15px; }
 .lista-item { background:#f5f5f5; border:1px solid #ddd; border-radius:8px; padding:8px; margin-bottom:8px; font-size:14px; }
+.leyenda { display:flex; gap:6px; justify-content:center; margin-top:8px; font-size:11px; color:white; }
+.leyenda span { padding:3px 8px; border-radius:10px; font-weight:bold; }
 </style>
 </head>
 <body>
@@ -52,6 +55,10 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 <h1>ENRIQUE ZAMORA </br>ANA TEXIS</h1>
   <div class="titulo" id="titulo"></div>
   <div class="calendario" id="calendario"></div>
+  <div class="leyenda">
+    <span style="background:#FFD700; color:black;">🟡 EXTRA AGENDADO</span>
+    <span style="background:#22c55e; color:white;">🟢 EXTRA REALIZADO</span>
+  </div>
   <div class="controles">
     <button class="btn" onclick="cambiarMes(-1)"> ANTERIOR ◀</button>
     <button class="btn hoy" onclick="irHoy()">HOY</button>
@@ -155,6 +162,13 @@ function normalizarFecha(k) {
   }
   return k.substring(0,10);
 }
+function hoyISO(){
+  const h = new Date();
+  return h.getFullYear() + "-" + String(h.getMonth()+1).padStart(2,'0') + "-" + String(h.getDate()).padStart(2,'0');
+}
+function esRealizado(iso){
+  return iso <= hoyISO();
+}
 function cargarDatos(txt) {
   try {
     if (!txt || txt === "" || txt === "{}") { memoriaExtras = {}; } else {
@@ -212,9 +226,18 @@ function render() {
     const fecha = new Date(año, mes, d);
     const turno = getTurno(fecha);
     const iso = `${año}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const esExtra = extras[iso] ? "extra" : "";
-    const estrella = extras[iso] ? "<br>★ EXTRA" : "";
-    html+=`<td class="${turno} ${esExtra}" onclick="abrirModal('${iso}', ${d})">${d}<br>${turno}${estrella}</td>`;
+    let claseExtra = "";
+    let estrella = "";
+    if(extras[iso]){
+      if(esRealizado(iso)){
+        claseExtra = "extra-realizado";
+        estrella = "<br>★ EXTRA<br>REALIZADO";
+      } else {
+        claseExtra = "extra";
+        estrella = "<br>★ EXTRA<br>AGENDADO";
+      }
+    }
+    html+=`<td class="${turno} ${claseExtra}" onclick="abrirModal('${iso}', ${d})">${d}<br>${turno}${estrella}</td>`;
   }
   let total = primerDia + diasEnMes;
   while(total < 42){
@@ -297,7 +320,9 @@ function abrirLista() {
   let html = "";
   if(keys.length === 0) html = "<p style='text-align:center;'>No hay tiempos extras guardados</p>";
   keys.forEach(k => {
-    html += `<div class="lista-item"><b>${k}</b><br>1: ${textoDeExtra(extras[k])}<br><button onclick="borrarDesdeLista('${k}')" style="margin-top:5px; padding:4px 8px; background:#c00; color:white; border:none; border-radius:5px;">Borrar</button></div>`;
+    const estado = esRealizado(k) ? "🟢 EXTRA REALIZADO" : "🟡 EXTRA AGENDADO";
+    const color = esRealizado(k) ? "#dcfce7" : "#fff3a6";
+    html += `<div class="lista-item" style="background:${color};"><b>${k}</b> - ${estado}<br>1: ${textoDeExtra(extras[k])}<br><button onclick="borrarDesdeLista('${k}')" style="margin-top:5px; padding:4px 8px; background:#c00; color:white; border:none; border-radius:5px;">Borrar</button></div>`;
   });
   document.getElementById("contenidoLista").innerHTML = html;
   document.getElementById("modalLista").style.display = "flex";
@@ -337,9 +362,9 @@ function descargarListaImagen() {
     ctx.textAlign = "left"; ctx.font = "20px Arial";
     let y = 105;
     keys.forEach(k => {
-      ctx.fillStyle = "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
+      ctx.fillStyle = esRealizado(k) ? "#dcfce7" : "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
       ctx.fillStyle = "black";
-      ctx.fillText(k + "  -  " + textoDeExtra(extras[k]), 30, y+8);
+      ctx.fillText(k + "  -  " + textoDeExtra(extras[k]) + (esRealizado(k) ? " - EXTRA REALIZADO" : " - EXTRA AGENDADO"), 30, y+8);
       y += 72;
     });
     canvas.toBlob(function(blob){
