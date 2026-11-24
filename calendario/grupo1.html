@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Baloo 2', cursive; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Baloo 2'; }
 :root { --gradient: linear-gradient(-45deg,white, red,black,red,white ); }
 body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:black; background-size:10%; }
 .card { width: 100%; max-width: 400px; min-height: 52vh; text-align: center; border: 1px solid #FFFFFF;
@@ -69,7 +69,11 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
     <label>Servicio</label>
     <input type="text" id="servicio" placeholder="Ej: LOS ALTOS">
     <label>Turno del extra</label>
-    <input type="text" id="turnoExtra" placeholder="Ej: noche / dia">
+    <select id="turnoExtra">
+      <option value="" disabled selected>Selecciona turno...</option>
+      <option value="dia">DÍA ☀️</option>
+      <option value="noche">NOCHE 🌙</option>
+    </select>
     <label>Cantidad</label>
     <input type="text" id="cantidad" placeholder="Ej: 50" inputmode="numeric">
     <div style="display:flex; gap:8px;">
@@ -213,7 +217,10 @@ function abrirModal(iso, dia) {
   const guardado = extras[iso];
   if (guardado) {
     document.getElementById("servicio").value = guardado.servicio || guardado.dato1 || "";
-    document.getElementById("turnoExtra").value = guardado.turno || "";
+    let t = (guardado.turno || "").toLowerCase().trim();
+    if(t === "día" || t === "dia") t = "dia";
+    if(t === "noche") t = "noche";
+    document.getElementById("turnoExtra").value = t || "";
     document.getElementById("cantidad").value = guardado.cantidad || guardado.dato2 || "";
   } else {
     document.getElementById("servicio").value = "";
@@ -241,6 +248,7 @@ function guardarExtra() {
   const turno = document.getElementById("turnoExtra").value.trim();
   const cantidad = document.getElementById("cantidad").value.trim();
   if(!servicio && !turno && !cantidad) { alert("Escribe al menos un dato"); return; }
+  if(!turno){ alert("Selecciona el turno Día o Noche"); return; }
   const extras = getExtras();
   extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: cantidad, dato1: servicio + " turno " + turno, dato2: cantidad + "p" };
   setExtras(extras);
