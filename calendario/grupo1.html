@@ -226,7 +226,9 @@ function abrirModal(iso, dia) {
     if(t === "día" || t === "dia") t = "dia";
     if(t === "noche") t = "noche";
     document.getElementById("turnoExtra").value = t || "";
+    // Soporta datos viejos (cantidad) y nuevos (motivo)
     let m = (guardado.motivo || guardado.cantidad || "").toString().toUpperCase().trim();
+    // Si era "50p" o "500p" lo limpiamos
     m = m.replace("P","").trim();
     if(m === "50" || m === "500") m = "500";
     document.getElementById("motivo").value = (m === "500" || m === "ARREGLO" || m === "ADELANTO") ? m : "";
@@ -238,26 +240,17 @@ function abrirModal(iso, dia) {
   document.getElementById("modalGuardar").style.display = "flex";
 }
 function hablar(texto){
-  // CORREGIDO PARA APP: primero avisa a App Inventor para que hable el
-  try {
-    if (window.AppInventor) {
-      window.AppInventor.setWebViewString("HABLAR:" + texto);
-      return;
-    }
-  } catch(e) {}
-  // Si estamos en WEB, habla el navegador
   try{
     if('speechSynthesis' in window){
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(texto);
       u.lang = 'es-MX';
       u.rate = 0.95;
-      window.speechSynthesis.resume();
       window.speechSynthesis.speak(u);
       return;
     }
   }catch(e){}
-  // Si nada jala, usa tu audio viejo
+  // Si no hay voz, usa tu audio viejo
   const audio = document.getElementById("audioExtra");
   if(audio){ audio.currentTime = 0; audio.play().catch(()=>{}); }
 }
@@ -281,6 +274,7 @@ function guardarExtra() {
   if(!turno){ alert("Selecciona el turno Día o Noche"); return; }
   if(!motivo){ alert("Selecciona el motivo"); return; }
   const extras = getExtras();
+  // Guardamos motivo en cantidad también para que no se pierda en la nube vieja
   extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: motivo, motivo: motivo, dato1: servicio + " turno " + turno, dato2: motivo };
   setExtras(extras);
   reproducirAudioExtra(motivo);
