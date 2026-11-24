@@ -13,11 +13,14 @@ body { display:flex; align-items:center; justify-content:center; min-height:100v
 box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red; background-image: var(--gradient); background-size: 300% 300%; -webkit-animation: bg-animation 30s infinite; animation: bg-animation 30s infinite; border-radius: 10px; overflow: hidden; margin: 15px; padding: 10px; }
 @keyframes bg-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 .titulo { color:white; font-size:22px; text-transform:uppercase; margin:10px 0; text-shadow:red -2px 1px 1px; }
-.calendario { background-color: rgba(255,255, 255, .1); border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; width:100%; padding:5px; }
-table { border-collapse:collapse; width:100%; font-weight:bold; background-image:url('https://i.ibb.co/JzdkvNg/666.jpg'); background-size:100%; }
-th, td { border:1px solid black; text-align:center; }
-th { background:#f0f0f0; opacity:0.8; padding:4px; font-size:13px; }
-td { background:#fff; opacity:0.85; font-size:10px; height:38px; cursor:pointer; }
+.calendario { background-color: rgba(255,255, 255, .1); border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; width:100%; padding:5px; overflow:hidden; }
+table { border-collapse:collapse; width:100%; table-layout:fixed; font-weight:bold; background-image:url('https://i.ibb.co/JzdkvNg/666.jpg'); background-size:100%; }
+th, td { border:1px solid black; text-align:center; overflow:hidden; }
+th { background:#f0f0f0; opacity:0.8; padding:4px 1px; font-size:12px; white-space:nowrap; }
+td { background:#fff; opacity:0.85; font-size:9px; height:52px; min-height:52px; max-height:52px; cursor:pointer; padding:2px 1px; vertical-align:middle; line-height:1.15; }
+td .num { display:block; font-size:11px; line-height:1.1; }
+td .turno-txt { display:block; font-size:8.5px; line-height:1.1; white-space:nowrap; }
+td .extra-tag { display:block; font-size:7.5px; line-height:1.1; font-weight:700; white-space:nowrap; }
 td.vacio { background:#fff; opacity:0.85; border:1px solid black; cursor:default; }
 td.dia { background: rgba(255, 255, 255, 0.85) !important; color: black !important; }
 td.noche { background: rgba(137, 138, 142, 0.85) !important; color: white !important; }
@@ -38,7 +41,7 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 .modal-caja input, .modal-caja select { width:100%; padding:8px; margin:5px 0 12px 0; border:1px solid #ccc; border-radius:5px; font-size:15px; }
 .lista-item { background:#f5f5f5; border:1px solid #ddd; border-radius:8px; padding:8px; margin-bottom:8px; font-size:14px; }
 .leyenda { display:flex; gap:6px; justify-content:center; margin-top:8px; font-size:11px; color:white; }
-.leyenda span { padding:3px 8px; border-radius:10px; font-weight:bold; }
+.leyenda span { padding:3px 8px; border-radius:10px; font-weight:bold; white-space:nowrap; }
 </style>
 </head>
 <body>
@@ -209,6 +212,12 @@ function getTurno(fecha) {
   if(index < 0) index += 6;
   return CICLO[index];
 }
+function turnoCorto(turno){
+  if(turno === "descanso") return "DESC.";
+  if(turno === "dia") return "DÍA";
+  if(turno === "noche") return "NOCHE";
+  return turno;
+}
 function render() {
   const año = vista.getFullYear();
   const mes = vista.getMonth();
@@ -232,13 +241,13 @@ function render() {
     if(extras[iso]){
       if(esRealizado(iso)){
         claseExtra = "extra-realizado";
-        estrella = "<br>★ EXTRA<br>REALIZADO";
+        estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">REALIZADO</span>`;
       } else {
         claseExtra = "extra";
-        estrella = "<br>★ EXTRA<br>AGENDADO";
+        estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">AGENDADO</span>`;
       }
     }
-    html+=`<td class="${turno} ${claseExtra}" onclick="abrirModal('${iso}', ${d})">${d}<br>${turno}${estrella}</td>`;
+    html+=`<td class="${turno} ${claseExtra}" onclick="abrirModal('${iso}', ${d})"><span class="num">${d}</span><span class="turno-txt">${turnoCorto(turno)}</span>${estrella}</td>`;
   }
   let total = primerDia + diasEnMes;
   while(total < 42){
