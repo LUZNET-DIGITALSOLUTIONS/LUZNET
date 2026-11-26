@@ -18,11 +18,11 @@ h2 { text-align:center; font-size:18px; margin:4px 0; text-transform:uppercase; 
 #semanaLabel span { color:#facc15; font-size:20px; }
 table { width:100%; border-collapse:collapse; text-align:center; }
 th { background:#0f172a; color:white; padding:10px 4px; font-size:13px; }
-td { border:1px solid #ddd; padding:8px 4px; font-size:13px; height:52px; vertical-align:top; }
+td { border:1px solid #ddd; padding:8px 4px; font-size:13px; min-height:52px; vertical-align:top; }
 td.diaCol { width:32%; font-weight:bold; background:#f8fafc; text-align:left; padding-left:10px; }
 td.diaCol small { display:block; font-weight:normal; font-size:11px; color:#666; }
 td.hoy { outline:3px solid #2563eb; outline-offset:-3px; }
-input { width:100%; border:none; background:transparent; text-align:center; font-size:13px; font-weight:bold; outline:none; text-transform:uppercase; }
+textarea { width:100%; border:none; background:transparent; text-align:center; font-size:13px; font-weight:bold; outline:none; text-transform:uppercase; resize:none; overflow:hidden; min-height:22px; line-height:1.4; }
 .estado { font-size:10px; font-weight:bold; display:block; margin-top:3px; padding:2px 4px; border-radius:6px; }
 .cubierto { background:#dcfce7 !important; }
 .cubierto .estado { background:#16a34a; color:white; }
@@ -44,7 +44,7 @@ input { width:100%; border:none; background:transparent; text-align:center; font
 <button id="hoyBtn" onclick="irHoy()">📅 HOY</button>
 <button onclick="cambiarSemana(1)">SIGUIENTE ▶️</button>
 </div>
-<h2>📋 Cobertura para lety</h2>
+<h2>📋 Cobertura Mi Esposa</h2>
 <div id="rango"></div>
 <div id="semanaLabel"></div>
 <table>
@@ -131,7 +131,8 @@ function irHoy(){ fechaBase = new Date(); fechaBase.setHours(0,0,0,0); render();
 async function guardar(key, turno, valor){
   let extras = getExtras();
   if(!extras[key]) extras[key] = {};
-  extras[key][turno] = valor.trim().toUpperCase();
+  // Aqui es lo de los nombres uno abajo del otro, carnal - guarda cada linea por separado
+  extras[key][turno] = valor.split("\n").map(s=>s.trim().toUpperCase().replace(/\/+$/,"")).filter(s=>s!=="").join("\n");
   setExtras(extras);
   render();
 }
@@ -140,6 +141,14 @@ function estadoCelda(valor, fechaCelda){
   if(!valor) return {clase:"sin-cubrir", texto:"SIN CUBRIR"};
   if(fechaCelda <= hoy) return {clase:"cubierto", texto:"✅ DÍA CUBIERTO"};
   return {clase:"por-cubrir", texto:"⏳ POR CUBRIR"};
+}
+function mostrarNombres(v){
+  // Convierte ALMA/CUCA o ALMA,CUCA en ALMA salto de linea CUCA, carnal
+  return String(v||"").replace(/\//g,"\n").replace(/,/g,"\n").replace(/;/g,"\n");
+}
+function ajustarAlto(el){
+  el.style.height='auto';
+  el.style.height=el.scrollHeight+'px';
 }
 function render(){
   let lunes = getLunes(fechaBase);
@@ -159,11 +168,15 @@ function render(){
     let vNoche = (extras[key] && extras[key].noche) ? extras[key].noche : "";
     let eDia = estadoCelda(vDia,f);
     let eNoche = estadoCelda(vNoche,f);
+    let vDiaShow = mostrarNombres(vDia);
+    let vNocheShow = mostrarNombres(vNoche);
     html += "<tr><td class='diaCol "+esHoy+"'>"+dias[i]+"<small>"+fmtCorto(f)+" "+(esHoy ? "• HOY" : "")+"</small></td>"
-    + "<td class='"+eDia.clase+" "+esHoy+"'><input value='"+vDia+"' placeholder='¿QUIÉN?' onchange=\"guardar('"+key+"','dia',this.value)\"><span class='estado'>"+eDia.texto+"</span></td>"
-    + "<td class='"+eNoche.clase+" "+esHoy+"'><input value='"+vNoche+"' placeholder='¿QUIÉN?' onchange=\"guardar('"+key+"','noche',this.value)\"><span class='estado'>"+eNoche.texto+"</span></td></tr>";
+    + "<td class='"+eDia.clase+" "+esHoy+"'><textarea rows='1' placeholder='¿QUIÉN?' oninput=\"ajustarAlto(this)\" onchange=\"guardar('"+key+"','dia',this.value)\">"+vDiaShow+"</textarea><span class='estado'>"+eDia.texto+"</span></td>"
+    + "<td class='"+eNoche.clase+" "+esHoy+"'><textarea rows='1' placeholder='¿QUIÉN?' oninput=\"ajustarAlto(this)\" onchange=\"guardar('"+key+"','noche',this.value)\">"+vNocheShow+"</textarea><span class='estado'>"+eNoche.texto+"</span></td></tr>";
   }
   document.getElementById("tbody").innerHTML = html;
+  // Ajusta el alto al cargar para que se vean los 2 nombres, carnal
+  document.querySelectorAll("textarea").forEach(t=>ajustarAlto(t));
 }
 render();
 cargarDeCloud();
