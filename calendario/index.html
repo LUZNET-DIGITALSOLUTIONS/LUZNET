@@ -89,19 +89,13 @@ H1,H2,A{
 .menu li a{
   display: flex;
   flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   color: white;
   text-decoration: none;
-  padding: 18px 10px;
+  padding: 10px 10px 55px ;
   width: 200px;
-  height: auto;
-  min-height: 60px;
+  height: 50px;
   border-radius: 100px;
-  Margin:10px auto;
-  box-sizing: border-box;
-  line-height: 1.2;
+  Margin:10px 0px;
   background-color: rgba(255,255, 255, .1);
   -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
   box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
@@ -210,34 +204,47 @@ word-break: break-all;
         </div>     
     </div>
 
-<!-- AUDIO TUYO DE DROPBOX - YA CORREGIDO -->
-<!-- 👇 TODO EN UNA SOLA LINEA, SIN SALTO, SIN ESPACIOS, CARNAL 👇 -->
-<audio id="audioConfig" preload="auto" src="https://www.dropbox.com/scl/fi/49r5qrc8wh6ur3m6v0wnt/configuraci-n.mp3?rlkey=7rc3we5fo6e77jxcrth402dxt&st=ek3r7dom&dl=1"></audio>
+<!-- AUDIO EXTERNO -->
+<audio id="audioConfig" preload="auto">
+  <source src="https://www.dropbox.com/scl/fi/49r5qrc8wh6ur3m6v0wnt/configuraci-n.mp3?rlkey=7rc3we5fo6e77jxcrth402dxt&st=ek3r7dom&dl=1
+  " type="audio/mpeg">
+</audio>
 
 <script>
-/* TU URL DE CONFIGURACIÓN */
+/* ============================================================
+   NOTA FELIPE - AQUÍ VA LA URL / UBICACIÓN DE CONFIGURACIÓN
+
+   EJEMPLO:
+   var URL_CONFIG = "ejemplo.html";
+
+   👉 "ejemplo.html" ES SOLO UN EJEMPLO, CARNAL 👈
+   👉 AHÍ TÚ LE PONES EL NOMBRE REAL DE TU ARCHIVO 👈
+
+   Ejemplos de cómo quedaría:
+   var URL_CONFIG = "config.html";
+   var URL_CONFIG = "configuracion.html";
+   var URL_CONFIG = "file:///android_asset/config.html";
+   var URL_CONFIG = "https://tusitio.com/config.html";
+
+   El archivo debe estar en el mismo lugar que este index.html
+   ============================================================ */
 var URL_CONFIG = "configuracion.html";
-var URL_AUDIO = "https://www.dropbox.com/scl/fi/49r5qrc8wh6ur3m6v0wnt/configuraci-n.mp3?rlkey=7rc3we5fo6e77jxcrth402dxt&st=ek3r7dom&dl=1";
 
 function irConfig(){
   try{
     var aud = document.getElementById("audioConfig");
-    aud.src = URL_AUDIO;
     aud.currentTime = 0;
     var p = aud.play();
     if(p !== undefined){
       p.catch(function(e){
-        // Si el WebView bloquea el audio interno, lo abrimos externo con TU audio, no el de Google
-        window.open(URL_AUDIO, "_blank");
+        window.open("https://translate.google.com/translate_tts?ie=UTF-8&q=Entrando%20a%20configuraci%C3%B3n&tl=es&client=tw-ob", "_blank");
       });
     }
-  }catch(e){
-    window.open(URL_AUDIO, "_blank");
-  }
-  // Le damos 1500ms para que suene tu audio antes de cambiar de ventana
+  }catch(e){}
   setTimeout(function(){
+    // 👇 AQUÍ SE ABRE LA VENTANA - USA LA URL DE ARRIBA 👇
     window.location.href = URL_CONFIG;
-  }, 1500);
+  }, 700);
 }
 </script>
         
