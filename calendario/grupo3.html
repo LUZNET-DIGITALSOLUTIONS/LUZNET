@@ -27,6 +27,7 @@ td.noche { background: rgba(137, 138, 142, 0.85) !important; color: white !impor
 td.descanso { background: rgba(70, 70, 72, 0.85) !important; color: white !important; }
 td.extra { background: rgba(255, 215, 0, 0.95) !important; color: black !important; border: 2px solid gold !important; }
 td.extra-realizado { background: rgba(34, 197, 94, 0.95) !important; color: white !important; border: 2px solid #16a34a !important; }
+td.extra-pagado { background: rgba(37, 99, 235, 0.95) !important; color: white !important; border: 2px solid #1d4ed8 !important; }
 .controles { display:flex; justify-content:space-between; gap:8px; margin-top:12px; }
 .btn { flex:1; background-color: rgba(255,255, 255, .1); color:white; border:1px red solid; box-shadow:red -1px 1px 5px, red 1px -1px 5px; border-radius:5px; padding:8px; cursor:pointer; font-size:16px; text-decoration:none; }
 .btn:hover { transform:translateY(-2px); }
@@ -40,27 +41,21 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
 .modal-caja label { font-size:14px; font-weight:bold; }
 .modal-caja input, .modal-caja select { width:100%; padding:8px; margin:5px 0 12px 0; border:1px solid #ccc; border-radius:5px; font-size:15px; }
 .lista-item { background:#f5f5f5; border:1px solid #ddd; border-radius:8px; padding:8px; margin-bottom:8px; font-size:14px; }
-.leyenda { display:flex; gap:6px; justify-content:center; margin-top:8px; font-size:11px; color:white; }
+.leyenda { display:flex; gap:6px; justify-content:center; margin-top:8px; font-size:11px; color:white; flex-wrap:wrap; }
 .leyenda span { padding:3px 8px; border-radius:10px; font-weight:bold; white-space:nowrap; }
 </style>
 </head>
 <body>
-
-<audio id="audioExtra" preload="auto">
-  <source src="https://www.dropbox.com/scl/fi/a9q0604piiaouihnt0pyd/tiempo-extra.mp3?rlkey=9h5cfi1wxogsqfd06nejefoia&st=j87tgdbb&dl=1" type="audio/mpeg">
-</audio>
-
-<audio id="audioReporte" preload="auto">
-  <source src="https://www.dropbox.com/scl/fi/wuaot57701cg440zdh475/reporte.mp3?rlkey=iwi58jzszj8ulzh1a6zb4mf08&st=yi4emdve&dl=1" type="audio/mpeg">
-</audio>
-
+<audio id="audioExtra" preload="auto"><source src="https://www.dropbox.com/scl/fi/a9q0604piiaouihnt0pyd/tiempo-extra.mp3?rlkey=9h5cfi1wxogsqfd06nejefoia&st=j87tgdbb&dl=1" type="audio/mpeg"></audio>
+<audio id="audioReporte" preload="auto"><source src="https://www.dropbox.com/scl/fi/wuaot57701cg440zdh475/reporte.mp3?rlkey=iwi58jzszj8ulzh1a6zb4mf08&st=yi4emdve&dl=1" type="audio/mpeg"></audio>
 <div class="card">
 <h1>LETICIA VAZQUEZ</br>RICARDO DELGADO</h1>
   <div class="titulo" id="titulo"></div>
   <div class="calendario" id="calendario"></div>
   <div class="leyenda">
-    <span style="background:#FFD700; color:black;">🟡 EXTRA AGENDADO</span>
-    <span style="background:#22c55e; color:white;">🟢 EXTRA REALIZADO</span>
+    <span style="background:#FFD700; color:black;">🟡 AGENDADO</span>
+    <span style="background:#22c55e; color:white;">🟢 PENDIENTE DE PAGO</span>
+    <span style="background:#2563eb; color:white;">🔵 PAGADO</span>
   </div>
   <div class="controles">
     <button class="btn" onclick="cambiarMes(-1)"> ANTERIOR ◀</button>
@@ -72,7 +67,6 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
     <button class="btn extra-btn" onclick="abrirLista()" style="flex:1;">⭐ VER TIEMPOS EXTRAS</button>
   </div>
 </div>
-
 <div class="modal" id="modalGuardar">
   <div class="modal-caja">
     <h3 id="tituloModal">TIEMPO EXTRA</h3>
@@ -111,17 +105,26 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
     </div>
   </div>
 </div>
-
+<div class="modal" id="modalPagado">
+  <div class="modal-caja" style="text-align:center;">
+    <h3 id="tituloPagado">EXTRA REALIZADO</h3>
+    <p id="textoPagado" style="font-size:14px; margin-bottom:12px;"></p>
+    <button class="btn" onclick="marcarComoPagado()" style="background:#2563eb; width:100%; margin-bottom:8px; font-weight:bold;">🔵 SÍ, YA ME LO PAGARON</button>
+    <button class="btn" onclick="regresarAPendiente()" style="background:#22c55e; width:100%; margin-bottom:8px;">🟢 TODAVÍA NO ME LO PAGAN</button>
+    <button class="btn" onclick="editarExtraDesdePagado()" style="background:black; width:100%; margin-bottom:8px;">✏️ EDITAR DATOS DEL EXTRA</button>
+    <button class="btn" onclick="cerrarModal()" style="background:#555; width:100%;">CERRAR</button>
+  </div>
+</div>
 <div class="modal" id="modalLista">
   <div class="modal-caja">
     <h3>⭐ TIEMPOS EXTRAS GUARDADOS</h3>
     <div id="contenidoLista"></div>
     <button class="btn" onclick="descargarListaImagen()" style="background:#0a7a2e; width:100%; margin-top:10px;">📸 VER COMO IMAGEN</button>
-    <button class="btn" onclick="borrarRealizados()" style="background:#c00; width:100%; margin-top:8px;">🗑️ BORRAR SOLO REALIZADOS (VERDES)</button>
+    <button class="btn" onclick="borrarPagados()" style="background:#2563eb; width:100%; margin-top:8px;">✂️ CORTAR Y PEGAR PAGADOS (AZULES)</button>
+    <button class="btn" onclick="verHistorial()" style="background:#7c3aed; width:100%; margin-top:8px;">📚 VER HISTORIAL PAGADOS</button>
     <button class="btn" onclick="cerrarModal()" style="background:black; width:100%; margin-top:8px;">CERRAR</button>
   </div>
 </div>
-
 <div class="modal" id="modalImagen">
   <div class="modal-caja" style="text-align:center;">
     <h3>📸 TU LISTA COMO IMAGEN</h3>
@@ -131,10 +134,10 @@ H1,H2,A{ animation: animate 20s infinite linear; text-shadow: -1px 1px white; }
     <button class="btn" onclick="cerrarModal()" style="background:black; width:100%; margin-top:8px;">CERRAR</button>
   </div>
 </div>
-
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3IXAxppchT8a7z1FTSxvjZe_FnoZ4yazEO3m3jX6HcFtt2BXWrbfi1IxipaHYJyN9/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxTLIY8Lp3fbfTwng8xiE5RvpNuFio9yThr0swQbbc2yUUF4ZPbmrxQvtQl59D_hVoI/exec";
 const GRUPO = "Calendario3";
+const GRUPO_HISTORIAL = "Calendario3_Pagados";
 const ANCLA = new Date(2026, 0, 6);
 const CICLO = ["dia","dia","noche","noche","descanso","descanso"];
 let vista = new Date();
@@ -170,8 +173,24 @@ function hoyISO(){
   const h = new Date();
   return h.getFullYear() + "-" + String(h.getMonth()+1).padStart(2,'0') + "-" + String(h.getDate()).padStart(2,'0');
 }
-function esRealizado(iso){
-  return iso <= hoyISO();
+function esRealizado(iso){ return iso <= hoyISO(); }
+function getEstado(iso, extra){
+  if(!extra) return "";
+  if(extra.pagado === true || extra.estado === "pagado") return "pagado";
+  if(esRealizado(iso)) return "pendiente";
+  return "agendado";
+}
+function textoEstado(iso, extra){
+  const e = getEstado(iso, extra);
+  if(e === "pagado") return "🔵 EXTRA PAGADO";
+  if(e === "pendiente") return "🟢 PENDIENTE DE PAGO";
+  return "🟡 EXTRA AGENDADO";
+}
+function colorEstado(iso, extra){
+  const e = getEstado(iso, extra);
+  if(e === "pagado") return "#dbeafe";
+  if(e === "pendiente") return "#dcfce7";
+  return "#fff3a6";
 }
 function cargarDatos(txt) {
   try {
@@ -239,13 +258,10 @@ function render() {
     let claseExtra = "";
     let estrella = "";
     if(extras[iso]){
-      if(esRealizado(iso)){
-        claseExtra = "extra-realizado";
-        estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">REALIZADO</span>`;
-      } else {
-        claseExtra = "extra";
-        estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">AGENDADO</span>`;
-      }
+      const estado = getEstado(iso, extras[iso]);
+      if(estado === "pagado"){ claseExtra = "extra-pagado"; estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">PAGADO</span>`; }
+      else if(estado === "pendiente"){ claseExtra = "extra-realizado"; estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">PEND. PAGO</span>`; }
+      else { claseExtra = "extra"; estrella = `<span class="extra-tag">★ EXTRA</span><span class="extra-tag">AGENDADO</span>`; }
     }
     html+=`<td class="${turno} ${claseExtra}" onclick="abrirModal('${iso}', ${d})"><span class="num">${d}</span><span class="turno-txt">${turnoCorto(turno)}</span>${estrella}</td>`;
   }
@@ -263,9 +279,10 @@ function cambiarMes(dir){ vista.setMonth(vista.getMonth() + dir); render(); }
 function irHoy(){ vista = new Date(); render(); }
 function abrirModal(iso, dia) {
   fechaSeleccionada = iso;
-  document.getElementById("tituloModal").innerText = "TIEMPO EXTRA - " + iso;
   const extras = getExtras();
   const guardado = extras[iso];
+  if (guardado && getEstado(iso, guardado) !== "agendado") { abrirModalPagado(iso); return; }
+  document.getElementById("tituloModal").innerText = "TIEMPO EXTRA - " + iso;
   if (guardado) {
     document.getElementById("servicio").value = guardado.servicio || "";
     let t = (guardado.turno || "").toLowerCase().trim();
@@ -283,20 +300,42 @@ function abrirModal(iso, dia) {
   }
   document.getElementById("modalGuardar").style.display = "flex";
 }
-function hablar(texto){
-  const audio = document.getElementById("audioExtra");
-  if(audio){ audio.currentTime = 0; audio.play().catch(()=>{}); }
+function abrirModalPagado(iso){
+  fechaSeleccionada = iso;
+  const extras = getExtras();
+  const e = extras[iso];
+  document.getElementById("tituloPagado").innerText = "EXTRA - " + iso;
+  document.getElementById("textoPagado").innerHTML = "<b>" + textoDeExtra(e) + "</b><br><br>Estado actual: <b>" + textoEstado(iso, e) + "</b><br>¿Ya te pagaron este extra, carnal?";
+  document.getElementById("modalPagado").style.display = "flex";
 }
-function reproducirAudioExtra(motivo) {
-  hablar("Tiempo extra registrado");
+function marcarComoPagado(){
+  const extras = getExtras();
+  if(extras[fechaSeleccionada]){ extras[fechaSeleccionada].pagado = true; extras[fechaSeleccionada].estado = "pagado"; setExtras(extras); }
+  cerrarModal(); render(); alert("Listo, carnal. Ya quedó como PAGADO 🔵. Ya lo puedes pasar a tu segunda base de datos.");
 }
-function reproducirAudioReporte() {
-  const audio = document.getElementById("audioReporte");
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(e => console.log("No se pudo reproducir reporte", e));
+function regresarAPendiente(){
+  const extras = getExtras();
+  if(extras[fechaSeleccionada]){ extras[fechaSeleccionada].pagado = false; extras[fechaSeleccionada].estado = "pendiente"; setExtras(extras); }
+  cerrarModal(); render();
+}
+function editarExtraDesdePagado(){
+  document.getElementById("modalPagado").style.display = "none";
+  const extras = getExtras();
+  const guardado = extras[fechaSeleccionada];
+  document.getElementById("tituloModal").innerText = "EDITAR EXTRA - " + fechaSeleccionada;
+  if(guardado){
+    document.getElementById("servicio").value = guardado.servicio || "";
+    let t = (guardado.turno || "").toLowerCase().trim();
+    if(t === "día" || t === "dia") t = "dia";
+    document.getElementById("turnoExtra").value = t || "";
+    let m = (guardado.motivo || guardado.cantidad || "").toString().toUpperCase().trim();
+    document.getElementById("motivo").value = (m === "500" || m === "ARREGLO" || m === "ADELANTO") ? m : "";
   }
+  document.getElementById("modalGuardar").style.display = "flex";
 }
+function hablar(texto){ const audio = document.getElementById("audioExtra"); if(audio){ audio.currentTime = 0; audio.play().catch(()=>{}); } }
+function reproducirAudioExtra(motivo) { hablar("Tiempo extra registrado"); }
+function reproducirAudioReporte() { const audio = document.getElementById("audioReporte"); if (audio) { audio.currentTime = 0; audio.play().catch(e => console.log("No se pudo reproducir reporte", e)); } }
 function guardarExtra() {
   const servicio = document.getElementById("servicio").value.trim();
   const turno = document.getElementById("turnoExtra").value.trim();
@@ -305,24 +344,12 @@ function guardarExtra() {
   if(!turno){ alert("Selecciona el turno Día o Noche"); return; }
   if(!motivo){ alert("Selecciona el motivo"); return; }
   const extras = getExtras();
-  extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: motivo, motivo: motivo, dato1: servicio + " turno " + turno, dato2: motivo };
-  setExtras(extras);
-  reproducirAudioExtra(motivo);
-  cerrarModal();
-  render();
+  const anterior = extras[fechaSeleccionada] || {};
+  extras[fechaSeleccionada] = { servicio: servicio, turno: turno, cantidad: motivo, motivo: motivo, dato1: servicio + " turno " + turno, dato2: motivo, pagado: anterior.pagado || false, estado: anterior.estado || "" };
+  setExtras(extras); reproducirAudioExtra(motivo); cerrarModal(); render();
 }
-function borrarExtra() {
-  const extras = getExtras();
-  delete extras[fechaSeleccionada];
-  setExtras(extras);
-  cerrarModal();
-  render();
-}
-function textoDeExtra(e) {
-  const mot = e.motivo || e.cantidad || e.dato2 || "";
-  if (e.servicio) return e.servicio + " - turno " + e.turno + " - " + mot;
-  return (e.dato1 || "") + " | " + mot;
-}
+function borrarExtra() { const extras = getExtras(); delete extras[fechaSeleccionada]; setExtras(extras); cerrarModal(); render(); }
+function textoDeExtra(e) { const mot = e.motivo || e.cantidad || e.dato2 || ""; if (e.servicio) return e.servicio + " - turno " + e.turno + " - " + mot; return (e.dato1 || "") + " | " + mot; }
 function abrirLista() {
   render();
   const extras = getExtras();
@@ -330,44 +357,57 @@ function abrirLista() {
   let html = "";
   if(keys.length === 0) html = "<p style='text-align:center;'>No hay tiempos extras guardados</p>";
   keys.forEach(k => {
-    const estado = esRealizado(k) ? "🟢 EXTRA REALIZADO" : "🟡 EXTRA AGENDADO";
-    const color = esRealizado(k) ? "#dcfce7" : "#fff3a6";
+    const estado = textoEstado(k, extras[k]);
+    const color = colorEstado(k, extras[k]);
     html += `<div class="lista-item" style="background:${color};"><b>${k}</b> - ${estado}<br>1: ${textoDeExtra(extras[k])}<br><button onclick="borrarDesdeLista('${k}')" style="margin-top:5px; padding:4px 8px; background:#c00; color:white; border:none; border-radius:5px;">Borrar</button></div>`;
   });
   document.getElementById("contenidoLista").innerHTML = html;
   document.getElementById("modalLista").style.display = "flex";
 }
-function borrarDesdeLista(iso) {
+function borrarDesdeLista(iso) { const extras = getExtras(); delete extras[iso]; setExtras(extras); abrirLista(); render(); }
+async function borrarPagados() {
   const extras = getExtras();
-  delete extras[iso];
-  setExtras(extras);
-  abrirLista();
-  render();
-}
-function borrarRealizados() {
-  const extras = getExtras();
-  const paraBorrar = Object.keys(extras).filter(k => esRealizado(k));
-  if(paraBorrar.length === 0){ alert("No hay extras REALIZADOS para borrar, carnal. Solo tienes AGENDADOS."); return; }
-  if(!confirm("¿Borrar " + paraBorrar.length + " extras REALIZADOS (verdes)?\n\n¿Ya los pasaste a tu tabla de consulta?\n\nLos AGENDADOS (amarillos) NO se van a borrar.")){ return; }
+  const paraBorrar = Object.keys(extras).filter(k => getEstado(k, extras[k]) === "pagado");
+  if(paraBorrar.length === 0){ alert("No hay extras PAGADOS (azules) para mover, carnal. Solo tienes AGENDADOS y PENDIENTES DE PAGO."); return; }
+  if(!confirm("¿Mover " + paraBorrar.length + " extras PAGADOS (azules) a Calendario3_Pagados?\n\nSe van a CORTAR de aquí y PEGAR en tu tabla de consulta.\n\nLos AGENDADOS (amarillos) y PENDIENTES (verdes) NO se van a borrar.")){ return; }
+  let movidos = {};
+  paraBorrar.forEach(k => { movidos[k] = extras[k]; movidos[k].fechaMovido = hoyISO(); });
+  try {
+    const r = await fetch(SCRIPT_URL + "?action=list&grupo=" + encodeURIComponent(GRUPO_HISTORIAL));
+    const data = await r.json();
+    let historialActual = (data && data.extras) ? data.extras : {};
+    let nuevoHistorial = { ...historialActual, ...movidos };
+    await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ action: "saveAll", grupo: GRUPO_HISTORIAL, extras: nuevoHistorial }) });
+  } catch(e) {
+    alert("Error al pegar en historial, carnal. No se borró nada para que no se pierda.");
+    return;
+  }
   paraBorrar.forEach(k => { delete extras[k]; });
-  setExtras(extras);
-  abrirLista();
-  render();
-  alert("Listo, carnal. Se borraron " + paraBorrar.length + " realizados. Los agendados quedaron intactos.");
+  setExtras(extras); abrirLista(); render(); alert("Listo, carnal. Se CORTARON " + paraBorrar.length + " pagados y se PEGARON en Calendario3_Pagados.");
 }
+async function verHistorial(){
+  try{
+    const r = await fetch(SCRIPT_URL + "?action=list&grupo=" + encodeURIComponent(GRUPO_HISTORIAL));
+    const data = await r.json();
+    let hist = (data && data.extras) ? data.extras : {};
+    let keys = Object.keys(hist).sort();
+    let html = "<h4 style='text-align:center;'>📚 HISTORIAL PAGADOS</h4>";
+    if(keys.length===0) html += "<p style='text-align:center;'>Aún no hay pagados movidos</p>";
+    keys.forEach(k=>{
+      html += `<div class="lista-item" style="background:#ede9fe;"><b>${k}</b><br>${textoDeExtra(hist[k])}<br><small>Movido: ${hist[k].fechaMovido || ''}</small></div>`;
+    });
+    document.getElementById("contenidoLista").innerHTML = html;
+  }catch(e){ alert("No se pudo cargar historial"); }
+}
+function borrarRealizados(){ borrarPagados(); }
 function cerrarModal() {
   document.getElementById("modalGuardar").style.display = "none";
   document.getElementById("modalLista").style.display = "none";
   document.getElementById("modalImagen").style.display = "none";
+  document.getElementById("modalPagado").style.display = "none";
   render();
 }
-function generarTextoLista() {
-  const extras = getExtras();
-  const keys = Object.keys(extras).sort();
-  let txt = "⭐ TIEMPOS EXTRAS\n\n";
-  keys.forEach(k => { txt += k + " - " + textoDeExtra(extras[k]) + "\n"; });
-  return { txt, keys, extras };
-}
+function generarTextoLista() { const extras = getExtras(); const keys = Object.keys(extras).sort(); let txt = "⭐ TIEMPOS EXTRAS\n\n"; keys.forEach(k => { txt += k + " - " + textoDeExtra(extras[k]) + "\n"; }); return { txt, keys, extras }; }
 function descargarListaImagen() {
   const { keys, extras } = generarTextoLista();
   if(keys.length === 0) { alert("No hay nada que descargar"); return; }
@@ -387,41 +427,23 @@ function descargarListaImagen() {
     ctx.textAlign = "left"; ctx.font = "20px Arial";
     let y = 165;
     keys.forEach(k => {
-      ctx.fillStyle = esRealizado(k) ? "#dcfce7" : "#fff3a6"; ctx.fillRect(20, y-28, 660, 58);
+      ctx.fillStyle = colorEstado(k, extras[k]); ctx.fillRect(20, y-28, 660, 58);
       ctx.fillStyle = "black";
-      ctx.fillText(k + "  -  " + textoDeExtra(extras[k]) + (esRealizado(k) ? " - EXTRA REALIZADO" : " - EXTRA AGENDADO"), 30, y+8);
+      ctx.fillText(k + "  -  " + textoDeExtra(extras[k]) + " - " + textoEstado(k, extras[k]), 30, y+8);
       y += 72;
     });
-    canvas.toBlob(function(blob){
-      ultimaImagenBlob = blob;
-      ultimaImagenURL = URL.createObjectURL(blob);
-      document.getElementById("imgGenerada").src = ultimaImagenURL;
-      document.getElementById("modalLista").style.display = "none";
-      document.getElementById("modalImagen").style.display = "flex";
-    }, "image/png");
+    canvas.toBlob(function(blob){ ultimaImagenBlob = blob; ultimaImagenURL = URL.createObjectURL(blob); document.getElementById("imgGenerada").src = ultimaImagenURL; document.getElementById("modalLista").style.display = "none"; document.getElementById("modalImagen").style.display = "flex"; }, "image/png");
   }, 800);
 }
 function compartirImagen() {
   if (!ultimaImagenBlob) { alert("Primero dale a VER COMO IMAGEN"); return; }
   reproducirAudioReporte();
   setTimeout(() => {
-    if (window.AppInventor) {
-      try { window.AppInventor.setWebViewString("ABRIR_CHROME_3"); } catch(e) {}
-      return;
-    }
-    try {
-      const blobUrl = URL.createObjectURL(ultimaImagenBlob);
-      const a = document.createElement("a");
-      a.href = blobUrl;
-      a.download = "tiempos_extras.png";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    } catch(e) {}
+    if (window.AppInventor) { try { window.AppInventor.setWebViewString("ABRIR_CHROME_3"); } catch(e) {} return; }
+    try { const blobUrl = URL.createObjectURL(ultimaImagenBlob); const a = document.createElement("a"); a.href = blobUrl; a.download = "tiempos_extras.png"; document.body.appendChild(a); a.click(); a.remove(); } catch(e) {}
   }, 800);
 }
-render();
-cargarDeCloud();
+render(); cargarDeCloud();
 </script>
 </body>
 </html>
