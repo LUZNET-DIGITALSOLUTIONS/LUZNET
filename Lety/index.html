@@ -1,1 +1,183 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COBERTURA ESPOSA PRO</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+body { background:#0f172a; display:flex; justify-content:center; padding:12px; min-height:100vh; }
+.card { width:100%; max-width:480px; background:white; border-radius:16px; padding:14px; box-shadow:0 10px 30px rgba(0,0,0,.4); }
+.top { display:flex; justify-content:space-between; gap:5px; margin-bottom:8px; }
+.top button { background:#0f172a; color:white; border:none; padding:10px 8px; border-radius:10px; font-weight:bold; cursor:pointer; font-size:13px; flex:1; }
+#hoyBtn { background:#2563eb; }
+h2 { text-align:center; font-size:18px; margin:4px 0; text-transform:uppercase; }
+#rango { text-align:center; font-size:13px; color:#666; margin-bottom:6px; font-weight:bold; }
+#semanaLabel { text-align:center; background:#0f172a; color:white; padding:10px; border-radius:10px; font-weight:bold; font-size:15px; margin-bottom:10px; }
+#semanaLabel span { color:#facc15; font-size:20px; }
+table { width:100%; border-collapse:collapse; text-align:center; }
+th { background:#0f172a; color:white; padding:10px 4px; font-size:13px; }
+td { border:1px solid #ddd; padding:8px 4px; font-size:13px; height:52px; vertical-align:top; }
+td.diaCol { width:32%; font-weight:bold; background:#f8fafc; text-align:left; padding-left:10px; }
+td.diaCol small { display:block; font-weight:normal; font-size:11px; color:#666; }
+td.hoy { outline:3px solid #2563eb; outline-offset:-3px; }
+input { width:100%; border:none; background:transparent; text-align:center; font-size:13px; font-weight:bold; outline:none; text-transform:uppercase; }
+.estado { font-size:10px; font-weight:bold; display:block; margin-top:3px; padding:2px 4px; border-radius:6px; }
+.cubierto { background:#dcfce7 !important; }
+.cubierto .estado { background:#16a34a; color:white; }
+.por-cubrir { background:#fef9c3 !important; }
+.por-cubrir .estado { background:#eab308; color:black; }
+.sin-cubrir { background:#f1f5f9 !important; }
+.sin-cubrir .estado { background:#94a3b8; color:white; }
+.leyenda { display:flex; justify-content:space-between; gap:5px; margin-top:12px; }
+.leyenda div { flex:1; text-align:center; font-size:10px; font-weight:bold; padding:7px 2px; border-radius:8px; }
+.l-verde { background:#dcfce7; color:#166534; border:1px solid #16a34a; }
+.l-amarillo { background:#fef9c3; color:#854d0e; border:1px solid #eab308; }
+.l-gris { background:#f1f5f9; color:#475569; border:1px solid #94a3b8; }
+p.tip { text-align:center; font-size:11px; color:#888; margin-top:8px; }
+#estadoSync { text-align:center; font-size:11px; color:#16a34a; font-weight:bold; margin-top:6px; }
+</style>
+</head>
+<body>
+<div class="card">
+<div class="top">
+<button onclick="cambiarSemana(-1)">◀️ ANTERIOR</button>
+<button id="hoyBtn" onclick="irHoy()">📅 HOY</button>
+<button onclick="cambiarSemana(1)">SIGUIENTE ▶️</button>
+</div>
+<h2>📋 Cobertura Mi Esposa</h2>
+<div id="rango"></div>
+<div id="semanaLabel"></div>
+<table>
+<tr><th>SEMANA</th><th>DÍA ☀️</th><th>NOCHE 🌙</th></tr>
+<tbody id="tbody"></tbody>
+</table>
+<div class="leyenda">
+<div class="l-verde">🟢 DÍA CUBIERTO<br>Ya pasó + tiene nombre</div>
+<div class="l-amarillo">🟡 POR CUBRIR<br>Tiene nombre, falta fecha</div>
+<div class="l-gris">⚪ SIN CUBRIR<br>Sin nombre</div>
+</div>
+<p class="tip">Escribe el nombre y se guarda solo en Sheet Lety. Verde = ya quedó.</p>
+<p id="estadoSync">🔄 Conectando a Sheet Lety...</p>
+<button onclick="cargarDeCloud()" style="width:100%; margin-top:8px; padding:10px; background:#2563eb; color:white; border:none; border-radius:10px; font-weight:bold;">🔄 RECARGAR DE SHEET</button>
+</div>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyGVDk6WumoifSol_-zDm0BsgSqlCINyni0TcPW3WaZLktYs0w2HyhIb9ki7__cKTvYJw/exec";
+const GRUPO = "Lety";
+let fechaBase = new Date();
+fechaBase.setHours(0,0,0,0);
+let memoriaExtras = {};
+function normalizarFecha(k){
+  k = String(k).trim();
+  if(k.length >= 10 && k[4] === "-") return k.substring(0,10);
+  let d = new Date(k);
+  if(!isNaN(d)) return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0') + "-" + String(d.getDate()).padStart(2,'0');
+  return k.substring(0,10);
+}
+function getExtras(){ return memoriaExtras; }
+function setExtras(obj, guardarEnNube = true){
+  memoriaExtras = obj;
+  const txt = JSON.stringify(obj);
+  try{ localStorage.setItem("extras_pagados_backup_Lety", txt); }catch(e){}
+  try{ if(window.AppInventor) window.AppInventor.setWebViewString(txt); }catch(e){}
+  if(guardarEnNube && SCRIPT_URL){ syncACloud(); }
+}
+async function cargarDeCloud(){
+  document.getElementById("estadoSync").innerText = "🔄 Consultando Sheet Lety...";
+  try{
+    const r = await fetch(SCRIPT_URL + "?action=list&grupo=" + encodeURIComponent(GRUPO) + "&t=" + Date.now());
+    const txt = await r.text();
+    console.log("VIENE DE LETY: " + txt);
+    let data = {};
+    try{ data = JSON.parse(txt); }catch(e){ data = {}; }
+    let extras = null;
+    if(data && data.extras && typeof data.extras === "object") extras = data.extras;
+    else if(data && typeof data === "object" && Object.keys(data).length > 0) extras = data;
+    if(extras && Object.keys(extras).length > 0){
+      let limpios = {};
+      for(let k in extras){
+        let nk = normalizarFecha(k);
+        let v = extras[k];
+        if(typeof v === "object" && v !== null) limpios[nk] = { dia: v.dia || "", noche: v.noche || "" };
+      }
+      memoriaExtras = limpios;
+      try{ localStorage.setItem("extras_pagados_backup_Lety", JSON.stringify(limpios)); }catch(e){}
+      document.getElementById("estadoSync").innerText = "✅ Consultó - " + Object.keys(limpios).length + " días";
+      render();
+    } else {
+      document.getElementById("estadoSync").innerText = "⚠️ Sheet vacío - " + txt.substring(0,100);
+      render();
+    }
+  }catch(e){
+    document.getElementById("estadoSync").innerText = "⚠️ Error consulta: " + e;
+    render();
+  }
+}
+async function syncACloud(){
+  if(!SCRIPT_URL) return;
+  try{ await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: JSON.stringify({ action: "saveAll", grupo: GRUPO, extras: memoriaExtras }) }); }catch(e){}
+}
+function getLunes(d){
+  let x = new Date(d);
+  let dia = x.getDay();
+  let diff = dia === 0 ? -6 : 1 - dia;
+  x.setDate(x.getDate() + diff);
+  x.setHours(0,0,0,0);
+  return x;
+}
+function fmtKey(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,'0')+"-"+String(d.getDate()).padStart(2,'0'); }
+function fmtCorto(d){ return d.getDate()+"/"+(d.getMonth()+1)+"/"+d.getFullYear(); }
+function getNumeroSemana(fecha){
+  let d = new Date(Date.UTC(fecha.getFullYear(), fecha.getMonth(), fecha.getDate()));
+  let diaSemana = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - diaSemana);
+  let inicioAnio = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+  let num = Math.ceil((((d - inicioAnio) / 86400000) + 1) / 7);
+  return { semana: num, anio: d.getUTCFullYear() };
+}
+function cambiarSemana(n){ fechaBase.setDate(fechaBase.getDate() + (n*7)); render(); }
+function irHoy(){ fechaBase = new Date(); fechaBase.setHours(0,0,0,0); render(); }
+async function guardar(key, turno, valor){
+  let extras = getExtras();
+  if(!extras[key]) extras[key] = {};
+  extras[key][turno] = valor.trim().toUpperCase();
+  setExtras(extras);
+  document.getElementById("estadoSync").innerText = "✅ Guardado - dale RECARGAR";
+  render();
+}
+function estadoCelda(valor, fechaCelda){
+  let hoy = new Date(); hoy.setHours(0,0,0,0);
+  if(!valor) return {clase:"sin-cubrir", texto:"SIN CUBRIR"};
+  if(fechaCelda <= hoy) return {clase:"cubierto", texto:"✅ DÍA CUBIERTO"};
+  return {clase:"por-cubrir", texto:"⏳ POR CUBRIR"};
+}
+function render(){
+  let lunes = getLunes(fechaBase);
+  let domingo = new Date(lunes); domingo.setDate(lunes.getDate()+6);
+  let hoy = new Date(); hoy.setHours(0,0,0,0);
+  let info = getNumeroSemana(lunes);
+  document.getElementById("rango").innerText = "Del " + fmtCorto(lunes) + " al " + fmtCorto(domingo) + " • " + info.anio;
+  document.getElementById("semanaLabel").innerHTML = "SEMANA <span>" + info.semana + "</span> • " + info.anio;
+  let dias = ["LUNES","MARTES","MIÉRCOLES","JUEVES","VIERNES","SÁBADO","DOMINGO"];
+  let extras = getExtras();
+  let html = "";
+  for(let i=0;i<7;i++){
+    let f = new Date(lunes); f.setDate(f.getDate()+i);
+    let key = fmtKey(f);
+    let esHoy = fmtKey(f) === fmtKey(hoy) ? "hoy" : "";
+    let vDia = (extras[key] && extras[key].dia) ? extras[key].dia : "";
+    let vNoche = (extras[key] && extras[key].noche) ? extras[key].noche : "";
+    let eDia = estadoCelda(vDia,f);
+    let eNoche = estadoCelda(vNoche,f);
+    html += "<tr><td class='diaCol "+esHoy+"'>"+dias[i]+"<small>"+fmtCorto(f)+" "+(esHoy ? "• HOY" : "")+"</small></td>"
+    + "<td class='"+eDia.clase+" "+esHoy+"'><input value='"+vDia+"' placeholder='¿QUIÉN?' onchange=\"guardar('"+key+"','dia',this.value)\"><span class='estado'>"+eDia.texto+"</span></td>"
+    + "<td class='"+eNoche.clase+" "+esHoy+"'><input value='"+vNoche+"' placeholder='¿QUIÉN?' onchange=\"guardar('"+key+"','noche',this.value)\"><span class='estado'>"+eNoche.texto+"</span></td></tr>";
+  }
+  document.getElementById("tbody").innerHTML = html;
+}
+render();
+cargarDeCloud();
+</script>
+</body>
+</html>
