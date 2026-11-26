@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--creado por Felipe Jiménez-->
 <html>
@@ -6,19 +5,13 @@
         <title>SERVICIOS</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible"content="IE=edge">
-            
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Mukta:wght@800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet"type="text/css"
-href="estilos1.css">
-
-
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Mukta:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"type="text/css" href="estilos1.css">
     </head>
     
     <style>
@@ -27,41 +20,29 @@ href="estilos1.css">
 :root {
   --gradient: linear-gradient(-45deg,white, red,black,red,white );
 }
-    /*cuerpo*/
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
    font-family: 'Baloo 2';
 }
-
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    
     min-height: 100vh;
-       Background-color:BLACK; /*background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');*/
+    Background-color:BLACK;
     background-size: 10%; 
- 
-/*  background:black;*/
     flex-wrap: wrap;
 }
-/*contenedor principal*/
 .card {
 padding:  0px 0px 55px ;
 border: 1px solid #FFFFFF;
-   
     Background-color:BLACK;
-   
-    
 box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
-
     position: relative;
     width: 400px;
-  /*  height: 900px;*/
     border-radius: 5px;
     overflow: hidden;
     transition: .5s;
@@ -72,128 +53,53 @@ box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
   -webkit-animation: bg-animation 30s infinite;
           animation: bg-animation 30s infinite;
 }
-
 @-webkit-keyframes bg-animation {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
+  0% { background-position: left; }
+  50% { background-position: right; }
+  100% { background-position: left; }
 }
-
 @keyframes bg-animation {
-  0% {
-    background-position: left;
-  }
-  50% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-  }
-
-
+  0% { background-position: left; }
+  50% { background-position: right; }
+  100% { background-position: left; }
 }
-
-/*
-.card:hover {
-    box-shadow: 0 5px 10px rgba(0,0,0,1);
-    transform: translateY(-20px);
-}
-*/
-
-/*contenedor del texto*/
 .card .description {
 width: 100%;
-  /*  height: 200px;*/
-    
- 
     text-align: center;
 }
-
-H1{
-    font-size: 60px;
-}
-
-H2{
-    font-size: 29px;
-}
-
-A{
-    font-size: 30px;
-}
-
+H1{ font-size: 60px; }
+H2{ font-size: 29px; }
+A{ font-size: 30px; }
 H1,H2,A{
     animation: animate 20s infinite linear;
     text-shadow: -1px 1px white;
-    
 }
-
-
 @keyframes animate
-
 {
-
-    0%,100%{
-
-        color: white;
-
-    }
-
-    25%{
-
-        color: deeppink;
-
-    }
-
-    50%{
-
-        color:deepskyblue;
-
-    }
-
-    75%{
-
-        color: black;
-
-    }
-
+    0%,100%{ color: white; }
+    25%{ color: deeppink; }
+    50%{ color:deepskyblue; }
+    75%{ color: black; }
 }
-
-
-
-
-/*MENU DE ENLACES*/
-
  .menu li{
   display: inline-block;
   text-align:center; 
   Position:center; 
 }
-
 .menu li a{
   display: flex;
   flex-direction:column;
   color: white;
   text-decoration: none;
-  
   padding: 10px 10px 55px ;
   width: 200px;
   height: 50px;
   border-radius: 100px;
   Margin:10px 0px;
-  
   background-color: rgba(255,255, 255, .1);
-        -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
-                box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
- 
+  -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+  box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
  }
-         
-         
 div.shape {
 position: relative;
 Left:140px;
@@ -209,124 +115,137 @@ Left:140px;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-
 @keyframes shape {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
 @-webkit-keyframes shape {
-     
     0%{ transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 } 
-
 table {
   border-collapse: collapse;
   width: 100px;
   height: 100%;
-  
-  
   background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');
-  no-repeat;
   background-size: 100%;
   font-weight:bold;
-  
-  
- 
 }
-
 th, td {
   border: 1px solid black;
   padding:0px;
   text-align: center;
 }
-
-th {
- background-color: #f0f0f0;
- opacity: 0.8;
-}
-
-td {
-background-color: #fff;
-opacity: 0.8;
-  font-size: 10px;
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-  opacity: 0.8;
-  
-/* background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');*/
-  
+th { background-color: #f0f0f0; opacity: 0.8; }
+td { background-color: #fff; opacity: 0.8; font-size: 10px; }
+table tr:nth-child(even) { background-color: #f2f2f2; opacity: 0.8; }
 .calendario {
-
 position: absolute;
-
 left: 0%;
-
 top: 1px;
-
 background: black;
-
 float: left;
-
 border: 1px red solid;
-
-box-shadow: red 1px 1px 5px,
-
-red 1px 1px 5px;
-
+box-shadow: red 1px 1px 5px, red 1px 1px 5px;
 border-radius: 5px;
-
 width: 300px;
-
 max-height: 500px;
-
 padding: 0px;
-
 margin: 1px;
-
 overflow-x: auto;
-
 overflow-y: auto;
-
 word-break: break-all;
-
 }
 
-
- 
+/* === ENGRANE - NO TOCA ROLES === */
+.engrane {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 999;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.7);
+  border: 2px solid white;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 0 12px red;
+}
+.engrane:active { transform: scale(0.9); }
+.engrane i { animation: shape 3s infinite linear; }
     </style>
     <body >
-    <div 
-    
-    class="card">
+    <div class="card">
+
+        <!-- ENGRANE CONFIGURACIÓN - APARTE, NO TOCA ROLES -->
+        <a href="javascript:void(0)" onclick="irConfig()" class="engrane" title="Configuración">
+          <i class="fa fa-cog"></i>
+        </a>
+
         <div class="head">
             <div class="circle"></div>
-            
         </div>
             
-        
         <div class="description">
-           
             <h2 class="text-animation"> <br /> </h2>
-            
-            <div class="loader"
-    >
+            <div class="loader">
         <ul class="menu">
     <li>
+      <!-- ROLES INTACTO - NO SE TOCA -->
       <a href="grupos.html">ROLES</a>
    </li>
-   
-   
-   
-    
-    
     </ul>
     </div>
         </div>     
     </div>
+
+<!-- AUDIO EXTERNO -->
+<audio id="audioConfig" preload="auto">
+  <source src="https://translate.google.com/translate_tts?ie=UTF-8&q=Entrando%20a%20configuraci%C3%B3n&tl=es&client=tw-ob" type="audio/mpeg">
+</audio>
+
+<script>
+/* ============================================================
+   NOTA FELIPE - AQUÍ VA LA URL / UBICACIÓN DE CONFIGURACIÓN
+
+   EJEMPLO:
+   var URL_CONFIG = "ejemplo.html";
+
+   👉 "ejemplo.html" ES SOLO UN EJEMPLO, CARNAL 👈
+   👉 AHÍ TÚ LE PONES EL NOMBRE REAL DE TU ARCHIVO 👈
+
+   Ejemplos de cómo quedaría:
+   var URL_CONFIG = "config.html";
+   var URL_CONFIG = "configuracion.html";
+   var URL_CONFIG = "file:///android_asset/config.html";
+   var URL_CONFIG = "https://tusitio.com/config.html";
+
+   El archivo debe estar en el mismo lugar que este index.html
+   ============================================================ */
+var URL_CONFIG = "configuracion.html";
+
+function irConfig(){
+  try{
+    var aud = document.getElementById("audioConfig");
+    aud.currentTime = 0;
+    var p = aud.play();
+    if(p !== undefined){
+      p.catch(function(e){
+        window.open("https://translate.google.com/translate_tts?ie=UTF-8&q=Entrando%20a%20configuraci%C3%B3n&tl=es&client=tw-ob", "_blank");
+      });
+    }
+  }catch(e){}
+  setTimeout(function(){
+    // 👇 AQUÍ SE ABRE LA VENTANA - USA LA URL DE ARRIBA 👇
+    window.location.href = URL_CONFIG;
+  }, 700);
+}
+</script>
         
     </body>
 </html>
