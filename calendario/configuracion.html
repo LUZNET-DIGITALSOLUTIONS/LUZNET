@@ -102,7 +102,6 @@ H1,H2,A{
   text-align: center;
   color: white;
   text-decoration: none;
-  /* 👇 YA CORREGIDO, CARNAL - ANTES TENIA 10px 10px 55px Y POR ESO SE SUBIA 👇 */
   padding: 18px 10px;
   width: 200px;
   height: auto;
@@ -182,7 +181,13 @@ word-break: break-all;
             <div class="loader">
         <ul class="menu">
     <li>
-      <a href="ELEMENTOS.html">ALTAS DE ELEMENTOS</a>
+      <!-- 👇 AHORA CON AUDIO, CARNAL - YA NO ES href DIRECTO 👇 -->
+      <a href="javascript:void(0)" onclick="irElementos()">ALTAS DE ELEMENTOS</a>
+   </li>
+   
+   <li>
+      <!-- 👇 ESTE ES EL SEGUNDO AUDIO, CARNAL 👇 -->
+      <a href="javascript:void(0)" onclick="irServicios()">ALTAS DE SERVICIOS</a>
    </li>
    
    <li>
@@ -192,5 +197,60 @@ word-break: break-all;
     </div>
         </div>     
     </div>
+
+<!-- 👇 AQUI VAN TUS 2 AUDIOS, CARNAL 👇 -->
+<audio id="audioElementos" preload="auto"></audio>
+<audio id="audioServicios" preload="auto"></audio>
+
+<script>
+/* ============================================================
+   FELIPE - AQUI PONES TUS 2 LINKS DE DROPBOX, CARNAL
+   👉 TIENEN QUE SER dl.dropboxusercontent.com, NO www.dropbox.com 👈
+   Si no, no suena, perro. Ya te paso como queda:
+   ============================================================ */
+
+// 👇 1. AUDIO PARA ELEMENTOS - AQUI PONES TU LINK DE ELEMENTOS 👇
+var URL_AUDIO_ELEMENTOS = "https://dl.dropboxusercontent.com/scl/fi/1pjic0nwkhzgkshg7lxu9/elementos.mp3?rlkey=ijyzq7jrigb62qairc0g6r6r9&st=1gqcwn99";
+
+// 👇 2. AUDIO PARA SERVICIOS - AQUI PONES TU LINK DE SERVICIOS 👇
+var URL_AUDIO_SERVICIOS = "https://dl.dropboxusercontent.com/scl/fi/61uyo5vm25vlp6pbanfrj/servicios.mp3?rlkey=ax9p8pgp4fm3v507nn4xqc68u&st=9gjbtrjy";
+
+// 👇 A DONDE VAN CADA UNO 👇
+var URL_ELEMENTOS = "ELEMENTOS.html";
+var URL_SERVICIOS = "SERVICIOS.html"; // Si tu archivo se llama diferente, aqui lo cambias, carnal
+
+var yaCambio = false;
+function cambiarA(url){
+  if(!yaCambio){
+    yaCambio = true;
+    window.location.href = url;
+  }
+}
+
+function sonarYEntrar(idAudio, urlAudio, urlDestino){
+  yaCambio = false;
+  var aud = document.getElementById(idAudio);
+  aud.src = urlAudio;
+  aud.load();
+  aud.onended = function(){ cambiarA(urlDestino); };
+  // Si no suena, entra a los 3 segundos para que no se trabe
+  setTimeout(function(){ cambiarA(urlDestino); }, 3000);
+  try{
+    aud.currentTime = 0;
+    aud.play().catch(function(e){ console.log("Audio bloqueado"); });
+  }catch(e){}
+}
+
+// 👇 BOTON 1 - ELEMENTOS 👇
+function irElementos(){
+  sonarYEntrar("audioElementos", URL_AUDIO_ELEMENTOS, URL_ELEMENTOS);
+}
+
+// 👇 BOTON 2 - SERVICIOS 👇
+function irServicios(){
+  sonarYEntrar("audioServicios", URL_AUDIO_SERVICIOS, URL_SERVICIOS);
+}
+</script>
+
     </body>
 </html>
