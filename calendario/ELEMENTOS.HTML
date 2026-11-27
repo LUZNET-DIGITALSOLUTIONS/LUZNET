@@ -1,1 +1,366 @@
 
+<!DOCTYPE html>
+<!--creado por Felipe Jiménez-->
+<html>
+    <head>
+        <title>SERVICIOS</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Mukta:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"type="text/css" href="estilos1.css">
+    </head>
+    
+    <style>
+        /* COLOR DE FONDO ANIMADO*/
+/*creado por Felipe Jiménez*/
+:root {
+  --gradient: linear-gradient(-45deg,white, red,black,red,white );
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   font-family: 'Baloo 2';
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    Background-color:BLACK;
+    background-size: 10%; 
+    flex-wrap: wrap;
+}
+.card {
+padding:  0px 0px 55px ;
+border: 1px solid #FFFFFF;
+    Background-color:BLACK;
+box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
+    position: relative;
+    width: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: .5s;
+    margin: 15px 20px;
+    min-height: 100%;
+  background-size: 300%;
+  background-image: var(--gradient);
+  -webkit-animation: bg-animation 30s infinite;
+          animation: bg-animation 30s infinite;
+}
+@-webkit-keyframes bg-animation {
+  0% { background-position: left; }
+  50% { background-position: right; }
+  100% { background-position: left; }
+}
+@keyframes bg-animation {
+  0% { background-position: left; }
+  50% { background-position: right; }
+  100% { background-position: left; }
+}
+.card .description {
+width: 100%;
+    text-align: center;
+}
+H1{ font-size: 60px; }
+H2{ font-size: 29px; }
+A{ font-size: 20px; }
+H1,H2,A{
+    animation: animate 20s infinite linear;
+    text-shadow: -1px 1px white;
+}
+@keyframes animate
+{
+    0%,100%{ color: white; }
+    25%{ color: deeppink; }
+    50%{ color:deepskyblue; }
+    75%{ color: black; }
+}
+
+/* 👇 MENU ESTANDARIZADO - TODOS IGUAL QUE GUARDAR, BRO 👇 */
+.menu{
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+.menu li{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.menu li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  width: 85%;
+  padding: 16px;
+  min-height: 60px;
+  border-radius: 100px;
+  margin: 10px auto;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  background-color: rgba(255,255,255,.2);
+  -webkit-box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+  box-shadow: 0 1.8em 3em rgba(1, 17, 39, 0.15);
+}
+.menu li a:active{
+  transform: scale(.97);
+}
+
+/* 👇 REGISTRO ELEMENTOS - UN SOLO HTML, BRO 👇 */
+.titulo-registro{
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: -1px 1px black;
+  margin: 10px 0 15px;
+  line-height: 1.1;
+}
+.label-registro{
+  display: block;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 12px 0 5px;
+  text-shadow: -1px 1px black;
+}
+.input-registro{
+  width: 85%;
+  padding: 14px;
+  border-radius: 100px;
+  border: 2px solid white;
+  outline: none;
+  font-size: 18px;
+  background: rgba(255,255,255,.95);
+  color: black;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.btn-guardar{
+  width: 85%;
+  padding: 16px;
+  margin: 18px auto 5px;
+  border: none;
+  border-radius: 100px;
+  background: rgba(255,255,255,.2);
+  box-shadow: 0 1.8em 3em rgba(1,17,39,.15);
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  display: block;
+  cursor: pointer;
+}
+.btn-guardar:active{ transform: scale(.97); }
+.mensaje-ok{
+  text-align: center;
+  color: #7CFF7C;
+  font-weight: 800;
+  font-size: 18px;
+  display: none;
+  margin-top: 10px;
+  text-shadow: -1px 1px black;
+}
+         
+div.shape {
+position: relative;
+Left:140px;
+    width: 60px;
+    height: 50px;
+    font-size:30px;
+    Align-items:center;
+    -webkit-animation-name: shape;   
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: shape;   
+    animation-duration: 2s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes shape {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@-webkit-keyframes shape {
+    0%{ transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+table {
+  border-collapse: collapse;
+  width: 100px;
+  height: 100%;
+  background-image:url('https://i.ibb.co/JzdkvNg/666.jpg');
+  background-size: 100%;
+  font-weight:bold;
+}
+th, td {
+  border: 1px solid black;
+  padding:0px;
+  text-align: center;
+}
+th { background-color: #f0f0f0; opacity: 0.8; }
+td { background-color: #fff; opacity: 0.8; font-size: 10px; }
+table tr:nth-child(even) { background-color: #f2f2f2; opacity: 0.8; }
+.calendario {
+position: absolute;
+left: 0%;
+top: 1px;
+background: black;
+float: left;
+border: 1px red solid;
+box-shadow: red 1px 1px 5px, red 1px 1px 5px;
+border-radius: 5px;
+width: 300px;
+max-height: 500px;
+padding: 0px;
+margin: 1px;
+overflow-x: auto;
+overflow-y: auto;
+word-break: break-all;
+}
+    </style>
+    <body >
+    <div class="card">
+        <div class="head">
+            <div class="circle"></div>
+        </div>
+        
+        <div class="description">
+            <h2 class="text-animation"> <br /> </h2>
+            <div class="loader">
+
+        <!-- 👇 UN SOLO REGISTRO PARA LOS 3 GRUPOS, BRO 👇 -->
+        <div class="titulo-registro">REGISTRO<br>ELEMENTOS</div>
+
+        <label class="label-registro">NOMBRE DEL ELEMENTO:</label>
+        <input type="text" id="nombreElemento" class="input-registro" placeholder="Escribe el nombre">
+
+        <label class="label-registro">GRUPO:</label>
+        <select id="grupoElemento" class="input-registro">
+          <option value="">SELECCIONA EL GRUPO</option>
+          <option value="1">GRUPO 1</option>
+          <option value="2">GRUPO 2</option>
+          <option value="3">GRUPO 3</option>
+        </select>
+
+        <button class="btn-guardar" onclick="guardarElemento()">GUARDAR</button>
+        <div id="mensaje" class="mensaje-ok">✅ GUARDADO, BRO</div>
+
+        <ul class="menu">
+    <li>
+      <a href="grupo1.html" onclick="irGrupo1()">VER GRUPO 1</a>
+   </li>
+    <li>
+      <a href="grupo2.html"
+onclick="irGrupo2()">VER GRUPO 2</a>
+   </li>
+    <li>
+      <a href="grupo3.html" onclick="irGrupo3()">VER GRUPO 3</a>
+   </li>
+    <li>
+      <a href="index.html">INICIO</a>
+   </li>
+    </ul>
+    </div>
+        </div>     
+    </div>
+
+<!-- 👇 AQUI VAN TUS 4 AUDIOS, BRO 👇 -->
+<audio id="audioGuardar" preload="auto"></audio>
+<audio id="audioGrupo1" preload="auto"></audio>
+<audio id="audioGrupo2" preload="auto"></audio>
+<audio id="audioGrupo3" preload="auto"></audio>
+
+<script>
+// ============================================================
+// 👇👇👇 BRO, AQUI PONES TU LINK DE GUARDAR, PERRO - AQUI MERITO 👇👇👇
+// 👉 TIENE QUE SER dl.dropboxusercontent.com, NO www.dropbox.com 👈
+// ============================================================
+
+// 👇 0. AUDIO PARA GUARDAR - AQUI PONES TU LINK DE "Guardado" / "Elemento guardado", BRO 👇
+var URL_AUDIO_GUARDAR = "https://dl.dropboxusercontent.com/scl/fi/qhu1p1w1uywv92tewk036/alta-elementos.mp3?rlkey=hha54q3x0bkmkamivjd7srhk7&st=71oboi0h";
+
+// 👇 1. AUDIO GRUPO 1 - "Ingresando a grupo 1" 👇
+var URL_AUDIO_GRUPO1 = "https://dl.dropboxusercontent.com/scl/fi/4h9tn6hm2imazqcxz8mku/grupo1.mp3?rlkey=2agrg521if0efayurgmatow7v&st=tsambytk";
+
+// 👇 2. AUDIO GRUPO 2 - "Ingresando a grupo 2" 👇
+var URL_AUDIO_GRUPO2 = "https://dl.dropboxusercontent.com/scl/fi/wcqya0zcd6tbtkwf7vvm1/grupo2.mp3?rlkey=te9supakofj6unxwwitt0tara&st=3s2mrqdv";
+
+// 👇 3. AUDIO GRUPO 3 - "Ingresando a grupo 3" 👇
+var URL_AUDIO_GRUPO3 = "https://dl.dropboxusercontent.com/scl/fi/lxr6zjcs30kqpyc6mld4k/grupo3.mp3?rlkey=87y0f7wkmujr0kgn15un5m8qk&st=4ioe8auc";
+
+// 👇 A DONDE VAN CADA UNO 👇
+var URL_GRUPO1 = "grupo1.html";
+var URL_GRUPO2 = "grupo2.html";
+var URL_GRUPO3 = "grupo3.html";
+
+// 👇 FUNCION PARA QUE SUENE Y LUEGO ENTRE, BRO 👇
+var yaCambio = false;
+function sonarYEntrar(idAudio, urlAudio, urlDestino){
+  yaCambio = false;
+  var aud = document.getElementById(idAudio);
+  aud.src = urlAudio;
+  aud.load();
+  aud.onended = function(){
+    if(!yaCambio){ yaCambio = true; window.location.href = urlDestino; }
+  };
+  setTimeout(function(){
+    if(!yaCambio){ yaCambio = true; window.location.href = urlDestino; }
+  }, 3000);
+  try{ aud.currentTime = 0; aud.play().catch(function(e){}); }catch(e){}
+}
+
+// 👇 BOTONES CON AUDIO, BRO 👇
+function irGrupo1(){ sonarYEntrar("audioGrupo1", URL_AUDIO_GRUPO1, URL_GRUPO1); }
+function irGrupo2(){ sonarYEntrar("audioGrupo2", URL_AUDIO_GRUPO2, URL_GRUPO2); }
+function irGrupo3(){ sonarYEntrar("audioGrupo3", URL_AUDIO_GRUPO3, URL_GRUPO3); }
+
+// 👇 FUNCION PARA SONAR EL AUDIO DE GUARDAR, BRO 👇
+function sonarGuardar(){
+  var aud = document.getElementById("audioGuardar");
+  aud.src = URL_AUDIO_GUARDAR;
+  aud.load();
+  try{ aud.currentTime = 0; aud.play().catch(function(e){}); }catch(e){}
+}
+
+// 👇 UN SOLO HTML QUE DIRECCIONA A LOS 3 SHEETS, BRO 👇
+function guardarElemento(){
+  var nombre = document.getElementById("nombreElemento").value.trim();
+  var grupo = document.getElementById("grupoElemento").value;
+
+  if(nombre == ""){ alert("Bro, escribe el nombre del elemento"); return; }
+  if(grupo == ""){ alert("Bro, selecciona el grupo"); return; }
+
+  var hojaDestino = "elementos" + grupo;
+
+  var datos = JSON.parse(localStorage.getItem(hojaDestino) || "[]");
+  datos.push({ nombre: nombre, grupo: grupo, fecha: new Date().toLocaleString() });
+  localStorage.setItem(hojaDestino, JSON.stringify(datos));
+
+  // 👇 AQUI SUENA TU AUDIO DE GUARDAR, BRO 👇
+  sonarGuardar();
+
+  var m = document.getElementById("mensaje");
+  m.style.display = "block";
+  m.innerText = "✅ GUARDADO EN " + hojaDestino.toUpperCase() + ", BRO";
+  document.getElementById("nombreElemento").value = "";
+  setTimeout(function(){ m.style.display = "none"; }, 2500);
+}
+</script>
+        
+    </body>
+</html>
