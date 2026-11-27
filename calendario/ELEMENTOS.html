@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--creado por Felipe Jiménez-->
 <html>
@@ -29,25 +28,26 @@
 }
 body {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
     min-height: 100vh;
     Background-color:BLACK;
     background-size: 10%; 
     flex-wrap: wrap;
+    padding-top: 8px;
 }
 .card {
-padding:  0px 0px 55px ;
+padding:  0px 0px 28px ;
 border: 1px solid #FFFFFF;
     Background-color:BLACK;
 box-shadow: 0 0 10px red, 0 0 20px red, 0 0 90px red, inset 0 0 20px red;
     position: relative;
-    width: 400px;
+    width: 360px;
     border-radius: 5px;
     overflow: hidden;
     transition: .5s;
-    margin: 15px 20px;
+    margin: 8px 10px;
     min-height: 100%;
   background-size: 300%;
   background-image: var(--gradient);
@@ -83,12 +83,12 @@ H1,H2,A{
     75%{ color: black; }
 }
 
-/* 👇 MENU ESTANDARIZADO - TODOS IGUAL QUE GUARDAR, BRO 👇 */
+/* 👇 MENU ESTANDARIZADO - AJUSTADO 2px, BRO 👇 */
 .menu{
   list-style: none;
   padding: 0;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 .menu li{
   display: block;
@@ -103,12 +103,12 @@ H1,H2,A{
   color: white;
   text-decoration: none;
   width: 85%;
-  padding: 16px;
-  min-height: 60px;
+  padding: 14px;
+  min-height: 54px;
   border-radius: 100px;
-  margin: 10px auto;
+  margin: 8px auto;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   line-height: 1.2;
   background-color: rgba(255,255,255,.2);
@@ -119,32 +119,32 @@ H1,H2,A{
   transform: scale(.97);
 }
 
-/* 👇 REGISTRO ELEMENTOS - UN SOLO HTML, BRO 👇 */
+/* 👇 REGISTRO ELEMENTOS - AJUSTADO 2px, BRO 👇 */
 .titulo-registro{
   color: white;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
   text-align: center;
   text-shadow: -1px 1px black;
-  margin: 10px 0 15px;
+  margin: 6px 0 10px;
   line-height: 1.1;
 }
 .label-registro{
   display: block;
   color: white;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   text-align: center;
-  margin: 12px 0 5px;
+  margin: 8px 0 4px;
   text-shadow: -1px 1px black;
 }
 .input-registro{
   width: 85%;
-  padding: 14px;
+  padding: 12px;
   border-radius: 100px;
   border: 2px solid white;
   outline: none;
-  font-size: 18px;
+  font-size: 17px;
   background: rgba(255,255,255,.95);
   color: black;
   text-align: center;
@@ -153,14 +153,14 @@ H1,H2,A{
 }
 .btn-guardar{
   width: 85%;
-  padding: 16px;
-  margin: 18px auto 5px;
+  padding: 14px;
+  margin: 14px auto 4px;
   border: none;
   border-radius: 100px;
   background: rgba(255,255,255,.2);
   box-shadow: 0 1.8em 3em rgba(1,17,39,.15);
   color: white;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   display: block;
   cursor: pointer;
@@ -170,9 +170,9 @@ H1,H2,A{
   text-align: center;
   color: #7CFF7C;
   font-weight: 800;
-  font-size: 18px;
+  font-size: 17px;
   display: none;
-  margin-top: 10px;
+  margin-top: 8px;
   text-shadow: -1px 1px black;
 }
          
@@ -232,6 +232,13 @@ overflow-x: auto;
 overflow-y: auto;
 word-break: break-all;
 }
+/* 👇 SI TU CELULAR ES CHAPARRITO, ESTO LO ACOMODA SOLO, BRO 👇 */
+@media (max-height: 750px){
+  .card{ transform: scale(0.96); transform-origin: top center; }
+}
+@media (max-height: 680px){
+  .card{ transform: scale(0.92); transform-origin: top center; }
+}
     </style>
     <body >
     <div class="card">
@@ -262,14 +269,13 @@ word-break: break-all;
 
         <ul class="menu">
     <li>
-      <a href="grupo1.html" onclick="irGrupo1()">VER GRUPO 1</a>
+      <a href="javascript:void(0)" onclick="irGrupo1()">VER GRUPO 1</a>
    </li>
     <li>
-      <a href="grupo2.html"
-onclick="irGrupo2()">VER GRUPO 2</a>
+      <a href="javascript:void(0)" onclick="irGrupo2()">VER GRUPO 2</a>
    </li>
     <li>
-      <a href="grupo3.html" onclick="irGrupo3()">VER GRUPO 3</a>
+      <a href="javascript:void(0)" onclick="irGrupo3()">VER GRUPO 3</a>
    </li>
     <li>
       <a href="index.html">INICIO</a>
@@ -280,19 +286,18 @@ onclick="irGrupo2()">VER GRUPO 2</a>
     </div>
 
 <!-- 👇 AQUI VAN TUS 4 AUDIOS, BRO 👇 -->
-<audio id="audioGuardar" preload="auto"></audio>
+<audio id="audioElementoRegistrado" preload="auto"></audio>
 <audio id="audioGrupo1" preload="auto"></audio>
 <audio id="audioGrupo2" preload="auto"></audio>
 <audio id="audioGrupo3" preload="auto"></audio>
 
 <script>
 // ============================================================
-// 👇👇👇 BRO, AQUI PONES TU LINK DE GUARDAR, PERRO - AQUI MERITO 👇👇👇
-// 👉 TIENE QUE SER dl.dropboxusercontent.com, NO www.dropbox.com 👈
+// 👇 BRO, TUS AUDIOS YA PUESTOS, PERRO 👇
 // ============================================================
 
-// 👇 0. AUDIO PARA GUARDAR - AQUI PONES TU LINK DE "Guardado" / "Elemento guardado", BRO 👇
-var URL_AUDIO_GUARDAR = "https://dl.dropboxusercontent.com/scl/fi/qhu1p1w1uywv92tewk036/alta-elementos.mp3?rlkey=hha54q3x0bkmkamivjd7srhk7&st=71oboi0h";
+// 👇 0. AUDIO "ELEMENTO REGISTRADO" - tu alta-elementos.mp3, BRO 👇
+var URL_AUDIO_ELEMENTO_REGISTRADO = "https://dl.dropboxusercontent.com/scl/fi/qhu1p1w1uywv92tewk036/alta-elementos.mp3?rlkey=hha54q3x0bkmkamivjd7srhk7&st=71oboi0h";
 
 // 👇 1. AUDIO GRUPO 1 - "Ingresando a grupo 1" 👇
 var URL_AUDIO_GRUPO1 = "https://dl.dropboxusercontent.com/scl/fi/4h9tn6hm2imazqcxz8mku/grupo1.mp3?rlkey=2agrg521if0efayurgmatow7v&st=tsambytk";
@@ -329,15 +334,15 @@ function irGrupo1(){ sonarYEntrar("audioGrupo1", URL_AUDIO_GRUPO1, URL_GRUPO1); 
 function irGrupo2(){ sonarYEntrar("audioGrupo2", URL_AUDIO_GRUPO2, URL_GRUPO2); }
 function irGrupo3(){ sonarYEntrar("audioGrupo3", URL_AUDIO_GRUPO3, URL_GRUPO3); }
 
-// 👇 FUNCION PARA SONAR EL AUDIO DE GUARDAR, BRO 👇
-function sonarGuardar(){
-  var aud = document.getElementById("audioGuardar");
-  aud.src = URL_AUDIO_GUARDAR;
+// 👇 FUNCION PARA SONAR "ELEMENTO REGISTRADO", BRO 👇
+function sonarElementoRegistrado(){
+  var aud = document.getElementById("audioElementoRegistrado");
+  aud.src = URL_AUDIO_ELEMENTO_REGISTRADO;
   aud.load();
   try{ aud.currentTime = 0; aud.play().catch(function(e){}); }catch(e){}
 }
 
-// 👇 UN SOLO HTML QUE DIRECCIONA A LOS 3 SHEETS, BRO 👇
+// 👇 UN SOLO HTML QUE DIRECCIONA A LOS 3 GRUPOS, BRO 👇
 function guardarElemento(){
   var nombre = document.getElementById("nombreElemento").value.trim();
   var grupo = document.getElementById("grupoElemento").value;
@@ -351,8 +356,8 @@ function guardarElemento(){
   datos.push({ nombre: nombre, grupo: grupo, fecha: new Date().toLocaleString() });
   localStorage.setItem(hojaDestino, JSON.stringify(datos));
 
-  // 👇 AQUI SUENA TU AUDIO DE GUARDAR, BRO 👇
-  sonarGuardar();
+  // 👇 AQUI SUENA "ELEMENTO REGISTRADO", BRO 👇
+  sonarElementoRegistrado();
 
   var m = document.getElementById("mensaje");
   m.style.display = "block";
