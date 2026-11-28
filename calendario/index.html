@@ -205,6 +205,10 @@ word-break: break-all;
       <!-- ROLES INTACTO - NO SE TOCA -->
       <a href="grupos.html">ROLES</a>
    </li>
+   <li>
+      <!-- HASTA PRONTO - NUEVO, BRO - NO TOCA ROLES -->
+      <a href="javascript:void(0)" onclick="despedirLuzAudio()" style="background: rgba(255,0,0,0.4);">SALIR</a>
+   </li>
     </ul>
     </div>
         </div>     
@@ -213,12 +217,17 @@ word-break: break-all;
 <!-- AUDIO TUYO - YA DIRECTO, SIN PAGINA DE DROPBOX -->
 <audio id="audioConfig" preload="auto"></audio>
 
+<!-- AUDIO HASTA PRONTO - EXTERNO, BRO -->
+<audio id="audioDespedida" preload="auto"></audio>
+
 <script>
 var URL_CONFIG = "configuracion.html";
 
 // 👇 LINK DIRECTO - CAMBIE www.dropbox.com POR dl.dropboxusercontent.com 👇
-// ESTE SI ES EL MP3 DIRECTO, CARNAL, NO LA PAGINA
 var URL_AUDIO = "https://dl.dropboxusercontent.com/scl/fi/49r5qrc8wh6ur3m6v0wnt/configuraci-n.mp3?rlkey=7rc3we5fo6e77jxcrth402dxt&st=4srxvo5r";
+
+// 👇 TU AUDIO DE DESPEDIDA - YA PEGADO, BRO 👇
+var URL_AUDIO_DESPEDIDA = "https://dl.dropboxusercontent.com/scl/fi/ou6jri7rk5jzkaxvc5l1r/despedida.mp3?rlkey=qyj1dbsnheawliodq55mz9fl1&st=afe8z010";
 
 var yaCambio = false;
 function cambiar(){
@@ -233,23 +242,48 @@ function irConfig(){
     var aud = document.getElementById("audioConfig");
     aud.src = URL_AUDIO;
     aud.load();
-
-    // Cuando termine tu audio, cambia de ventana
     aud.onended = function(){ cambiar(); };
-
-    // Si tu audio falla, igual cambia a los 3 segundos para que no se trabe
     setTimeout(cambiar, 3000);
-
     aud.currentTime = 0;
     var p = aud.play();
     if(p !== undefined){
       p.catch(function(e){
-        // Si el navegador bloquea, esperamos el timeout de arriba
         console.log("Audio bloqueado: " + e);
       });
     }
   }catch(e){
     cambiar();
+  }
+}
+
+// === HASTA PRONTO - AUDIO EXTERNO Y CIERRE, BRO ===
+var yaDespidio = false;
+function cerrarApp(){
+  if(!yaDespidio){
+    yaDespidio = true;
+    window.close();
+    setTimeout(function(){
+      window.location.href = "https://www.google.com";
+    }, 500);
+  }
+}
+
+function despedirLuzAudio(){
+  try{
+    var aud2 = document.getElementById("audioDespedida");
+    aud2.src = URL_AUDIO_DESPEDIDA;
+    aud2.load();
+    aud2.onended = function(){ cerrarApp(); };
+    setTimeout(cerrarApp, 3000);
+    aud2.currentTime = 0;
+    var p2 = aud2.play();
+    if(p2 !== undefined){
+      p2.catch(function(e){
+        console.log("Audio despedida bloqueado: " + e);
+      });
+    }
+  }catch(e){
+    cerrarApp();
   }
 }
 </script>
