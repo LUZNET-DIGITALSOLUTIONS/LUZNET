@@ -206,7 +206,7 @@ word-break: break-all;
       <a href="grupos.html">ROLES</a>
    </li>
    <li>
-      <!-- HASTA PRONTO - NUEVO, BRO - NO TOCA ROLES -->
+      <!-- SALIR - NUEVO, BRO - NO TOCA ROLES -->
       <a href="javascript:void(0)" onclick="despedirLuzAudio()" style="background: rgba(255,0,0,0.4);">SALIR</a>
    </li>
     </ul>
@@ -222,11 +222,7 @@ word-break: break-all;
 
 <script>
 var URL_CONFIG = "configuracion.html";
-
-// 👇 LINK DIRECTO - CAMBIE www.dropbox.com POR dl.dropboxusercontent.com 👇
 var URL_AUDIO = "https://dl.dropboxusercontent.com/scl/fi/49r5qrc8wh6ur3m6v0wnt/configuraci-n.mp3?rlkey=7rc3we5fo6e77jxcrth402dxt&st=4srxvo5r";
-
-// 👇 TU AUDIO DE DESPEDIDA - YA PEGADO, BRO 👇
 var URL_AUDIO_DESPEDIDA = "https://dl.dropboxusercontent.com/scl/fi/ou6jri7rk5jzkaxvc5l1r/despedida.mp3?rlkey=qyj1dbsnheawliodq55mz9fl1&st=afe8z010";
 
 var yaCambio = false;
@@ -256,15 +252,27 @@ function irConfig(){
   }
 }
 
-// === HASTA PRONTO - AUDIO EXTERNO Y CIERRE, BRO ===
+// === SALIR - YA NO TE MANDA A GOOGLE, BRO ===
 var yaDespidio = false;
 function cerrarApp(){
   if(!yaDespidio){
     yaDespidio = true;
+    // Intentamos cerrar, Bro
     window.close();
+
+    // Si el navegador NO deja cerrar, te dejamos en pantalla de apagado, papa
+    // YA NO HAY GOOGLE AQUÍ, BRO
     setTimeout(function(){
-      window.location.href = "https://www.google.com";
-    }, 500);
+      document.body.innerHTML = `
+        <div style="background:black; color:white; width:100%; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:'Baloo 2'; text-align:center; padding:20px;">
+          <div style="font-size:70px;">🌙</div>
+          <h1 style="font-size:32px; margin-top:10px; color:white;">LUZ está dormida</h1>
+          <p style="font-size:18px; opacity:0.8; margin-top:10px; color:white;">Hasta pronto, Felipe.<br>Ya puedes cerrar esta pestaña, Bro.</p>
+          <button onclick="window.close()" style="margin-top:20px; background:red; color:white; border:none; padding:12px 25px; border-radius:100px; font-size:18px;">Cerrar</button>
+          <a href="javascript:location.reload()" style="margin-top:15px; color:#aaa; font-size:16px; text-decoration:none;">Volver a entrar</a>
+        </div>
+      `;
+    }, 300);
   }
 }
 
@@ -274,7 +282,8 @@ function despedirLuzAudio(){
     aud2.src = URL_AUDIO_DESPEDIDA;
     aud2.load();
     aud2.onended = function(){ cerrarApp(); };
-    setTimeout(cerrarApp, 3000);
+    // Si tu audio dura más de 6 segundos, subimos esto, Bro
+    setTimeout(cerrarApp, 6000);
     aud2.currentTime = 0;
     var p2 = aud2.play();
     if(p2 !== undefined){
